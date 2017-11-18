@@ -24,24 +24,14 @@ class User < ApplicationRecord
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
-<<<<<<< HEAD
-
 	validates :first_name, :last_name, presence: true, if: :is_approved?
-
->>>>>>> integration
 	def full_name
 		"#{first_name} #{last_name}"
 	end
-
+	private
 	def is_approved?
 		approved
 	end
-	# def approved
-	# 	if user.approved
-	# 		# must find a way to validate presence of first name and last name once
-			#guest user gets approval to become a general volunteer
-	# 	else
-	# 	end
-	# end
-
+	def set_defaults
+	end
 end
