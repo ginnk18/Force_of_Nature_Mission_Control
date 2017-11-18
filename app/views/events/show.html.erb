@@ -1,0 +1,37 @@
+<h1><%= @event.name %></h1>
+<p><%= @event.date %></p>
+<p><%= @event.start_time %></p>
+<p><%= @event.end_time %></p>
+<p><%= @event.location %></p>
+<p><%= @event.additional_info %></p>
+<p><%= @event.attachment_url %></p>
+<p><%= @event.category %></p>
+
+<%# `&.` is the safe navigation operator. It can be used to avoid
+    "undefined method `...' for nil:NilClass" errors. When used instead of `.`,
+    it will check the object before it before trying to execute the method after
+    it. If the object is `nil`, then it will immediately return `nil`.
+%>
+<p>Created By <%= @event.user&.full_name %></p>
+<p>Team Lead <%= @event.user&.full_name %></p>
+
+
+
+<%= image_tag @question.image.url(:large) if @question.image.present? %>
+
+<p><strong>View Count:</strong> <%= @question.view_count %></p>
+<p><strong>Created At:</strong> <%= time_ago_in_words(@question.created_at) + " ago" %></p>
+<p><strong>Updated At:</strong> <%= time_ago_in_words(@question.updated_at) + " ago" %></p>
+
+<% if user_signed_in? && can?(:crud, @question) %>
+  <%= link_to 'Edit', edit_question_path(@question) %>
+
+  <%# When you use `method: :delete` in a `link_to`, Rails will use
+      javascript to mimick a delete request to the server. %>
+  <%= link_to(
+    'Delete',
+    question_path(@question),
+    data: {confirm: 'Are you sure?'},
+    method: :delete
+  ) %>
+<% end %>

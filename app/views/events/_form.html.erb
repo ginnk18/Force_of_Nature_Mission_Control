@@ -1,0 +1,23 @@
+<%=simple_form_for @event do |f|%>
+<%= f.input :name, label: 'Event Name'%>
+<%= f.input :date, label: 'Event Date'%>
+<%= f.input :start_time, label: 'Start Time:'%>
+<%= f.input :end_time, label: 'End Time'%>
+<%= f.input :location, label: 'Location'%>
+<%= f.input :additional_info, label: 'Additional Information'%>
+<%= f.input :attachment_url, label: 'Attachment URL'%>
+<%= f.input :event_category,  :collection => %w[category]%>
+
+<div>
+        <%= form.label :category_id %>
+        <%= form.select :category_id, @categories.map { |category| [category.name, category.id] } %>
+</div>
+<div>
+        <%= form.label :leader %>
+        <%= form.select :category_id, @lead_users.map { |leader| [lead_users.name, lead_users.id] } %>
+</div>
+
+
+<%= f.input :leader_id, :collection => %w[leader] %>
+<%= f.submit%>
+<% end %>
