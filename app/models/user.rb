@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
 	#The user categories keeps track of which type of user the current user is
 	#Users can be general volunteers, team leads or admins
-	belongs_to :user_category
+	# belongs_to :user_category
 
 	#A user will usually just belong to one team (most general vols will belong to 1
 	# regional team - but some users (team leads) can belong to a regional team and an
@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
-
+	
 	def full_name
 		"#{first_name} #{last_name}"
 	end
