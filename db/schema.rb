@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118065801) do
+ActiveRecord::Schema.define(version: 20171118185325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,11 @@ ActiveRecord::Schema.define(version: 20171118065801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "event_category_id"
+    t.bigint "creator_id"
+    t.bigint "lead_id"
+    t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
+    t.index ["lead_id"], name: "index_events_on_lead_id"
   end
 
   create_table "team_categories", force: :cascade do |t|
