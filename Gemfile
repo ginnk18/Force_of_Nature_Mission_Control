@@ -59,6 +59,7 @@ group :development do
   gem 'hirb'
   gem 'letter_opener'
   gem 'rails-erd'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
