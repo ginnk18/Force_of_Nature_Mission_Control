@@ -39,6 +39,8 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'chosen'
 gem 'cancancan', '~> 2.0'
+# gem 'schema_plus'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,6 +58,7 @@ group :development do
   gem 'pry-rails'
   gem 'hirb'
   gem 'letter_opener'
+  gem 'rails-erd'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
