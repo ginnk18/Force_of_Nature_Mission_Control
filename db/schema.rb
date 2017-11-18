@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118052940) do
+ActiveRecord::Schema.define(version: 20171118060809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -25,6 +31,29 @@ ActiveRecord::Schema.define(version: 20171118052940) do
     t.string "attachment_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "event_category_id"
+    t.index ["event_category_id"], name: "index_events_on_event_category_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_events", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_events_on_event_id"
+    t.index ["user_id"], name: "index_user_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,10 +61,15 @@ ActiveRecord::Schema.define(version: 20171118052940) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.string "category"
     t.boolean "approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_category_id"
+    t.index ["user_category_id"], name: "index_users_on_user_category_id"
   end
 
+  add_foreign_key "events", "event_categories"
+  add_foreign_key "user_events", "events"
+  add_foreign_key "user_events", "users"
+  add_foreign_key "users", "user_categories"
 end
