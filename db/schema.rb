@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118060809) do
+ActiveRecord::Schema.define(version: 20171118065801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,18 @@ ActiveRecord::Schema.define(version: 20171118060809) do
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
   end
 
+  create_table "team_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_category_id"
+    t.index ["team_category_id"], name: "index_teams_on_team_category_id"
   end
 
   create_table "user_categories", force: :cascade do |t|
@@ -56,6 +64,15 @@ ActiveRecord::Schema.define(version: 20171118060809) do
     t.index ["user_id"], name: "index_user_events_on_user_id"
   end
 
+  create_table "user_teams", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_user_teams_on_team_id"
+    t.index ["user_id"], name: "index_user_teams_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -69,7 +86,10 @@ ActiveRecord::Schema.define(version: 20171118060809) do
   end
 
   add_foreign_key "events", "event_categories"
+  add_foreign_key "teams", "team_categories"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
+  add_foreign_key "user_teams", "teams"
+  add_foreign_key "user_teams", "users"
   add_foreign_key "users", "user_categories"
 end
