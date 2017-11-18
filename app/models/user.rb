@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	#A user can create many (has many) events, and also can belong to many events
 	#through the 'user_events' table
 	has_many :user_events, dependent: :destroy
-	has_many :events, through: :user_events
+	has_many :attended_events, through: :user_events, source: :event
 
 	#The user categories keeps track of which type of user the current user is
 	#Users can be general volunteers, team leads or admins
@@ -25,7 +25,8 @@ class User < ApplicationRecord
 
 	# def approved
 	# 	if user.approved
-	# 		errors.add()
+	# 		# must find a way to validate presence of first name and last name once
+			#guest user gets approval to become a general volunteer
 	# 	else
 	# 	end
 	# end
