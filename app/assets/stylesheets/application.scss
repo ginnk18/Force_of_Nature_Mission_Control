@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+/* welcome page styles  */
+
+.panel {
+  background-position:center;
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcome {
+  background-image: image-url('bear.png');
+  background-attachment: fixed;
+}
+
+#fixed {
+  background: blue;
+  background-attachment: scroll;
+}
+
+.panel-text {
+  color: white;
+}
