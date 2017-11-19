@@ -74,8 +74,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @question.destroy
-    redirect_to questions_path
+    @event.destroy
+    redirect_to admin_dashboard_index_path
   end
 
   private
