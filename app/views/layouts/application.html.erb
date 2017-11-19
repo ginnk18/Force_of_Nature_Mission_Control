@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+    <nav class="navbar navbar-expand-md navbar-light">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,8 +33,10 @@
         <ul class="nav-item ml-auto">
           <% if current_user %>
             <span>Welcome, <%= current_user.full_name %></span>
+            <%= link_to('Sign Out', session_path, method: :delete) %>
+          <% else %>
+            <%= link_to 'Sign In', new_session_path, class: "nav-link" %>
           <% end %>
-          <%= link_to 'Sign In', new_session_path, class: "nav-link" %>
         </ul>
 
       </div>
@@ -45,10 +47,7 @@
           <%= flash[:notice] %>
         
       <% end %>
-
-   <div class="container">
       <%= yield %>
-   </div>   
    
   </body>
 </html>
