@@ -6,7 +6,7 @@ class Team < ApplicationRecord
 	#to 2 teams - a regional team and an operational team)
 	has_many :user_teams, dependent: :destroy
 	has_many :members, through: :user_teams, source: :user
-
+	
 	#A team is associated with many events
-	has_many :events
+	has_many :events, dependent: :nullify
 end
