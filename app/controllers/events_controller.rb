@@ -33,7 +33,7 @@ class EventsController < ApplicationController
         result = @calendar.insert_event(GoogleCalendarHelper::CALENDAR_ID, g_event)
         puts "Event-ID #{result.id}"
     @event.creator_id = User.first.id #current_user # creator of Event
-    @event.google_event_id= result.id
+    @event.google_event_id = result.id
     if @event.save!
       redirect_to event_path(@event)
     else
@@ -76,6 +76,12 @@ class EventsController < ApplicationController
   def destroy
     @question.destroy
     redirect_to questions_path
+  end
+
+  def translate
+      p params[:id]
+      @event = Event.find_by google_event_id: params[:id]
+      redirect_to event_path(@event)
   end
 
   private
