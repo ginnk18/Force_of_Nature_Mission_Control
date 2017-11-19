@@ -21,7 +21,6 @@
   margin-top: 1rem;
 }
 
-
 .navbar ul li a {
 color: #fff;
 font-weight: bold;
@@ -59,6 +58,7 @@ h1.page-head {
 #welcome {
   background-image: image-url('bear.png');
   background-attachment: fixed;
+  flex-direction: column;
 }
 
 #fixed {
