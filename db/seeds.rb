@@ -4,6 +4,15 @@
 # UserCategory.create(name: 'General Volunteer')
 # UserCategory.create(name: 'Team Lead')
 # UserCategory.create(name: 'Admin')
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
 # TeamCategory.destroy_all
 # TeamCategory.create(name: 'Regional')
 # TeamCategory.create(name: 'Operational')
@@ -14,6 +23,7 @@
 # EventCategory.create(name: 'PhoneBank')
 # EventCategory.create(name: 'Other')
 ##########################################################################
+
 User.destroy_all
 Team.destroy_all
 PASSWORD = 'thissectionclosed'
@@ -51,6 +61,8 @@ user_categories = UserCategory.where.not(id: 4)
         user_category: user_categories.sample
     )
 end
+
+
 event_categories = EventCategory.all
 users = User.all
 3.times.each do
@@ -71,3 +83,4 @@ users = User.all
     )
 end
 puts "Created #{Event.count} events"
+

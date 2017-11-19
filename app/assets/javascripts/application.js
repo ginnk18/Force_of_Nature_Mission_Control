@@ -11,12 +11,28 @@
 // about supported directives.
 //
 //= require jquery3
+//= require popper
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require rails-ujs
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require_tree .
+
+
+(function($) {
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 450) {
+                $('.navbar').css("background-color", "blue");
+            } else {
+                $('.navbar').css("background-color", "transparent");
+            }
+        });
+    });
+})(jQuery);
+
 $(document).ready(function() {
 
    // page is now ready, initialize the calendar...
@@ -35,3 +51,4 @@ $(document).ready(function() {
                 });
 
 });
+
