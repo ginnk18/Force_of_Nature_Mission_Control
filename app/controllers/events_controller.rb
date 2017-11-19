@@ -57,7 +57,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    # @question = Question.find params[:id]
+
   end
 
   def index
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    return head :unauthorized unless can?(:update, @event)
+    # return head :unauthorized unless can?(:update, @event)
     if @event.update event_params
       redirect_to @event
     else
@@ -74,8 +74,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @question.destroy
-    redirect_to questions_path
+    @event.destroy
+    redirect_to events_path
   end
 
   private
