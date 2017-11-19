@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
   before_action :find_event, only: [:show, :edit, :update, :destroy]
   before_action :get_categories, only: [:new, :create, :edit, :update]
+  before_action :get_users, only: [:new, :create, :edit, :update]
   # before_action :authorize_user!, except: [:index, :show, :new, :create]
 
   def new
@@ -10,25 +11,29 @@ class EventsController < ApplicationController
   end
 
   def create
-    @Event = Event.new event_params
-    @Event.user = current_user # creator of Event
-
-    if @event.save
+    @event = Event.new event_params
+    @event.creator_id = User.first.id #current_user # creator of Event
+@event.google_event_id=1
+    if @event.save!
       redirect_to event_path(@event)
     else
+      # flash[:notice] = @event.errors.full_message
       render :new
     end
   end
 
   def show
-    @answers = @question.answers.order(created_at: :desc)
-    @answer = Answer.new
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @question } # ActiveRecrod has to_json method
-      # can can covert any of its objects
-      # to JSON format
-    end
+    @category=@event.event_category
+    @lead=@event.lead
+
+    # @answers = @question.answers.order(created_at: :desc)
+    # @answer = Answer.new
+    # respond_to do |format|
+    #   format.html { render :show }
+    #   format.json { render json: @question } # ActiveRecrod has to_json method
+    #   # can can covert any of its objects
+    #   # to JSON format
+    # end
   end
 
   def edit
@@ -62,7 +67,21 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:leader_id)
+      :event_category_id,:lead_id)
+
+      # t.string "name"
+      # t.time "start_time"
+      # t.time "end_time"
+      # t.date "date"
+      # t.string "location"
+      # t.text "additional_info"
+      # t.string "attachment_url"
+      #
+      # t.bigint "event_category_id"
+      # t.bigint "creator_id"
+      # t.bigint "lead_id"
+      # t.integer "google_event_id"
+
 
 
     # The `params` object is available inside all controllers. It's
@@ -71,10 +90,10 @@ class EventsController < ApplicationController
     # and `request.body` from Express into one object.
   end
   def get_categories
-        @event_categories = Event_category.all
+        @event_categories = EventCategory.all
     end
     def get_users
-          @lead_users = Users.all
+          @lead_users = User.all
       end
 
   def find_event
