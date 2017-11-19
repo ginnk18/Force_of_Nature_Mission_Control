@@ -1,24 +1,49 @@
 
 <div class="container">
-	<div class="row flex-column">
-		<h1><%= @event.name %></h1>
-		<p><strong>Date:</strong> <%= @event.date.strftime('%A %B %d %Y') %></p>
-		<p><strong>Starting at:</strong> <%= @event.start_time.strftime('%I %M') %></p>
-		<p><strong>Ending at:</strong> <%= @event.end_time.strftime('%I %M') %></p>
-		<p><strong>What?</strong><%= @category.name%></p>
-		<p><strong>Where?</strong> <%= @event.location %></p>
+
+	<div class="row">
+		<div class="col-md-8">
+		<h1 class="event"><%= @event.name %></h1>
+		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
+  <div class="details">
+		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
+		</p>
+		<p> <strong>Category:</strong><%= @category.name%> </p>
+		<p> <strong>Location</strong> <%= @event.location%> </p>
+		<div class="date"> <%= @event.date.strftime('%A %B %d %Y') %></div>
+
+		<div class="time"><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
+		</div>
+
+
+		<div class="event-info card">
+		<p><strong>Category:</strong><%= @category.name%></p>
+		<p><strong>Location</strong> <%= @event.location %></p>
 		<p><%= @event.additional_info %></p>
-		<p><%= @event.attachment_url %></p>
+	</div>
+		<%= link_to 'Sign Up!', event_neweventsignup_path(@event), class: "btn btn-primary" %>
 
-
+	</div>
+		<p> <%= @event.additional_info %> </p>
+		<p> <%= @event.attachment_url %></p>
+		<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-primary" %>
+  </div>
+	<div class="col-md">
 
 		<%# `&.` is the safe navigation operator. It can be used to avoid
 		    "undefined method `...' for nil:NilClass" errors. When used instead of `.`,
 		    it will check the object before it before trying to execute the method after
 		    it. If the object is `nil`, then it will immediately return `nil`.
 		%>
-		<p>Created By <%= @event.creator&.full_name %></p>
-		<p>Team Lead <%= @lead&.full_name %></p>
+
+  <div class="details">
+		<h3>Team Lead </h3>
+		<p> <%= @lead&.full_name %></p>
+		<h3>Created By </h3>
+		<p> <%= @event.creator&.full_name %></p>
+    <h3>Team</h3> 
+    <p><%= @event.team&.name %></p>
+	</div>
 <%= link_to 'Edit', edit_event_path(@event) %>
 <%= link_to('Delete',
   event_path(@event),data: {confirm: 'Are you sure?'},method: :delete) %>
@@ -34,12 +59,13 @@
 <!--  -->
 		<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
 	</div>
-
-	<div class="row flex-column">
-		<h3>Attendees: </h3>
+		<h3>Attendees </h3>
+		<ul class="list-group">
 		<% @event.guests.each do |guest| %>
-			<p><%= guest.full_name %></p>
+  <li class="list-group-item"> <%= guest.full_name %> </li>
 		<% end %>
+		<li class="list-group-item"> <%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %> </li>
+	</ul>
 	</div>
 
 

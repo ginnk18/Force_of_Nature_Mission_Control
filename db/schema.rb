@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119180615) do
+ActiveRecord::Schema.define(version: 20171119211320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
 
   create_table "event_categories", force: :cascade do |t|
     t.string "name"
@@ -35,9 +50,11 @@ ActiveRecord::Schema.define(version: 20171119180615) do
     t.bigint "creator_id"
     t.bigint "lead_id"
     t.string "google_event_id"
+    t.bigint "team_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
     t.index ["lead_id"], name: "index_events_on_lead_id"
+    t.index ["team_id"], name: "index_events_on_team_id"
   end
 
   create_table "team_categories", force: :cascade do |t|
@@ -91,6 +108,7 @@ ActiveRecord::Schema.define(version: 20171119180615) do
   end
 
   add_foreign_key "events", "event_categories"
+  add_foreign_key "events", "teams"
   add_foreign_key "teams", "team_categories"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"

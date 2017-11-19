@@ -3,6 +3,9 @@ class Event < ApplicationRecord
 	#An event will only ever be one type - a canvas, a phonebank, etc
 	belongs_to :event_category
 
+	#Each event belongs to one team - though members of any team can attend any event
+	belongs_to :team
+
 	#each event has one creator, which holds a foreign key to a User
 	belongs_to :creator, class_name: "User"
 	#each event has one lead, which holds a foreign key to a User
