@@ -20,6 +20,19 @@
 		<p>Created By <%= @event.creator&.full_name %></p>
 		<p>Team: <%= @event.team.name %></p>
 		<p>Event Lead <%= @lead&.full_name %></p>
+<%= link_to 'Edit', edit_event_path(@event) %>
+<%= link_to('Delete',
+  event_path(@event),data: {confirm: 'Are you sure?'},method: :delete) %>
+<!--  -->
+<!-- <% if user_signed_in? && can?(:crud, @event) %> -->
+
+
+  <%# When you use `method: :delete` in a `link_to`, Rails will use
+      javascript to mimick a delete request to the server. %>
+
+<!-- <% end %> -->
+
+<!--  -->
 		<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
 	</div>
 
@@ -32,5 +45,3 @@
 
 
 </div>
-
-

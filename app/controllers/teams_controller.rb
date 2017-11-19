@@ -3,6 +3,11 @@ class TeamsController < ApplicationController
 	before_action :authorize_user!
 	before_action :find_team, only: [:show]
 
+	def new
+    	@users=User.all
+    	@team = Team.new
+  	end
+
 	def index
 		@operational_teams = Team.where(team_category: '2').order(created_at: :desc)
 		@regional_teams = Team.where(team_category: '1').order(created_at: :desc)
@@ -31,5 +36,4 @@ class TeamsController < ApplicationController
 	end
 
 end
-
 

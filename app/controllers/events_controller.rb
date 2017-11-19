@@ -58,7 +58,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    # @question = Question.find params[:id]
+
   end
 
   def index
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    return head :unauthorized unless can?(:update, @event)
+    # return head :unauthorized unless can?(:update, @event)
     if @event.update event_params
       redirect_to @event
     else
@@ -75,12 +75,11 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @question.destroy
-    redirect_to questions_path
+    @event.destroy
+    redirect_to admin_dashboard_index_path
   end
 
   def translate
-      p params[:id]
       @event = Event.find_by google_event_id: params[:id]
       redirect_to event_path(@event)
   end
@@ -95,21 +94,6 @@ class EventsController < ApplicationController
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
       :event_category_id,:lead_id, :team_id)
-
-      # t.string "name"
-      # t.time "start_time"
-      # t.time "end_time"
-      # t.date "date"
-      # t.string "location"
-      # t.text "additional_info"
-      # t.string "attachment_url"
-      #
-      # t.bigint "event_category_id"
-      # t.bigint "creator_id"
-      # t.bigint "lead_id"
-      # t.integer "google_event_id"
-
-
 
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and
@@ -137,19 +121,19 @@ class EventsController < ApplicationController
   # Remember that if a `before_action` callback does a `render`, `redirect_to` or
   # `head` (methods that terminate the response), it will stop the request from
   # getting to the action.
-  def authorize_user!
-    # binding.pry
-    unless can?(:crud, @question)
-      flash[:alert] = "Access Denied!"
-      redirect_to root_path
+  # def authorize_user!
+  #   # binding.pry
+  #   unless can?(:crud, @event)
+  #     flash[:alert] = "Access Denied!"
+  #     redirect_to root_path
 
-      # `head` is a method similar to `render` or `redirect_to`. It finalizes
-      # the response. However, it will add content to the response. It will simply
-      # set the HTTP status of the response. (e.g. head :unauthorized sets the
-      # the status code to 401)
-      # For a list of available status code symbols to use with `head` go to:
-      # http://billpatrianakos.me/blog/2013/10/13/list-of-rails-status-code-symbols/
-      # head :unauthorized
-    end
-  end
+  #     # `head` is a method similar to `render` or `redirect_to`. It finalizes
+  #     # the response. However, it will add content to the response. It will simply
+  #     # set the HTTP status of the response. (e.g. head :unauthorized sets the
+  #     # the status code to 401)
+  #     # For a list of available status code symbols to use with `head` go to:
+  #     # http://billpatrianakos.me/blog/2013/10/13/list-of-rails-status-code-symbols/
+  #     # head :unauthorized
+  #   end
+  # end
 end
