@@ -27,14 +27,20 @@ class User < ApplicationRecord
 
 	validates :first_name, :last_name, presence: true, if: :is_approved?
 
+	before_validation :set_defaults
+
 
 	def full_name
 		"#{first_name} #{last_name}"
 	end
+	
 	private
 	def is_approved?
 		approved
 	end
+
 	def set_defaults
+		@guest_category = UserCategory.first 
+		self.user_category = @guest_category
 	end
 end

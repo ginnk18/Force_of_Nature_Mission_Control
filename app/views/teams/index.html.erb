@@ -1,0 +1,8 @@
+
+<% @teams.each do |team| %>
+	<h3><%= team.name %></h3>
+	<% team.members.each do |member| %>
+		<%= member.full_name %>
+	<% end %>
+<% end %>
+

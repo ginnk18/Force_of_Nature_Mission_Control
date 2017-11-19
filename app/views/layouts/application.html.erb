@@ -13,7 +13,11 @@
 
           <%= flash[:notice] %>
         
+      <% elsif flash[:alert].present? %>
+
+          <%= flash[:alert] %>
       <% end %>
+      
     <%= yield %>
   </body>
 </html>
