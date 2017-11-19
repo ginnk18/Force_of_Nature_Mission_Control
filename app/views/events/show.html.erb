@@ -1,0 +1,19 @@
+<h1><%= @event.name %></h1>
+<p><%= @event.date %></p>
+<p><%= @event.start_time %></p>
+<p><%= @event.end_time %></p>
+<p><%= @event.location %></p>
+<p><%= @event.additional_info %></p>
+<p><%= @event.attachment_url %></p>
+<p><%= @category.name%></p>
+
+
+
+<%# `&.` is the safe navigation operator. It can be used to avoid
+    "undefined method `...' for nil:NilClass" errors. When used instead of `.`,
+    it will check the object before it before trying to execute the method after
+    it. If the object is `nil`, then it will immediately return `nil`.
+%>
+<p>Created By <%= @event.creator&.full_name %></p>
+<p>Team Lead <%= @lead&.full_name %></p>
+<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
