@@ -37,7 +37,7 @@
         <ul class="navbar-nav second-nav ml-auto">
           <% if current_user %>
             <span style="color:lightblue"> Welcome, <%= current_user.full_name %>  </span>
-            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary) %> </li>
+            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
             <% if current_user.user_category.name === 'Team Lead' %>
               <%= link_to 'Your Teams', teams_path %>
             <% end %>
