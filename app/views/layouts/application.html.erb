@@ -31,6 +31,9 @@
         </ul>
 
         <ul class="nav-item ml-auto">
+          <% if current_user %>
+            <span>Welcome, <%= current_user.full_name %></span>
+          <% end %>
           <%= link_to 'Sign In', new_session_path, class: "nav-link" %>
         </ul>
 
