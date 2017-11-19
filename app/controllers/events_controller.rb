@@ -1,3 +1,4 @@
+require_relative '../../lib/google_calendar_helper'
 class EventsController < ApplicationController
 
   # before_action :authenticate_user!, except: [:index, :show]
@@ -12,8 +13,27 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new event_params
+    @calendar_helper = GoogleCalendarHelper.new
+    @calendar = @calendar_helper.calendar
+        start_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.start_time.hour, @event.start_time.min)
+        end_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.end_time.hour, @event.end_time.min)
+        start_date = start_date.change(:offset => "-0800")
+        end_date = end_date.change(:offset => "-0800")
+        g_event = Google::Apis::CalendarV3::Event.new({
+          summary: @event.name,
+          location: @event.location,
+          description: @event.additional_info,
+          start: {
+            date_time: start_date
+            },
+          end: {
+            date_time: end_date
+          }
+          })
+        result = @calendar.insert_event(GoogleCalendarHelper::CALENDAR_ID, g_event)
+        puts "Event-ID #{result.id}"
     @event.creator_id = User.first.id #current_user # creator of Event
-@event.google_event_id=1
+    @event.google_event_id= result.id
     if @event.save!
       redirect_to event_path(@event)
     else
@@ -90,11 +110,11 @@ class EventsController < ApplicationController
     # and `request.body` from Express into one object.
   end
   def get_categories
-        @event_categories = EventCategory.all
-    end
-    def get_users
-          @lead_users = User.all
-      end
+    @event_categories = EventCategory.all
+  end
+  def get_users
+    @lead_users = User.all
+  end
 
   def find_event
     @event = Event.find params[:id]
