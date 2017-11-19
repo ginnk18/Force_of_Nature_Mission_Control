@@ -14,43 +14,43 @@
 # EventCategory.create(name: 'PhoneBank')
 # EventCategory.create(name: 'Other')
 ##########################################################################
-# User.destroy_all
-# Team.destroy_all
-# PASSWORD = 'thissectionclosed'
+User.destroy_all
+Team.destroy_all
+PASSWORD = 'thissectionclosed'
 
-# Team.create(name: 'Recruitment', team_category_id: '2')
-# Team.create(name: 'Data', team_category_id: '2')
-# Team.create(name: 'Research', team_category_id: '2')
-# Team.create(name: 'SlideShow', team_category_id: '2')
+Team.create(name: 'Recruitment', team_category_id: '2')
+Team.create(name: 'Data', team_category_id: '2')
+Team.create(name: 'Research', team_category_id: '2')
+Team.create(name: 'SlideShow', team_category_id: '2')
 
-# 5.times.each do
-#     name = Faker::Cat.name
-#     Team.create(
-#         name: name,
-#         team_category_id: '1'
-#     )
-# end
-# teams = Team.all
-# super_user = User.create(
-#     first_name: 'This',
-#     last_name: 'SectionMcClosed',
-#     email: 'example@example.ca',
-#     password: PASSWORD,
-#     user_category_id: 4
-# )
-# user_categories = UserCategory.where.not(id: 4)
+5.times.each do
+    name = Faker::Cat.name
+    Team.create(
+        name: name,
+        team_category_id: '1'
+    )
+end
+teams = Team.all
+super_user = User.create(
+    first_name: 'This',
+    last_name: 'SectionMcClosed',
+    email: 'example@example.ca',
+    password: PASSWORD,
+    user_category_id: 4
+)
+user_categories = UserCategory.where.not(id: 4)
 
-# 10.times.each do
-#     first_name = Faker::Name.first_name
-#     last_name = Faker::Name.last_name
-#     User.create(
-#         first_name: first_name,
-#         last_name: last_name,
-#         email: "#{first_name}.#{last_name}@thissectionclosed.io",
-#         password: PASSWORD,
-#         user_category: user_categories.sample
-#     )
-# end
+10.times.each do
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    User.create(
+        first_name: first_name,
+        last_name: last_name,
+        email: "#{first_name}.#{last_name}@thissectionclosed.io",
+        password: PASSWORD,
+        user_category: user_categories.sample
+    )
+end
 event_categories = EventCategory.all
 users = User.all
 3.times.each do
