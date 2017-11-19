@@ -42,5 +42,4 @@ class User < ApplicationRecord
         self.user_category = @guest_category
     end
 
-
 end

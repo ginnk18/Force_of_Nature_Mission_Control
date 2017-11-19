@@ -8,4 +8,5 @@ Rails.application.routes.draw do
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
      post('newsignup', to: 'eventsignup#create') 
   end
+
 end
