@@ -7,17 +7,27 @@
 <%= f.input :additional_info, label: 'Additional Information'%>
 <%= f.input :attachment_url, label: 'Attachment URL'%>
 
+<!-- Selecting an event category -->
 
 <div>
-        <%= f.label :event_category_id %>
-        <%= f.select :event_category_id, @event_categories.map { |category| [category.name, category.id] } %>
+  <%= f.label :lead_id %>
+  <%= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
 </div>
+
+<!-- Selecting a leader for that particular event (from all the team leads) -->
 
 <div>
-        <%= f.label :lead_id %>
-        <%= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
+  <%= f.label :event_category_id %>
+  <%= f.select :event_category_id, @event_categories.map { |category| [category.name, category.id] } %>
+</div>
+
+<!-- Selecting a team that this event belongs to  -->
+<div>
+        <%= f.label :team_id %>
+        <%= f.select :team_id, @teams.map { |team| [team.name, team.id] } %>
 </div>
 
 
-<%= f.submit%>
+
+<%= f.submit "Create Event", class:"btn btn-primary"%>
 <% end %>

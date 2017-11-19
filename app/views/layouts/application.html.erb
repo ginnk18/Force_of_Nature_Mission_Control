@@ -13,7 +13,7 @@
     <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
     <nav class="navbar navbar-expand-md">
     <% else %>
-        <nav class="navbar navbar-expand-md" style="background-color:#000" >
+        <nav class="navbar navbar-expand-md" style="background-color:navy" >
       <% end %>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -36,20 +36,32 @@
         </ul>
         <ul class="navbar-nav second-nav ml-auto">
           <% if current_user %>
-            <span>Welcome, <%= current_user.full_name %></span>
-            <%= link_to('Sign Out', session_path, method: :delete) %>
+            <span style="color:lightblue"> Welcome, <%= current_user.full_name %>  </span>
+            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary) %> </li>
+            <% if current_user.user_category.name === 'Team Lead' %>
+              <%= link_to 'Your Teams', teams_path %>
+            <% end %>
           <% else %>
-            <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %>
+            <li class="nav-item"> <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %> </li>
           <% end %>
         </ul>
       </div>
     </nav>
 
     <% if flash[:notice].present? %>
-      <div class="alert alert-sucess"> <%= flash[:notice] %> </div>
-    <% end %>
-    <%= yield %>
 
-    <%= render 'layouts/footer' %>
+          <div class="alert alert-success"> <%= flash[:notice] %> </div>
+
+
+      <% elsif flash[:alert].present? %>
+
+          <%= flash[:alert] %>
+
+      <% end %>
+
+      <%= yield %>
+
+      <%= render 'layouts/footer' %>
+
   </body>
 </html>
