@@ -9,6 +9,8 @@
 # Ignore bundler config.
 /.bundle
 
+/config/initializers/app_keys.rb
+
 .DS_Store
 
 # Ignore all logfiles and tempfiles.

@@ -7,6 +7,9 @@
 # UserCategory.create(name: 'General Volunteer')
 # UserCategory.create(name: 'Team Lead')
 # UserCategory.create(name: 'Admin')
+
+# TeamCategory.destroy_all
+# EventCategory.destroy_all
 # TeamCategory.create(name: 'Regional')
 # TeamCategory.create(name: 'Operational')
 # EventCategory.create(name: 'Canvas')
@@ -14,6 +17,7 @@
 # EventCategory.create(name: 'Meeting')
 # EventCategory.create(name: 'PhoneBank')
 # EventCategory.create(name: 'Other')
+
 ##########################################################################
 
 User.destroy_all

@@ -20,18 +20,6 @@
 //= require_tree .
 
 
-(function($) {
-    $(document).ready(function(){
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > 450) {
-                $('.navbar').css("background-color", "blue");
-            } else {
-                $('.navbar').css("background-color", "transparent");
-            }
-        });
-    });
-})(jQuery);
-
 $(document).ready(function() {
 
    // page is now ready, initialize the calendar...
@@ -42,10 +30,31 @@ $(document).ready(function() {
                         googleCalendarId: 'thissectionclosedcc@gmail.com'
                     },
                     eventClick: function(calEvent, jsEvent, view) {
-                        console.log(calEvent);
                         // change the border color just for fun
                         $(this).css('border-color', 'red');
+                        //window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                        $('#eventShow').modal('toggle');
+                        setTimeout( ()=>{
+                        $( '#ModalLabel' ).html("Event: " + calEvent.title);
+                        $( '#starttime' ).html("Start Time: " + calEvent.start._d)
+                        $( '#endtime' ).html("End Time: " + calEvent.end._d);
+                        $('#location').html("Location: " + calEvent.location);;
+
+                        
+                        $('#moredetails').on('click', (event)=>{
                         window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                            
+                        });
+                        $('#eventsignupform').on('submit', (event)=> {
+                        event.preventDefault();
+                        let email = event.target.querySelector('#email_email').value;
+                        fetch(`/newsignup/${calEvent.id}`, { method: 'post', 
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+                        },
+                        body: email  }).then((res) => res.json()).then((data)=> $('#message').html(data.message));
+                        });
+                        },10 )
                         return false;
                     }
                 });

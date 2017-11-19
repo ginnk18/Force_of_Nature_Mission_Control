@@ -9,11 +9,14 @@ Rails.application.routes.draw do
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
      post('newsignup', to: 'eventsignup#create')
   end
+  
+  post('newsignup/:id', to: 'eventsignup#modalsignup')
+  get('eventscal/:id', to: 'events#translate', as: :eventshow)
 
   namespace :admin do
     resources :dashboard, only: [:index]
   end
 
-  get('eventscal/:id', to: 'events#translate', as: :eventshow)
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 
 end
