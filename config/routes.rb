@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'welcome#index'
   # root 'events#new'
   resources :welcome, only: [:index]
@@ -9,7 +10,10 @@ Rails.application.routes.draw do
      post('newsignup', to: 'eventsignup#create')
   end
 
-  get('eventscal/:id', to: 'events#translate', as: :eventshow)
+  namespace :admin do
+    resources :dashboard, only: [:index]
+  end
 
+  get('eventscal/:id', to: 'events#translate', as: :eventshow)
 
 end
