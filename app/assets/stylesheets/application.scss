@@ -31,6 +31,11 @@ font-weight: bold;
   // link styles for secondary nav
 }
 
+.greet {
+  color: aliceblue;
+  margin-right: 1rem;
+}
+
 
 h1.page-head {
   text-align: center;
@@ -65,6 +70,10 @@ h1.page-head {
   color: white;
 }
 
+.time {
+  font-size: 16px;
+  font-weight: bold;
+}
 .navbar {
   // background-image: image-url('bear.png');
 }
@@ -72,7 +81,12 @@ h1.page-head {
 .cal-con {
   // for styling calandar background
 }
-
+.details {
+  margin-top: 1rem;
+}
+.details p {
+  line-height: 0.7rem;
+}
 
 
 // footer
@@ -207,10 +221,6 @@ h1.page-head {
 
     .card-button {
         position: fixed;
-    }
-
-    body {
-        background: rgba(128, 69, 128, 0.07);
     }
 
     hr {
