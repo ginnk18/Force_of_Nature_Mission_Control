@@ -1,4 +1,4 @@
-##############USER CATEGORY! DO NOT RESEED UNLESS CRITICAL!!!!########### 
+##############USER CATEGORY! DO NOT RESEED UNLESS CRITICAL!!!!###########
 # UserCategory.destroy_all
 # UserCategory.create(name:'Guest')
 # UserCategory.create(name: 'General Volunteer')
@@ -33,4 +33,5 @@ p user_categories
         password: PASSWORD,
         user_category: user_categories.sample
     )
+
 end
