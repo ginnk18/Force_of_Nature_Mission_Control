@@ -1,0 +1,8 @@
+<%= form_tag("newsignup", method: "post") do %>
+    <div class="field">
+         <%= label(:email, "Email:") %>
+        <%= email_field(:email, "email") %>
+    </div>
+
+    <%= submit_tag "Sign up!"%> 
+<% end %>

@@ -40,13 +40,14 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'chosen'
 gem 'cancancan', '~> 2.0'
+gem 'bootstrap'
+gem 'jquery-rails'
 
 # gem for Google Calendar
 gem 'google-api-client', '~> 0.9.1'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-rails'
-# gem 'schema_plus'
 
 
 group :development, :test do
