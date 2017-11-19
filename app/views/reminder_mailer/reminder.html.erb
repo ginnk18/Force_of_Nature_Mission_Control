@@ -4,12 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h5> Thank you for signing up for: <%= @event.name %>
+    <h3> Reminder! </h3>
+    <h5>  You have <%= @event.name %> tomorrow! </h5>
       <p> The event details are: </p>
       <p> Date: <%= @event.date %>  </p>
       <p> Start Time: <%= @event.start_time %> </p>
       <p> Location: <%= @event.location %> </p>
-      <p> Additional_info <%= @event.addiional_info %> </p>
+      <p> Additional_info <%= @event.additional_info %> </p>
 
     <p>We look forward to seeing you there!</p>
   </body>

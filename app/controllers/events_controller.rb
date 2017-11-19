@@ -35,6 +35,7 @@ class EventsController < ApplicationController
     @event.creator_id = User.first.id #current_user # creator of Event
     @event.google_event_id= result.id
     if @event.save!
+      EventsMailer.notify_event_creator(@event).deliver_now
       redirect_to event_path(@event)
     else
       # flash[:notice] = @event.errors.full_message

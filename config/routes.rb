@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :events, only: [:index, :new, :show, :create, :update, :destroy] do
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
-     post('newsignup', to: 'eventsignup#create') 
+     post('newsignup', to: 'eventsignup#create')
   end
-
+match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 end

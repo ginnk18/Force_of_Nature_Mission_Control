@@ -1,3 +1,0 @@
-class EventMailer < ApplicationMailer
-
-end
