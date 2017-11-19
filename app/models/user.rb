@@ -23,7 +23,12 @@ class User < ApplicationRecord
 	has_many :teams, through: :user_teams
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+<<<<<<< HEAD
 	validates :email, presence: true, uniqueness: true, format: validates :first_name, :last_name, presence: true, if: :is_approved?
+=======
+	validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
+	validates :first_name, :last_name, presence: true, if: :is_approved?
+>>>>>>> d9f2b5881d38961b06874f308df34ee379ccab70
 
 	def full_name
 		"#{first_name} #{last_name}"
