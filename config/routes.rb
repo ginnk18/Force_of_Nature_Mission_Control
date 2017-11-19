@@ -10,4 +10,7 @@ Rails.application.routes.draw do
      post('newsignup', to: 'eventsignup#create') 
   end
 
+  get('eventscal/:id', to: 'events#translate', as: :eventshow)
+
+
 end
