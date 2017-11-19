@@ -2,6 +2,7 @@ class Admin::DashboardController < Admin::ApplicationController
   def index
     @events = Event.all
     @users = User.all
+    @teams = Team.all
     @teamlead = User.where(user_category: '3')
     @guest = User.where(user_category: '1')
     @genvol = User.where(user_category: '2')
@@ -14,6 +15,8 @@ class Admin::DashboardController < Admin::ApplicationController
       guests: @guest.count,
       genvol: @genvol.count
     }
-
+  end
+  def teams
+    @teams = Team.all
   end
 end
