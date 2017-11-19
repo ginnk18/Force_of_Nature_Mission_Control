@@ -1,23 +1,19 @@
-<<<<<<< HEAD
-<div class="container-fluid d-flex justify-content-center">
-<div class="col-lg-4">
-  <h1> Sign In </h1>
-=======
-<h1> Sign-up </h1>
->>>>>>> integration
 
-<%# We can use `form_for` to generate arbitrary forms without providing it with a model instance, Insead, provide it a symbol.
-And you can also specify the `action` attribute for the form with the argument `url:` %>
-<%= simple_form_for :session, url: session_path do |f| %>
-        <%= f.input :email%>
-        <%= f.input :password%>
-<<<<<<< HEAD
-        <%= f.submit 'Sign In', class: "btn btn-primary"%>
-<%end%>
+<div class="container-fluid d-flex justify-content-center">
+	<div class="col-lg-4">
+		  <h1> Sign In </h1>
+
+
+		<%# We can use `form_for` to generate arbitrary forms without providing it with a model instance, Insead, provide it a symbol.
+		And you can also specify the `action` attribute for the form with the argument `url:` %>
+		<%= simple_form_for :session, url: session_path do |f| %>
+		        <%= f.input :email%>
+		        <%= f.input :password%>
+		        <%= f.submit 'Sign In', class: "btn btn-primary"%>
+		<%end%>
+	</div>
 </div>
-</div>
-=======
         <%= f.submit 'Sign In'%>
     </div>
 <%end%>
->>>>>>> integration
+
