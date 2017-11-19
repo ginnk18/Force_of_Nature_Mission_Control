@@ -1,9 +1,13 @@
-##############USER CATEGORY! DO NOT RESEED UNLESS CRITICAL!!!!########### 
+##############USER CATEGORY! DO NOT RESEED UNLESS CRITICAL!!!!###########
 # UserCategory.destroy_all
+# TeamCategory.destroy_all
+# EventCategory.destroy_all
+#############################################################################
 # UserCategory.create(name:'Guest')
 # UserCategory.create(name: 'General Volunteer')
 # UserCategory.create(name: 'Team Lead')
 # UserCategory.create(name: 'Admin')
+
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
@@ -13,15 +17,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 # TeamCategory.destroy_all
+# EventCategory.destroy_all
 # TeamCategory.create(name: 'Regional')
 # TeamCategory.create(name: 'Operational')
-# EventCategory.destroy_all
 # EventCategory.create(name: 'Canvas')
 # EventCategory.create(name: 'Slideshow')
 # EventCategory.create(name: 'Meeting')
 # EventCategory.create(name: 'PhoneBank')
 # EventCategory.create(name: 'Other')
+
 ##########################################################################
 
 User.destroy_all
@@ -83,4 +89,3 @@ users = User.all
     )
 end
 puts "Created #{Event.count} events"
-
