@@ -9,6 +9,7 @@ Rails.application.routes.draw do
      post('newsignup', to: 'eventsignup#create') 
   end
 
+  post('newsignup/:id', to: 'eventsignup#modalsignup')
   get('eventscal/:id', to: 'events#translate', as: :eventshow)
 
 
