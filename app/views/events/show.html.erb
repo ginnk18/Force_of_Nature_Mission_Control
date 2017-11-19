@@ -1,16 +1,25 @@
 
 <div class="container">
-	<div class="row flex-column">
-		<h1><%= @event.name %></h1>
-		<p><strong>Date:</strong> <%= @event.date.strftime('%A %B %d %Y') %></p>
-		<p><strong>Starting at:</strong> <%= @event.start_time.strftime('%H %M') %></p>
-		<p><strong>Ending at:</strong> <%= @event.end_time.strftime('%H %M') %></p>
-		<p><strong>What?</strong><%= @category.name%></p>
-		<p><strong>Where?</strong> <%= @event.location %></p>
+
+	<div class="row">
+		<div class="col-md-8">
+		<h1 class="event"><%= @event.name %></h1>
+		<div class="date"> <%= @event.date.strftime('%A %B %d %Y') %></div>
+
+		<div class="time"><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
+		</div>
+
+
+		<div class="event-info card">
+		<p><strong>Category:</strong><%= @category.name%></p>
+		<p><strong>Location</strong> <%= @event.location %></p>
 		<p><%= @event.additional_info %></p>
+	</div>
+		<%= link_to 'Sign Up!', event_neweventsignup_path(@event), class: "btn btn-primary" %>
+
+	</div>
+	<div class="col-md">
 		<p><%= @event.attachment_url %></p>
-
-
 
 		<%# `&.` is the safe navigation operator. It can be used to avoid
 		    "undefined method `...' for nil:NilClass" errors. When used instead of `.`,
@@ -36,7 +45,7 @@
 		<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
 	</div>
 
-	<div class="row flex-column">
+
 		<h3>Attendees: </h3>
 		<% @event.guests.each do |guest| %>
 			<p><%= guest.full_name %></p>
