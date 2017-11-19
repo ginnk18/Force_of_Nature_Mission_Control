@@ -16,3 +16,4 @@
 %>
 <p>Created By <%= @event.creator&.full_name %></p>
 <p>Team Lead <%= @lead&.full_name %></p>
+<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
