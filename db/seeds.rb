@@ -23,7 +23,7 @@ super_user = User.create(
     user_category_id: 4
 )
 user_categories = UserCategory.where.not(id: 4)
-p user_categories
+
 10.times.each do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name

@@ -39,7 +39,6 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'chosen'
 gem 'cancancan', '~> 2.0'
-# gem 'schema_plus'
 
 
 group :development, :test do
