@@ -15,3 +15,15 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require_tree .
+
+(function($) {
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 450) {
+                $('.navbar').css("background-color", "blue");
+            } else {
+                $('.navbar').css("background-color", "transparent");
+            }
+        });
+    });
+})(jQuery);
