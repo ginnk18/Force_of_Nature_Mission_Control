@@ -254,7 +254,16 @@ h1.page-head {
         color: white;
     }
 
+
     .popular-links :nth-child(even):hover {
         background-color: lightseagreen;
         color: white;
     }
+
+//Styling the Team Lead pages:
+
+.team-lead-show-item {
+  border: 1px solid black;
+  margin: 10px;
+}
+

@@ -38,6 +38,9 @@
           <% if current_user %>
             <span style="color:lightblue"> Welcome, <%= current_user.full_name %>  </span>
             <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete) %> </li>
+            <% if current_user.user_category.name === 'Team Lead' %>
+              <%= link_to 'Your Teams', teams_path %>
+            <% end %>
           <% else %>
             <li class="nav-item"> <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %> </li>
           <% end %>
@@ -49,7 +52,13 @@
 
           <div class="alert alert-sucess"> <%= flash[:notice] %> </div>
 
+        
+      <% elsif flash[:alert].present? %>
+
+          <%= flash[:alert] %>
+
       <% end %>
+
       <%= yield %>
 
     <div class="footer">

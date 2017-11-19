@@ -1,0 +1,51 @@
+<div class="container pt-3">
+    <div class>
+        <div class="card-header card-header-inverse"><h3>User count</h3></div>
+        <div class="card-body">
+            <strong>Team Leads: </strong><%= @stats[:teamleads] %>
+            <br>
+            <div class='card col-6 p-0'>
+            <div class='card-header'><strong>General Volunteers: </strong><%= @stats[:genvol] %></div>
+                    <% @genvol.each do |volunteer| %>
+                        <div class="mt-2 mb-2 border">
+                        <strong>Full name:</strong> <%= volunteer.full_name %>
+                        <br>
+                        <strong>Email:</strong> <%= volunteer.email %>
+                        </div>
+                    <% end %>
+            </div>
+            <strong>Guests: </strong> <%= @stats[:guests] %>
+            <ul>
+                <% @guest.each do |guest| %>
+                    <li><%= guest.email %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <h3>Current Events</h3>
+    <table class='table table-bordered'>
+        <thead class='thead-inverse'>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Start Time</th>
+                <th>Event End Time</th>
+                <th>Event Lead</th>
+                <th>Event Creator</th>
+                <th  colspan="2">Manage</th>
+            </th>
+        </thead>
+        <tbody>
+        <% @events.each do |event| %>
+            <tr>
+                <td><%= event.name %></td>
+                <td><%= event.start_time.strftime('%H:%M') %></td>
+                <td><%= event.end_time.strftime('%H:%M') %></td>
+                <td><%= event.lead.full_name %></td>
+                <td><%= event.creator.full_name %></td>
+                <td><%= link_to 'Show', event %></td>
+                <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
