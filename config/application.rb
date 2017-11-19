@@ -28,5 +28,6 @@ module ThisSectionClosed
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.autoload_paths += %W(#{config.root}/lib) # add this line
+    config.active_job.queue_adapter = :delayed_job
   end
 end

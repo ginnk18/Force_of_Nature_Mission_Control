@@ -1,5 +1,6 @@
 
 <div class="container">
+
 	<div class="row">
 		<div class="col-md-8">
 		<h1 class="event"><%= @event.name %></h1>
@@ -9,6 +10,19 @@
 		</p>
 		<p> <strong>Category:</strong><%= @category.name%> </p>
 		<p> <strong>Location</strong> <%= @event.location%> </p>
+		<div class="date"> <%= @event.date.strftime('%A %B %d %Y') %></div>
+
+		<div class="time"><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
+		</div>
+
+
+		<div class="event-info card">
+		<p><strong>Category:</strong><%= @category.name%></p>
+		<p><strong>Location</strong> <%= @event.location %></p>
+		<p><%= @event.additional_info %></p>
+	</div>
+		<%= link_to 'Sign Up!', event_neweventsignup_path(@event), class: "btn btn-primary" %>
+
 	</div>
 		<p> <%= @event.additional_info %> </p>
 		<p> <%= @event.attachment_url %></p>
@@ -21,13 +35,30 @@
 		    it will check the object before it before trying to execute the method after
 		    it. If the object is `nil`, then it will immediately return `nil`.
 		%>
+
   <div class="details">
 		<h3>Team Lead </h3>
 		<p> <%= @lead&.full_name %></p>
 		<h3>Created By </h3>
 		<p> <%= @event.creator&.full_name %></p>
+    <h3>Team</h3> 
+    <p><%= @event.team&.name %></p>
 	</div>
+<%= link_to 'Edit', edit_event_path(@event) %>
+<%= link_to('Delete',
+  event_path(@event),data: {confirm: 'Are you sure?'},method: :delete) %>
+<!--  -->
+<!-- <% if user_signed_in? && can?(:crud, @event) %> -->
 
+
+  <%# When you use `method: :delete` in a `link_to`, Rails will use
+      javascript to mimick a delete request to the server. %>
+
+<!-- <% end %> -->
+
+<!--  -->
+		<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
+	</div>
 		<h3>Attendees </h3>
 		<ul class="list-group">
 		<% @event.guests.each do |guest| %>
