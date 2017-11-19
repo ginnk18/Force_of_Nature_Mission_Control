@@ -55,6 +55,11 @@ $(document).ready(function() {
                         $('#location').html(
                         "Location: " + calEvent.location)
 
+                        $('#moredetails').on('click', (event)=>{
+                        window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                            
+                        })
+
                         $('#eventsignupform').on('submit', (event)=> {
                         event.preventDefault();
                         let email = event.target.querySelector('#email_email').value;
