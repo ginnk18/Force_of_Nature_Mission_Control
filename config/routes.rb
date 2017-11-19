@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
   end
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
+
 end
