@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   before_action :find_event, only: [:show, :edit, :update, :destroy]
   before_action :get_categories, only: [:new, :create, :edit, :update]
   before_action :get_users, only: [:new, :create, :edit, :update]
+  before_action :get_teams, only: [:new, :create, :edit, :update]
   # before_action :authorize_user!, except: [:index, :show, :new, :create]
 
   def new
@@ -87,7 +88,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id)
+      :event_category_id,:lead_id, :team)
 
       # t.string "name"
       # t.time "start_time"
@@ -109,11 +110,17 @@ class EventsController < ApplicationController
     # all query params. It's as if we merged `request.query`, `request.params`
     # and `request.body` from Express into one object.
   end
+
   def get_categories
     @event_categories = EventCategory.all
   end
+
   def get_users
-    @lead_users = User.all
+    @lead_users = User.where(user_category: '3')
+  end
+
+  def get_teams
+    @teams = Team.all
   end
 
   def find_event

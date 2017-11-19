@@ -3,7 +3,8 @@ class TeamsController < ApplicationController
 	before_action :authorize_user!
 
 	def index
-		@teams = Team.order(created_at: :desc)
+		@operational_teams = Team.where(team_category: '2').order(created_at: :desc)
+		@regional_teams = Team.where(team_category: '1').order(created_at: :desc)
 	end
 
 
