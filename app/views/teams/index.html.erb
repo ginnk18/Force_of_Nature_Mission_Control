@@ -1,5 +1,12 @@
 
 <div class="container">
+
+	<h2>Your Teams: </h2>
+
+	<% current_user.teams.each do |team| %>
+		<h3><%= link_to(team.name, team_path(team)) %></h3>
+	<% end %>
+
 	<div style="display: flex; justify-content: center;">
 		<h2>Operational Teams</h2>
 	</div>
@@ -8,9 +15,6 @@
 
 		<% @operational_teams.each do |team| %>
 			<h3><%= team.name %></h3>
-			<% team.members.each do |member| %>
-				<%= member.full_name %>
-			<% end %>
 		<% end %>
 	</div>
 
@@ -22,9 +26,6 @@
 
 		<% @regional_teams.each do |team| %>
 			<h3><%= team.name %></h3>
-			<% team.members.each do |member| %>
-				<%= member.full_name %>
-			<% end %>
 		<% end %>
 	</div>
 </div>

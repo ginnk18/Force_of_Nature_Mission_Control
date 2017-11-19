@@ -1,0 +1,27 @@
+
+<div class="container">
+	<div class="row flex-column" style="align-items: center">
+		<h2><%= @team.name %></h2>
+		<h4><%= @team.team_category.name %> team</h4>
+	</div>
+	<div class="row">
+		<div class="col-md-6 team-lead-show-item">
+			<h4>Members: </h4>
+			<% @team.members.each do |member| %>
+				<% if member.id === current_user.id %>
+				<% else %>
+					<p>Name: <%= member.full_name %></p>
+					<p>Email: <%= member.email %></p>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-md-6 team-lead-show-item">
+			<h4>Briefings</h4>
+			<% if @team.name === 'Shadow' %>
+				<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
+			<% elsif @team.name === 'Misty' %>
+				<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
+			<% end %>
+		</div>
+	</div>
+</div>

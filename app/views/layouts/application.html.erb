@@ -32,6 +32,9 @@
 
         <ul class="nav-item ml-auto">
           <% if current_user %>
+            <% if current_user.user_category.name === 'Team Lead' %>
+              <%= link_to 'Your Teams', teams_path %>
+            <% end %>
             <span>Welcome, <%= current_user.full_name %></span>
             <%= link_to('Sign Out', session_path, method: :delete) %>
           <% else %>

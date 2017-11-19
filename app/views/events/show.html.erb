@@ -3,8 +3,8 @@
 	<div class="row flex-column">
 		<h1><%= @event.name %></h1>
 		<p><strong>Date:</strong> <%= @event.date.strftime('%A %B %d %Y') %></p>
-		<p><strong>Starting at:</strong> <%= @event.start_time.strftime('%I %M') %></p>
-		<p><strong>Ending at:</strong> <%= @event.end_time.strftime('%I %M') %></p>
+		<p><strong>Starting at:</strong> <%= @event.start_time.strftime('%H %M') %></p>
+		<p><strong>Ending at:</strong> <%= @event.end_time.strftime('%H %M') %></p>
 		<p><strong>What?</strong><%= @category.name%></p>
 		<p><strong>Where?</strong> <%= @event.location %></p>
 		<p><%= @event.additional_info %></p>
