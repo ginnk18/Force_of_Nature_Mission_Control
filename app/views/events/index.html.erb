@@ -1,11 +1,11 @@
 
-<div class="container">
-	<h1>All Events</h1>
+<div class="container cal-con">
+	<h1 class="page-head">All Events</h1>
 
 	<div id="calendar"></div>
 
 	<h4>Click on event name for details: </h4>
-	
+
 	<% @events.each do |event| %>
 	  <div >
 	    <%= link_to event.name, event_path(event) %>

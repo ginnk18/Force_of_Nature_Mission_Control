@@ -17,14 +17,25 @@
 
 @import "bootstrap";
 
-<<<<<<< HEAD:app/assets/stylesheets/application.scss
-a.nav-link {
-  color: bold;
-  font-weight: bold;
+.container, .container-fluid {
+  margin-top: 1rem;
 }
 
-=======
->>>>>>> d9f2b5881d38961b06874f308df34ee379ccab70:app/assets/stylesheets/application.scss
+
+.navbar ul li a {
+color: #fff;
+font-weight: bold;
+}
+
+.second-nav a {
+  // link styles for secondary nav
+}
+
+
+h1.page-head {
+  text-align: center;
+}
+
 /* welcome page styles  */
 
 .panel {
@@ -36,6 +47,10 @@ a.nav-link {
   align-items: center;
 }
 
+.panel:first-of-type {
+  margin-top: -100px;
+}
+
 #welcome {
   background-image: image-url('bear.png');
   background-attachment: fixed;
@@ -43,7 +58,6 @@ a.nav-link {
 
 #fixed {
   background: #1677EB;
-  
   background-attachment: scroll;
 }
 
@@ -52,8 +66,9 @@ a.nav-link {
 }
 
 .navbar {
-  background-image: image-url('bear.png');
+  // background-image: image-url('bear.png');
 }
 
-
-// #4EADEB
+.cal-con {
+  // for styling calandar background
+}
