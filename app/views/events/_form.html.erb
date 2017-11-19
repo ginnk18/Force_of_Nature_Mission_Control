@@ -1,6 +1,8 @@
 <%=simple_form_for @event do |f|%>
 <%= f.input :name, label: 'Event Name'%>
-<%= f.input :date, label: 'Event Date'%>
+<%= f.label :date %>
+
+<%= f.text_field :date, "data-provide" => 'datepicker', "data-date-format"=>"dd-M-yyyy "%>
 <%= f.input :start_time, label: 'Start Time:'%>
 <%= f.input :end_time, label: 'End Time'%>
 <%= f.input :location, label: 'Location'%>
