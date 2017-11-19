@@ -17,9 +17,23 @@
 
 @import "bootstrap";
 
-a.nav-link {
-  color: bold;
-  font-weight: bold;
+.container, .container-fluid {
+  margin-top: 1rem;
+}
+
+
+.navbar ul li a {
+color: #fff;
+font-weight: bold;
+}
+
+.second-nav a {
+  // link styles for secondary nav
+}
+
+
+h1.page-head {
+  text-align: center;
 }
 
 /* welcome page styles  */
@@ -33,6 +47,10 @@ a.nav-link {
   align-items: center;
 }
 
+.panel:first-of-type {
+  margin-top: -100px;
+}
+
 #welcome {
   background-image: image-url('bear.png');
   background-attachment: fixed;
@@ -40,7 +58,6 @@ a.nav-link {
 
 #fixed {
   background: #1677EB;
-  
   background-attachment: scroll;
 }
 
@@ -49,8 +66,204 @@ a.nav-link {
 }
 
 .navbar {
-  background-image: image-url('bear.png');
+  // background-image: image-url('bear.png');
+}
+
+.cal-con {
+  // for styling calandar background
 }
 
 
-// #4EADEB
+
+// footer
+
+ .footer-social-icons {
+        width: 350px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .social-icon {
+        color: #fff;
+    }
+
+    ul.social-icons {
+        margin-left: 0px;
+        padding: 0px;
+    }
+
+    .social-icons li {
+        vertical-align: top;
+        display: inline;
+        height: 50px;
+    }
+
+    .social-icons a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .fa-facebook {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #888888;
+    }
+
+    .fa-facebook:hover {
+        background-color: #3d5b99;
+    }
+
+    .fa-twitter {
+        padding: 10px 12px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #888888;
+    }
+
+    .fa-twitter:hover {
+        background-color: #00aced;
+    }
+
+    .fa-rss {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #888888;
+    }
+
+    .fa-rss:hover {
+        background-color: #eb8231;
+    }
+
+    .fa-youtube {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #888888;
+    }
+
+    .fa-youtube:hover {
+        background-color: #e64a41;
+    }
+
+    .fa-linkedin {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #888888;
+    }
+
+    .fa-linkedin:hover {
+        background-color: #0073a4;
+    }
+
+    .fa-google-plus {
+        padding: 10px 9px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #888888;
+    }
+
+    .fa-google-plus:hover {
+        background-color: #e25714;
+    }
+
+    .footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        background-color: #888888;
+        text-align: center;
+        color: #fff;
+    }
+
+    .text-max-height {
+        overflow: scroll;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .card-button {
+        position: fixed;
+    }
+
+    body {
+        background: rgba(128, 69, 128, 0.07);
+    }
+
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #FFFFFF;
+    }
+
+    a {
+        color: #888888;
+        text-decoration: none;
+    }
+
+    .ch-height {
+        height: 70px;
+        overflow: hidden;
+        border-bottom: 1px solid salmon;
+        box-shadow: 0px 1px 1px #888888;
+    }
+
+    .feature {
+        overflow: hidden;
+        height: 600px;
+        box-shadow: 0px 2px 2px #888888;
+        background-color: #fff;
+    }
+
+    .top-10 {
+        background-color: #ffffff;
+        box-shadow: 0px 2px 2px #888888;
+    }
+
+    .inhcol {
+        background-color: inherit;
+        border: none;
+    }
+
+    .popular-links :nth-child(odd):hover {
+        background-color: salmon;
+        color: white;
+    }
+
+
+    .popular-links :nth-child(even):hover {
+        background-color: lightseagreen;
+        color: white;
+    }
+
+//Styling the Team Lead pages:
+
+.team-lead-show-item {
+  border: 1px solid black;
+  margin: 10px;
+}
+

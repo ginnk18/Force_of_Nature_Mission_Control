@@ -1,16 +1,25 @@
 
 <div class="container">
-	<div class="row flex-column">
-		<h1><%= @event.name %></h1>
-		<p><strong>Date:</strong> <%= @event.date.strftime('%A %B %d %Y') %></p>
-		<p><strong>Starting at:</strong> <%= @event.start_time.strftime('%I %M') %></p>
-		<p><strong>Ending at:</strong> <%= @event.end_time.strftime('%I %M') %></p>
-		<p><strong>What?</strong><%= @category.name%></p>
-		<p><strong>Where?</strong> <%= @event.location %></p>
+
+	<div class="row">
+		<div class="col-md-8">
+		<h1 class="event"><%= @event.name %></h1>
+		<div class="date"> <%= @event.date.strftime('%A %B %d %Y') %></div>
+
+		<div class="time"><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
+		</div>
+
+
+		<div class="event-info card">
+		<p><strong>Category:</strong><%= @category.name%></p>
+		<p><strong>Location</strong> <%= @event.location %></p>
 		<p><%= @event.additional_info %></p>
+	</div>
+		<%= link_to 'Sign Up!', event_neweventsignup_path(@event), class: "btn btn-primary" %>
+
+	</div>
+	<div class="col-md">
 		<p><%= @event.attachment_url %></p>
-
-
 
 		<%# `&.` is the safe navigation operator. It can be used to avoid
 		    "undefined method `...' for nil:NilClass" errors. When used instead of `.`,
@@ -18,11 +27,25 @@
 		    it. If the object is `nil`, then it will immediately return `nil`.
 		%>
 		<p>Created By <%= @event.creator&.full_name %></p>
-		<p>Team Lead <%= @lead&.full_name %></p>
+		<p>Team: <%= @event.team&.name %></p>
+		<p>Event Lead <%= @lead&.full_name %></p>
+<%= link_to 'Edit', edit_event_path(@event) %>
+<%= link_to('Delete',
+  event_path(@event),data: {confirm: 'Are you sure?'},method: :delete) %>
+<!--  -->
+<!-- <% if user_signed_in? && can?(:crud, @event) %> -->
+
+
+  <%# When you use `method: :delete` in a `link_to`, Rails will use
+      javascript to mimick a delete request to the server. %>
+
+<!-- <% end %> -->
+
+<!--  -->
 		<%= link_to 'Sign Up!', event_neweventsignup_path(@event) %>
 	</div>
 
-	<div class="row flex-column">
+
 		<h3>Attendees: </h3>
 		<% @event.guests.each do |guest| %>
 			<p><%= guest.full_name %></p>
@@ -31,5 +54,3 @@
 
 
 </div>
-
-
