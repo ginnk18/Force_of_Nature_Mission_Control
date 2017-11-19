@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	before_validation :set_defaults
 	has_secure_password
 
 	#A user can create many (has many) events, and also can belong to many events
@@ -33,5 +34,7 @@ class User < ApplicationRecord
 		approved
 	end
 	def set_defaults
-	end
+        @guest_category = UserCategory.first
+        self.user_category = @guest_category
+    end
 end
