@@ -37,7 +37,7 @@
         <ul class="navbar-nav second-nav ml-auto">
           <% if current_user %>
             <span style="color:lightblue"> Welcome, <%= current_user.full_name %>  </span>
-            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete) %> </li>
+            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary) %> </li>
             <% if current_user.user_category.name === 'Team Lead' %>
               <%= link_to 'Your Teams', teams_path %>
             <% end %>
@@ -50,7 +50,7 @@
 
     <% if flash[:notice].present? %>
 
-          <div class="alert alert-sucess"> <%= flash[:notice] %> </div>
+          <div class="alert alert-success"> <%= flash[:notice] %> </div>
 
         
       <% elsif flash[:alert].present? %>
@@ -61,19 +61,6 @@
 
       <%= yield %>
 
-    <div class="footer">
-    <div class="footer-social-icons">
-    <p>©Vlad Plotnikov 2018</p>
-        <ul class="social-icons">
-            <li><a href="" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
-            <li><a href="" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
-            <li><a href="" class="social-icon"> <i class="fa fa-rss"></i></a></li>
-            <li><a href="" class="social-icon"> <i class="fa fa-youtube"></i></a></li>
-            <li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
-            <li><a href="" class="social-icon"> <i class="fa fa-google-plus"></i></a></li>
-        </ul>
-    </div>
-    </div>
 
   </body>
 </html>
