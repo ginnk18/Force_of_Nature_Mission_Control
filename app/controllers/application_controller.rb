@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   config.time_zone = 'Pacific Time (US & Canada)'
   protect_from_forgery with: :exception
-  
+
   def user_signed_in?
     if session[:user_id].present? && current_user.nil?
       session[:user_ud] = nil
