@@ -18,7 +18,7 @@
 		    it. If the object is `nil`, then it will immediately return `nil`.
 		%>
 		<p>Created By <%= @event.creator&.full_name %></p>
-		<p>Team: <%= @event.team.name %></p>
+		<p>Team: <%= @event.team&.name %></p>
 		<p>Event Lead <%= @lead&.full_name %></p>
 <%= link_to 'Edit', edit_event_path(@event) %>
 <%= link_to('Delete',
