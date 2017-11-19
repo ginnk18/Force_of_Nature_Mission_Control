@@ -17,6 +17,7 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/gcal
+//= require bootstrap-datepicker
 //= require_tree .
 
 
@@ -49,5 +50,7 @@ $(document).ready(function() {
                         return false;
                     }
                 });
+
+
 
 });
