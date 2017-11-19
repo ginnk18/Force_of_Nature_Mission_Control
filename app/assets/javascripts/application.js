@@ -46,7 +46,7 @@ $(document).ready(function() {
                         console.log(calEvent);
                         // change the border color just for fun
                         $(this).css('border-color', 'red');
-                        //window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                        window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
                         return false;
                     }
                 });
