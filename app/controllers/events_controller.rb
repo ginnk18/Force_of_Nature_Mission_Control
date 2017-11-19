@@ -94,7 +94,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id, :team)
+      :event_category_id,:lead_id, :team_id)
 
       # t.string "name"
       # t.time "start_time"
