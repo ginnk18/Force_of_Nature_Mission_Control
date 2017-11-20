@@ -1,32 +1,37 @@
 
-<div class="container">
+<div class="container-fluid">
+	<div class="row">
+
+		<div class="col-md">
 
 	<h2>Your Teams: </h2>
-
+<div class="list-group">
 	<% current_user.teams.each do |team| %>
-		<h3><%= link_to(team.name, team_path(team)) %></h3>
+		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
-
-	<div style="display: flex; justify-content: center;">
-		<h2>Operational Teams</h2>
-	</div>
-
-	<div class="row flex-column">
-
-		<% @operational_teams.each do |team| %>
-			<h3><%= team.name %></h3>
-		<% end %>
-	</div>
-
-	<div style="display: flex; justify-content: center;">
-		<h2>Regional Teams</h2>
-	</div>
-
-	<div class="row flex-column">
-
-		<% @regional_teams.each do |team| %>
-			<h3><%= team.name %></h3>
-		<% end %>
-	</div>
 </div>
 
+</div>
+
+	<div class="col-md">
+		<h2>Operational Teams</h2>
+
+<div class="list-group">
+
+		<% @operational_teams.each do |team| %>
+			<div class="list-group-item team"> <%= team.name %> </div>
+		<% end %>
+	</div>
+
+</div>
+
+	<div class="col-md">
+		<h2>Regional Teams</h2>
+   <div class="list-group">
+		<% @regional_teams.each do |team| %>
+			<div class="list-group-item team"> <%= team.name %> </div>
+		<% end %>
+	</div>
+	</div>
+</div>
+</div>

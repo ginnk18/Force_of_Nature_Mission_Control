@@ -67,7 +67,6 @@ group :development do
   gem 'pry-rails'
   gem 'hirb'
   gem 'letter_opener'
-  gem 'rails-erd'
   gem 'faker'
   gem "better_errors"
   gem "binding_of_caller"
