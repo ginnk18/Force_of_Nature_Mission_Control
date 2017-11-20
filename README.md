@@ -10,8 +10,7 @@ Clone this project and bundle
 rails db:create
 
 ## Database initialization
-rails db:migrate
-rails db:seed 
+rails db:migrate and then rails db:seed 
 
 ## How to run the test suite
 There is none :-P
