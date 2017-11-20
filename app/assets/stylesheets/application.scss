@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require fullcalendar
-*= require bootstrap-datepicker 
+*= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */
@@ -364,16 +364,6 @@ h1.page-head {
         background-color: #e25714;
     }
 
-    .footer {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        padding: 1rem;
-        background-color: #888888;
-        text-align: center;
-        color: #fff;
-    }
 
     .text-max-height {
         overflow: scroll;
@@ -439,4 +429,3 @@ h1.page-head {
   border: 1px solid black;
   margin: 10px;
 }
-
