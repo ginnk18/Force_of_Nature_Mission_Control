@@ -20,7 +20,8 @@ private
 
   def authenticate_user!
     if !user_signed_in?
-      redirect_to new_session_path, alert: 'You must be signed in to perform that action.'
+      flash[:notice] = 'You must be signed in to perform that action.'
+      redirect_to new_session_path #, alert: 'You must be signed in to perform that action.'
     end
   end
 end
