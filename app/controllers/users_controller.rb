@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!  
   before_action :find_user
-  before_action :authorize_user!
+  before_action :authorize_user!, except: [:new, :create]
+  
   def new
     @user = User.new
   end
@@ -50,16 +51,12 @@ class UsersController < ApplicationController
       :password_confirmation
     )
   end
+
   def authorize_user!
-		if current_user
-			if current_user.user_category.name === 'Guest'
-				flash[:notice] = 'Access denied.'
-				redirect_to root_path
-			end
-		else
-			flash[:alert] = 'Please sign in first.'
-			redirect_to new_session_path
-		end
+    unless can?(:manage, @user)
+      flash[:notice] = 'Access denied.'
+      redirect_to root_path
+    end
   end
   
 end
