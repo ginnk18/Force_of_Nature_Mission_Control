@@ -21,9 +21,11 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 
-.nav-link btn btn-primary {
-  background-color: #293d52;
+.btn-primary {
+  background: #888888;
+  border-color: #293d52;
 }
+
 
 // footer styling
 .footer-social-icons {
@@ -39,7 +41,7 @@
       left: 0;
       padding: .5rem;
       margin-top: 50px;
-      padding-top: 6px;
+      padding-top: 12px;
       padding-bottom: 0;
       background-color: #293d52;
       text-align: center;
@@ -54,7 +56,7 @@
       left: 0;
       padding: .5rem;
       margin-top: 0px;
-      padding-top: 6px;
+      padding-top: 12px;
       padding-bottom: 0;
       background-color: #293d52;
       text-align: center;
