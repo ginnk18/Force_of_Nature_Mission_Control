@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" style="min-height:60vh">
 	<!-- <p>dashboard/teams</p> -->
 	<h4><%= @team.name %></h4>
 	<h5><%= @team.team_category.name %> team</h5>
@@ -15,13 +15,10 @@
 						</tr>
 					</thead>
 					<% @team.members.each do |member| %>
-					<% if member.id === current_user.id %>
-					<% else %>
 					<tr>
 						<td> <%= member.full_name %></td>
 						<td> <%= member.email %></td>
 					</tr>
-					<% end %>
 					<% end %>
 				</table>
 			</div>
