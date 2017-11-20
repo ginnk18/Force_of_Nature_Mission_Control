@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_action :get_categories, only: [:new, :create, :edit, :update]
   before_action :get_users, only: [:new, :create, :edit, :update]
   before_action :get_teams, only: [:new, :create, :edit, :update]
-  # before_action :authorize_user!, except: [:index, :show, :new, :create]
+  before_action :authorize_user!, except: [:index, :show]
 
   def new
     @event = Event.new
@@ -165,8 +165,8 @@ class EventsController < ApplicationController
     # getting to the action.
     def authorize_user!
       # binding.pry
-      unless can?(:crud, @question)
-        flash[:alert] = "Access Denied!"
+      if current_user.user_category.name === 'Guest'
+        flash[:notice] = "Access Denied!"
         redirect_to root_path
 
         # `head` is a method similar to `render` or `redirect_to`. It finalizes
