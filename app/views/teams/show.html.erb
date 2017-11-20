@@ -29,13 +29,12 @@
 		<div class="col-md-6 team-lead-show-item">
 			<div class="card item">
 			<h4>Briefings</h4>
-				<% if @team.name === 'Shadow' %>
-					<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
-				<% elsif @team.name === 'Misty' %>
-					<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
+				<% if @team.team_category.name === 'Regional' %>
+					<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Regional Team Google Drive Documents</a>
+				<% elsif @team.team_category.name === 'Operational' %>
+					<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Operational TeamGoogle Drive Documents</a>
 				<% end %>
 		</div>
 	</div>
 	</div>
 </div>
-
