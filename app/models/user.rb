@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+    after_initialize :set_defaults, unless: :persisted?    
     has_secure_password :validations => false
 
     #A user can create many (has many) events, and also can belong to many events
@@ -41,7 +41,7 @@ class User < ApplicationRecord
 	def set_defaults
 		@guest_category = UserCategory.where(name: 'Guest').first
         self.user_category ||= @guest_category
-        self.password ||= 'forceofnature'
+        self.password = 'forceofnature' if self.new_record?
 	end
 
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # root 'events#new'
   resources :welcome, only: [:index]
   resource :session, only:[:new, :create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :update, :edit]
   resources :teams
   resources :events, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
