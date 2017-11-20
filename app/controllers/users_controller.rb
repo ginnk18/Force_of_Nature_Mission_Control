@@ -15,6 +15,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  def changestatus
+    @user = User.find(params[:id])
+    @user.user_category = UserCategory.find_by_name params["user_category"]
+    @user.save
+    redirect_to admin_dashboard_index_path
+  end
+  private
   def user_params
     params.require(:user).permit(
       :first_name,
