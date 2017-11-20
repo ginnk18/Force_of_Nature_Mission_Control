@@ -179,9 +179,10 @@
   }
 
 .linksstyle{
-    -moz-box-shadow: 5px 5px rgb(0,0,0);
-    -webkit-box-shadow: 5px 5px rgb(0,0,0);
-    box-shadow: 5px 5px rgb(0,0,0);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
 }
 
 //page styling
@@ -451,4 +452,15 @@ table {
   padding: 10px;
   display: flex;
   justify-content: center;
+}
+
+.adminteamheader{
+    text-align: center;
+}
+.adminteams{
+    text-decoration: none;
+    color: grey;
+}
+.adminteams:hover{
+    text-decoration: none;
 }
