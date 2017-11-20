@@ -1,10 +1,10 @@
 # Force of Nature Mission Control
-By Team Section Closed
+By Team This Section Closed
 
-Ruby on Rails backend, this volunnter management/calandar app connects to Google calandar API to simultaneously create events on the internal datbase calandar and on google calandar.
+Ruby on Rails backend, this volunteer management/calandar app connects to Google calandar API to simultaneously create events on the internal datbase calandar and on google calandar.
 
-## Getting it in
-Clone this project and bundle 
+## Setting up
+Clone this project and run bundle 
 
 ## Database creation
 rails db:create
