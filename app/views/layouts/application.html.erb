@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ThisSectionClosed</title>
+    <title>Force of Nature</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag 'fon_favicon.ico' %>
   </head>
 
   <body>
@@ -48,11 +48,19 @@
       </div>
     </nav>
 
+        <% if controller.controller_name != "welcome" && controller.action_name != "index" %>
+
     <% if flash[:notice].present? %>
+      <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+     <%=flash[:notice]%>
+   </div>
+      <% end %>
 
-          <div class="alert alert-success"> <%= flash[:notice] %> </div>
 
-        
+
       <% elsif flash[:alert].present? %>
 
           <%= flash[:alert] %>
@@ -61,6 +69,7 @@
 
       <%= yield %>
 
+      <%= render 'layouts/footer' %>
 
   </body>
 </html>
