@@ -55,7 +55,7 @@
                 <td><%= event.lead.full_name %></td>
                 <td><%= event.creator.full_name %></td>
                 <td><%= link_to 'Show', event %></td>
-                <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
             <% end %>
         </tbody>
@@ -70,7 +70,7 @@
                 <% team.members.each do |member| %>
                    <a href="#" class="list-group-item list-group-item-action"> <%= member.full_name %></a>
                    <% user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
-                   <%= link_to 'Destroy', userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'} %>
+                   <%= link_to 'Remove from team', userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'} %>
                    <br>
                 <% end %>
                 </div>
