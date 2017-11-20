@@ -1,7 +1,9 @@
 class TeamsController < ApplicationController
-	before_action :authorize_user!
+	before_action :authenticate_user!	
 	before_action :get_categories, only: [:new, :create]
 	before_action :get_users
+	before_action :authorize_user!
+	
 	# before_action :find_team
 
 	def new
@@ -28,8 +30,6 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = Team.find_by_id params[:id]
-
-
 	end
 
 

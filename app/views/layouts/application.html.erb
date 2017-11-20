@@ -47,8 +47,10 @@
             <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
               <div style="color:white">&nbsp;|&nbsp;</div></h3>
               <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white' %>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
               <%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'color: white' %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white'  %>
             <% end %>
             <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
           <% else %>
