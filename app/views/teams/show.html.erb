@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-	<p>dashboard/teams</p>
+	<!-- <p>dashboard/teams</p> -->
 		<h2><%= @team.name %></h2>
 		<h4><%= @team.team_category.name %> team</h4>
 	<div class="row d-flex">
@@ -29,12 +29,13 @@
 		<div class="col-md-6 team-lead-show-item">
 			<div class="card item">
 			<h4>Briefings</h4>
-			<% if @team.name === 'Shadow' %>
-				<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
-			<% elsif @team.name === 'Misty' %>
-				<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
-			<% end %>
-		</div>
+				<% if @team.name === 'Shadow' %>
+					<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
+				<% elsif @team.name === 'Misty' %>
+					<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
+				<% end %>
 		</div>
 	</div>
+	</div>
 </div>
+

@@ -18,6 +18,11 @@
 
 <div class="list-group">
 
+</div>
+
+	<div class="card col-sm-4" style="display: flex; justify-content: left;">
+		<h3>Operational Teams</h3>
+	<div class="card-block ">
 		<% @operational_teams.each do |team| %>
 			<div class="list-group-item team"> <%= team.name %> </div>
 		<% end %>
@@ -33,5 +38,7 @@
 		<% end %>
 	</div>
 	</div>
+	</div>
+	</div>
 </div>
-</div>
+

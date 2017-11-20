@@ -19,5 +19,4 @@ class Admin::DashboardController < Admin::ApplicationController
       genvol: @gen_vol_users.map.count
     }
   end
-
 end

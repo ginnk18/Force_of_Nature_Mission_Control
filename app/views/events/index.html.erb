@@ -4,14 +4,6 @@
 
     <div id="calendar"></div>
 
-    <h4>Click on event name for details: </h4>
-
-    <% @events.each do |event| %>
-        <div >
-            <%= link_to event.name, event_path(event) %>
-        </div>
-    <% end %>
-
     <div class="modal fade" id="eventShow" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
