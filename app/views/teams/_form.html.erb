@@ -1,6 +1,6 @@
 
 
-<%= form_for @team do |f| %>
+<%= simple_form_for @team do |f| %>
    <% if @team.errors.present? %>
      <p>
        <%= @team.errors.full_messages.join(', ') %>
