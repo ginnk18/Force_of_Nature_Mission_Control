@@ -181,6 +181,10 @@
   margin-top: 1rem;
 }
 
+
+.navbar navbar-expand-md {
+  background-color: #293d52;
+}
 .navbar ul li a {
 color: #fff;
 font-weight: bold;
@@ -227,7 +231,7 @@ h1.page-head {
 }
 
 #fixed {
-  background: #293d;
+  background: #293d52;
   background-attachment: scroll;
   height: 300px;
   padding-right: 100px;
