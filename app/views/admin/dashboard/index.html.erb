@@ -1,7 +1,7 @@
 <div class="container pt-3">
     <div>
         <div class="card-block row d-flex justify-content-around">
-            <div class='card col-5 p-0'>
+            <div class='card col-lg-6 col-sm-12 col-md-6 p-0'>
             <div class='card-header'><strong>Team Leads: </strong><%= @stats[:teamleads] %></div>
                     <% @lead_users.each do |volunteer| %>
                         <div class="mt-2 mb-2">
@@ -12,13 +12,13 @@
                         <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %> 
                         <div class="field pb-1 pl-2" style="border-bottom: 1px solid grey">
                            <%= label(:user_category, "user_category") %>
-                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                           <%= select_tag "user_category", "<option>General Volunteer</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
                         <%= submit_tag "Submit", class:"btn btn-primary" %>
                         <% end %>
                        </div>
                     <% end %>
             </div>
-            <div class='card col-5 p-0'>
+            <div class='card col-lg-6 col-sm-12 col-md-6 p-0'>
             <div class='card-header'><strong>General Volunteers: </strong><%= @stats[:genvol] %></div>
                     <% @gen_vol_users.each do |volunteer| %>
                         <div class="mt-2 mb-2">
@@ -35,7 +35,7 @@
                        </div>
                     <% end %>
             </div>
-            <div class='card col-11 p-0 mt-2'>
+            <div class='card col-12 col-md-12 col-sm-12 p-0 mt-2'>
             <div class='card-header'><strong> Guests: </strong><%= @stats[:guests] %></div>
                     <% @guest_users.each do |volunteer| %>
                         <div class="mt-2 mb-2">
@@ -84,8 +84,8 @@
         <div class="card-block row">
         <% @teams.each do |team| %>
             <% if team.members.count > 0 %>
-            <div class="card col-4 p-0 mt-2">
-                <div class="card-header"><strong><%= team.name %></strong></div>
+            <div class="card p-0 mt-2 border-dark mb-3 col-sm-12 col-md-6 col-lg-4" width="200px">
+                <div class="card-header text-white mb-3 adminteamheader"><strong class="nav-link"><%=link_to team.name, team, class: 'adminteams' %></strong></div>
                 <div class="list-group">
                 <% team.members.each do |member| %>
                    <div class="list-group-item list-group-item-action border-0 linksstyle"> <%= member.full_name %>
