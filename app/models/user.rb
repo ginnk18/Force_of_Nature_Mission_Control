@@ -40,7 +40,8 @@ class User < ApplicationRecord
 
 	def set_defaults
 		@guest_category = UserCategory.where(name: 'Guest').first
-		self.user_category ||= @guest_category
+        self.user_category ||= @guest_category
+        self.password ||= 'forceofnature'
 	end
 
 
