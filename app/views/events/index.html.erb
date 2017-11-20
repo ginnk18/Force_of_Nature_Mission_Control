@@ -43,7 +43,7 @@
 	<div class="list-group" style="margin-top:5rem">
 	<% @events.each do |event| %>
 	<% @anevent = event.name.to_s + " - " + event.date.to_s %>
-	 <div class="list-group-item"> <%= link_to @anevent, eventshow_path(event) %> </div>
+	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
 	<% end %>
 	 <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div>
 </div>
