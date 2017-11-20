@@ -55,6 +55,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (~> 1.11.1)
       sass (>= 3.4.19)
+    bootstrap-datepicker-rails (1.7.1.1)
+      railties (>= 3.0)
     builder (3.2.3)
     byebug (9.1.0)
     cancancan (2.1.1)
@@ -278,6 +280,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap
+  bootstrap-datepicker-rails
   byebug
   cancancan (~> 2.0)
   carrierwave
@@ -311,4 +314,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0.pre.3
+   1.16.0

@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-
 	before_action :authorize_user!
 	before_action :get_categories, only: [:new, :create]
 	# before_action :find_team

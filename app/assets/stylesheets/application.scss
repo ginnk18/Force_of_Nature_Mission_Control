@@ -11,16 +11,170 @@
  * It is generally better to create a new file per style scope.
  *
  *= require fullcalendar
+*= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */
 
 @import "bootstrap";
 
+        @import url(https://fonts.googleapis.com/css?family=Lato);
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+        .footer-social-icons {
+              width: 350px;
+              display: block;
+              margin: 0 auto;
+          }
+
+          .footer {
+              position: relative;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              padding: .5rem;
+              margin-top: 50px;
+              padding-top: 6px;
+              padding-bottom: 0;
+              background-color: #1677EB;
+              text-align: center;
+              color: #fff;
+              height: 120px;
+          }
+
+          .footer_up {
+              position: relative;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              padding: .5rem;
+              margin-top: 0px;
+              padding-top: 6px;
+              padding-bottom: 0;
+              background-color: #1677EB;
+              text-align: center;
+              color: #fff;
+              height: 6em;
+          }
+
+
+          .social-icon {
+                  color: #fff;
+              }
+
+              ul.social-icons {
+                  margin-left: 0px;
+                  padding: 0px;
+              }
+
+              .social-icons li {
+                  vertical-align: top;
+                  display: inline;
+                  height: 50px;
+              }
+
+              .social-icons a {
+                  color: #fff;
+                  text-decoration: none;
+              }
+
+              .footer-social-icons {
+                  width: 350px;
+                  display: block;
+                  margin: 0 auto;
+              }
+
+        .fa-facebook {
+            padding: 10px 14px;
+            -o-transition: .5s;
+            -ms-transition: .5s;
+            -moz-transition: .5s;
+            -webkit-transition: .5s;
+            transition: .5s;
+            background-color: #888888;
+        }
+
+        .fa-facebook:hover {
+            background-color: #3d5b99;
+        }
+
+        .fa-twitter {
+            padding: 10px 12px;
+            -o-transition: .5s;
+            -ms-transition: .5s;
+            -moz-transition: .5s;
+            -webkit-transition: .5s;
+            transition: .5s;
+            background-color: #888888;
+        }
+
+        .fa-twitter:hover {
+               background-color: #00aced;
+           }
+
+           .fa-rss {
+               padding: 10px 14px;
+               -o-transition: .5s;
+               -ms-transition: .5s;
+               -moz-transition: .5s;
+               -webkit-transition: .5s;
+               transition: .5s;
+               background-color: #888888;
+           }
+
+
+           .fa-rss:hover {
+               background-color: #eb8231;
+           }
+
+           .fa-youtube {
+               padding: 10px 14px;
+               -o-transition: .5s;
+               -ms-transition: .5s;
+               -moz-transition: .5s;
+               -webkit-transition: .5s;
+               transition: .5s;
+               background-color: #888888;
+           }
+
+           .fa-youtube:hover {
+               background-color: #e64a41;
+           }
+
+
+           .fa-google-plus {
+            padding: 10px 9px;
+            -o-transition: .5s;
+            -ms-transition: .5s;
+            -moz-transition: .5s;
+            -webkit-transition: .5s;
+            transition: .5s;
+            background-color: #888888;
+        }
+
+        .fa-google-plus:hover {
+            background-color: #e25714;
+        }
+
+        .fa-linkedin {
+              padding: 10px 14px;
+              -o-transition: .5s;
+              -ms-transition: .5s;
+              -moz-transition: .5s;
+              -webkit-transition: .5s;
+              transition: .5s;
+              background-color: #888888;
+          }
+
+          .fa-linkedin:hover {
+              background-color: #0073a4;
+          }
+
+
+
 .container, .container-fluid {
   margin-top: 1rem;
 }
-
 
 .navbar ul li a {
 color: #fff;
@@ -46,7 +200,7 @@ h1.page-head {
 .panel {
   background-position:center;
   background-size: cover;
-  height: 400px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,11 +213,20 @@ h1.page-head {
 #welcome {
   background-image: image-url('bear.png');
   background-attachment: fixed;
+  flex-direction: column;
+}
+
+#welcome2 {
+  background-image: image-url('forest.jpg');
+  background-attachment: fixed;
 }
 
 #fixed {
   background: #1677EB;
   background-attachment: scroll;
+  height: 300px;
+  padding-right: 100px;
+  padding-left: 100px;
 }
 
 .panel-text {
@@ -201,16 +364,6 @@ h1.page-head {
         background-color: #e25714;
     }
 
-    .footer {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        padding: 1rem;
-        background-color: #888888;
-        text-align: center;
-        color: #fff;
-    }
 
     .text-max-height {
         overflow: scroll;
@@ -276,4 +429,6 @@ h1.page-head {
   border: 1px solid black;
   margin: 10px;
 }
+///////////////////// CSS for Forms
 
+////////////

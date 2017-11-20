@@ -1,12 +1,20 @@
 <div class="container pt-3">
-    <div class>
-        <div class="card-header card-header-inverse"><h3>User count</h3></div>
-        <div class="card-body">
-            <strong>Team Leads: </strong><%= @stats[:teamleads] %>
-            <br>
-            <div class='card col-6 p-0'>
+    <div>
+        <div><h3>User count</h3></div>
+        <div class="card-block row d-flex justify-content-around">
+            <div class='card col-5 p-0'>
+            <div class='card-header'><strong>Team Leads: </strong><%= @stats[:teamleads] %></div>
+                    <% @lead_users.each do |volunteer| %>
+                        <div class="mt-2 mb-2 border">
+                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
+                        <br>
+                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
+                        </div>
+                    <% end %>
+            </div>
+            <div class='card col-5 p-0'>
             <div class='card-header'><strong>General Volunteers: </strong><%= @stats[:genvol] %></div>
-                    <% @genvol.each do |volunteer| %>
+                    <% @gen_vol_users.each do |volunteer| %>
                         <div class="mt-2 mb-2 border">
                         <strong>Full name:</strong> <%= volunteer.full_name %>
                         <br>
@@ -14,15 +22,19 @@
                         </div>
                     <% end %>
             </div>
-            <strong>Guests: </strong> <%= @stats[:guests] %>
-            <ul>
-                <% @guest.each do |guest| %>
-                    <li><%= guest.email %></li>
-                <% end %>
-            </ul>
+            <div class='card col-11 p-0 mt-2'>
+            <div class='card-header'><strong> Guests: </strong><%= @stats[:guests] %></div>
+                    <% @guest_users.each do |volunteer| %>
+                        <div class="mt-2 mb-2 border">
+                        <strong>Full name:</strong> <%= volunteer.full_name %>
+                        <br>
+                        <strong>Email:</strong> <%= volunteer.email %>
+                        </div>
+                    <% end %>
+            </div>
         </div>
     </div>
-    <h3>Current Events</h3>
+    <h3 class="mt-3">Current Events</h3>
     <table class='table table-bordered'>
         <thead class='thead-inverse'>
             <tr>
@@ -48,4 +60,23 @@
             <% end %>
         </tbody>
     </table>
+    <div>
+        <div class="card-block row">
+        <% @teams.each do |team| %>
+            <% if team.members.count > 0 %>
+            <div class="card col-4 p-0 mt-2">
+                <div class="card-header"><%= team.name %></div>
+                <div class="list-group">
+                <% team.members.each do |member| %>
+                   <a href="#" class="list-group-item list-group-item-action"> <%= member.full_name %></a>
+                   <% user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
+                   <%= link_to 'Destroy', userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'} %>
+                   <br>
+                <% end %>
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+        </div>
+    </div>
 </div>
