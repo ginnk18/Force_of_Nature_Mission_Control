@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
 	before_action :authorize_user!
 	before_action :get_categories, only: [:new, :create]
+	before_action :get_users
 	# before_action :find_team
 
 	def new
@@ -25,7 +26,7 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = Team.find_by_id params[:id]
-	
+
 
 	end
 
@@ -40,14 +41,18 @@ class TeamsController < ApplicationController
 		@team_categories = TeamCategory.all
 	end
 
+	def get_users
+		@users = User.where(:user_category_id => 2..3)
+	end
+
 	def team_params
-	params.require(:team).permit(:name, :team_category_id)
+	params.require(:team).permit(:name, :team_category_id, :user_id)
 end
 
 	def authorize_user!
 		if current_user
-			unless current_user.user_category.name == 'Team Lead' || current_user.user_category.name == 'Admin'
-				flash[:alert] = 'Access denied sucka!'
+			if current_user.user_category.name === 'Guest'
+				flash[:notice] = 'Access denied.'
 				redirect_to root_path
 			end
 		else

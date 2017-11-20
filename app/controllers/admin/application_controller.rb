@@ -4,6 +4,6 @@ class Admin::ApplicationController < ApplicationController
 
     private
     def authorize_admin!
-        redirect_to root_path, alert: 'Access Denied!' unless current_user.user_category.name == 'Admin'
+        redirect_to root_path, notice: 'Access Denied!' unless current_user.user_category.name == 'Admin'
     end
 end
