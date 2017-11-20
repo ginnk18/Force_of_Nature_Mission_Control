@@ -8,16 +8,6 @@
 # UserCategory.create(name: 'Team Lead')
 # UserCategory.create(name: 'Admin')
 
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
 # TeamCategory.destroy_all
 # EventCategory.destroy_all
 # TeamCategory.create(name: 'Regional')
@@ -32,8 +22,17 @@
 
 User.destroy_all
 Team.destroy_all
-PASSWORD = 'thissectionclosed'
+Event.destroy_all
 
+PASSWORD = 'thissectionclosed'
+super_user_category = UserCategory.where(id: 4)
+super_user = User.create(
+    first_name: 'This',
+    last_name: 'SectionMcClosed',
+    email: 'example@example.ca',
+    password: PASSWORD,
+    user_category_id: '4'
+)
 Team.create(name: 'Recruitment', team_category_id: '2')
 Team.create(name: 'Data', team_category_id: '2')
 Team.create(name: 'Research', team_category_id: '2')
@@ -47,13 +46,7 @@ Team.create(name: 'SlideShow', team_category_id: '2')
     )
 end
 teams = Team.all
-super_user = User.create(
-    first_name: 'This',
-    last_name: 'SectionMcClosed',
-    email: 'example@example.ca',
-    password: PASSWORD,
-    user_category_id: 4
-)
+
 user_categories = UserCategory.where.not(id: 4)
 
 10.times.each do
@@ -67,10 +60,9 @@ user_categories = UserCategory.where.not(id: 4)
         user_category: user_categories.sample
     )
 end
-
-
-event_categories = EventCategory.all
 users = User.all
+event_categories = EventCategory.all
+
 3.times.each do
     name = Faker::Name.name
     start_time = Time.now
@@ -85,7 +77,16 @@ users = User.all
         event_category: event_categories.sample,
         location: location,
         creator: users.sample,
-        lead: users.sample
+        lead: users.sample,
+        team: teams.sample
     )
 end
+20.times.each do
+    UserTeam.create(
+        user: users.sample,
+        team: teams.sample
+    )
+end
+puts "Created #{Team.count} teams"
+puts "Created #{User.count} users"
 puts "Created #{Event.count} events"

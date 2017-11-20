@@ -42,6 +42,7 @@ gem 'chosen'
 gem 'cancancan', '~> 2.0'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'bootstrap-datepicker-rails' # for date-picker
 
 # gem for Google Calendar
 gem 'google-api-client', '~> 0.9.1'
@@ -67,6 +68,8 @@ group :development do
   gem 'hirb'
   gem 'letter_opener'
   gem 'faker'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

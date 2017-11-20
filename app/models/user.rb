@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
 	def set_defaults
 		@guest_category = UserCategory.first 
-		self.user_category = @guest_category
+		self.user_category ||= @guest_category
 	end
 
 
