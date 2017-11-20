@@ -11,7 +11,9 @@
 		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
 
-	<%= link_to 'Add a team', new_team_path %>
+	<div class="add-team-button">
+		<%= link_to 'Add a team', new_team_path, style: 'color: black' %>
+	</div>
 </div>
 
 </div>
