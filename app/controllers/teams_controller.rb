@@ -18,11 +18,13 @@ class TeamsController < ApplicationController
 			end
 		end
 
-	def index
-		@teams = Team.all
-		@operational_teams = Team.where(team_category: '2').order(created_at: :desc)
-		@regional_teams = Team.where(team_category: '1').order(created_at: :desc)
-	end
+		def index
+			@teams = Team.all
+			@operation_category = TeamCategory.where(name: 'Operational').first
+			@regional_category = TeamCategory.where(name: 'Regional').first
+			@operational_teams = Team.where(team_category: @operation_category).order(created_at: :desc)
+			@regional_teams = Team.where(team_category: @regional_category).order(created_at: :desc)
+		end
 
 	def show
 		@team = Team.find_by_id params[:id]
@@ -46,7 +48,7 @@ class TeamsController < ApplicationController
 	end
 
 	def team_params
-	params.require(:team).permit(:name, :team_category_id, :user_id)
+	params.require(:team).permit(:name, :team_category_id, :user_id, {member_ids:[]})
 end
 
 	def authorize_user!
