@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-
 	before_action :authorize_user!
 	before_action :find_team, only: [:show]
 

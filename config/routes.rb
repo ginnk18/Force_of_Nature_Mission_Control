@@ -9,7 +9,7 @@ Rails.application.routes.draw do
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
      post('newsignup', to: 'eventsignup#create')
   end
-  
+  resources :userteams, only:[:destroy, :update, :edit]
   post('newsignup/:id', to: 'eventsignup#modalsignup')
   get('eventscal/:id', to: 'events#translate', as: :eventshow)
 
