@@ -1,6 +1,6 @@
 class EventsignupController < ApplicationController
     skip_before_action :verify_authenticity_token  
-      before_action :find_event, only: [:new, :create]
+    before_action :find_event, only: [:new, :create]
     def new
     end
 
@@ -20,9 +20,10 @@ class EventsignupController < ApplicationController
 
         end
         if signup.save
-              EventSignUpMailer.event_sign_up(@event, user).deliver_now
-             #ReminderMailer.reminder(@event, user).deliver_now
-              #ReminderMailerJob.set(wait_until: 2.minutes.from_now).perform_later(@event)
+            EventSignUpMailer.event_sign_up(@event, user).deliver_now
+            remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+
             redirect_to events_path ,notice: 'Thanks for signing up!'
         else
             redirect_to events_path, notice: 'You have already signed up!'
@@ -43,6 +44,8 @@ class EventsignupController < ApplicationController
             signup = UserEvent.new(user: user ,event: @event )
         end 
         if signup.save
+            remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
             render json: { message: "Thanks for signing up!" }
         else
             render json: { message: "You have already signed up!"}
@@ -52,7 +55,7 @@ class EventsignupController < ApplicationController
     private
 
     def find_event
-         @event = Event.find params[:event_id]
+        @event = Event.find params[:event_id]
     end
 
 

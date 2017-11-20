@@ -29,12 +29,59 @@
 		<div class="col-md-6 team-lead-show-item">
 			<div class="card item">
 			<h4>Briefings</h4>
-			<% if @team.name === 'Shadow' %>
-				<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
-			<% elsif @team.name === 'Misty' %>
-				<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
-			<% end %>
+				<% if @team.name === 'Shadow' %>
+					<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
+				<% elsif @team.name === 'Misty' %>
+					<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
+				<% end %>
+		</div>
+	</div>
+	</div>
+</div>
+
+<!--
+<div class="container">
+	<div class="card text-center">
+		<div class="card-header">
+			<h2><%= @team.name %></h2>
+		</div>
+		<div class="row">
+
+		  <div class="col-sm-6">
+		    <div class="card">
+		      <div class="card-block">
+		        <h3 class="card-title">Members:</h3>
+		        <p class="card-text">
+							<% @team.members.each do |member| %>
+						<% if member.id === current_user.id %>
+						<% else %>
+							<p >Name: <%= member.full_name %></p>
+							<p >Email: <%= member.email %></p>
+						<% end %>
+						<% end %></p>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-sm-6">
+		    <div class="card">
+		      <div class="card-block">
+		        <h3 class="card-title">Briefings</h3>
+		        <p class="card-text"><% if @team.name === 'Shadow' %>
+							<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
+						<% elsif @team.name === 'Misty' %>
+							<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
+						<% end %></p>
+		      </div>
+		    </div>
+		  </div>
 		</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 </div>
+=======
+
+
+  
+</div> -->
+>>>>>>> integration
