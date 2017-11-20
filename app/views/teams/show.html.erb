@@ -1,41 +1,40 @@
 
-<div class="container-fluid">
+<div class="container">
 	<!-- <p>dashboard/teams</p> -->
-		<h2><%= @team.name %></h2>
-		<h4><%= @team.team_category.name %> team</h4>
+	<h4><%= @team.name %></h4>
+	<h5><%= @team.team_category.name %> team</h5>
 	<div class="row d-flex">
 		<div class="col-md-6">
 			<div class="card item">
-				<h4>Members </h4>
-			<table class="table table-responsive">
-				<thead>
+				<h5>Members </h5>
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th scope="col"> Name</th>
+							<th scope="col"> Email</th>
+						</tr>
+					</thead>
+					<% @team.members.each do |member| %>
+					<% if member.id === current_user.id %>
+					<% else %>
 					<tr>
-						<th scope="col"> Name</th>
-						<th scope="col"> Email</th>
+						<td> <%= member.full_name %></td>
+						<td> <%= member.email %></td>
 					</tr>
-				</thead>
-			<% @team.members.each do |member| %>
-				<% if member.id === current_user.id %>
-				<% else %>
-				<tr>
-					<td> <%= member.full_name %></td>
-					<td> <%= member.email %></td>
-				</tr>
-				<% end %>
-			<% end %>
-		</table>
-		 </div>
+					<% end %>
+					<% end %>
+				</table>
+			</div>
 		</div>
 		<div class="col-md-6 team-lead-show-item">
 			<div class="card item">
-			<h4>Briefings</h4>
+				<h5>Briefings</h5>
 				<% if @team.name === 'Shadow' %>
-					<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
+				<a href="https://drive.google.com/drive/folders/105qoVeDX9uucrGCXwig0rsy6YI2tlbdD">Canvass Google Drive Documents</a>
 				<% elsif @team.name === 'Misty' %>
-					<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
+				<a href="https://drive.google.com/drive/folders/1H2OAq3uZ5SReSvfpr4eg2QXfDt1a-Xgb">Canvass Google Drive Documents</a>
 				<% end %>
+			</div>
 		</div>
 	</div>
-	</div>
 </div>
-

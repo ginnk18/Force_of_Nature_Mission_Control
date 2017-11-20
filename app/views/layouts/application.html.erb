@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Force of Nature</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= favicon_link_tag 'fon_favicon.ico' %>
-  </head>
+<head>
+  <title>Force of Nature</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= favicon_link_tag 'fon_favicon.ico' %>
+</head>
 
-  <body>
+<body>
 
-    <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
-    <nav class="navbar navbar-expand-md">
+  <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
+  <nav class="navbar navbar-expand-md">
     <% else %>
-        <nav class="navbar navbar-expand-md" style="background-color:#293d52" >
+    <nav class="navbar navbar-expand-md" style="background-color:#293d52" >
       <% end %>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,12 +24,7 @@
           <li class="nav-item ">
             <%= link_to 'Home', root_path, class: "nav-link" %>
           </li>
-<!--            <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li> -->
+
           <li class="nav-item">
             <%= link_to 'Calendar', events_path, class: "nav-link" %>
           </li>
@@ -37,40 +32,41 @@
 
         <ul class="navbar-nav ml-auto">
           <% if current_user %>
-            <li class="nav-item nav-link" style="color:lightblue"> Welcome, <%= current_user.full_name %>  </li>
-            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
-            <% if current_user.user_category.name === 'Team Lead' %>
-             <%= link_to 'Your Teams', teams_path, class:"nav-link" %>
-            <% end %>
+          <li class="nav-item nav-link" style="color:lightblue"> Welcome, <%= current_user.full_name %>  </li>
+          <% if current_user.user_category.name === 'Team Lead' %><h3><div style="color:lightblue">&nbsp;|&nbsp;</div></h3>
+          <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:lightblue" %>
+          <% end %>
+          <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
+
           <% else %>
-            <li class="nav-item"> <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %> </li>
+          <li class="nav-item"> <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %> </li>
           <% end %>
         </ul>
       </div>
     </nav>
 
-        <% if controller.controller_name != "welcome" && controller.action_name != "index" %>
+    <% if controller.controller_name != "welcome" && controller.action_name != "index" %>
 
     <% if flash[:notice].present? %>
-      <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
+    <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-     <%=flash[:notice]%>
-   </div>
-      <% end %>
+      <%=flash[:notice]%>
+    </div>
+    <% end %>
 
 
 
-      <% elsif flash[:alert].present? %>
+    <% elsif flash[:alert].present? %>
 
-          <%= flash[:alert] %>
+    <%= flash[:alert] %>
 
-      <% end %>
+    <% end %>
 
-      <%= yield %>
+    <%= yield %>
 
-      <%= render 'layouts/footer' %>
+    <%= render 'layouts/footer' %>
 
   </body>
-</html>
+  </html>
