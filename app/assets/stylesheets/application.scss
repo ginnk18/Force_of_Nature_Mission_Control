@@ -47,6 +47,7 @@
       text-align: center;
       color: #fff;
       height: 120px;
+      clear:both;
   }
 
   .footer_up {
@@ -181,6 +182,7 @@
 //page styling
 .container, .container-fluid {
   margin-top: 1rem;
+  background-color: white;
 }
 
 
@@ -377,67 +379,11 @@ h1.page-head {
         background-color: #e25714;
     }
 
-
-    .text-max-height {
-        overflow: scroll;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-    }
-
-    .card-button {
-        position: fixed;
-    }
-
-    hr {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        border: 0;
-        border-top: 1px solid #FFFFFF;
-    }
-
-    a {
-        color: #888888;
-        text-decoration: none;
-    }
-
-    .ch-height {
-        height: 70px;
-        overflow: hidden;
-        border-bottom: 1px solid salmon;
-        box-shadow: 0px 1px 1px #888888;
-    }
-
-    .feature {
-        overflow: hidden;
-        height: 600px;
-        box-shadow: 0px 2px 2px #888888;
-        background-color: #fff;
-    }
-
-    .top-10 {
-        background-color: #ffffff;
-        box-shadow: 0px 2px 2px #888888;
-    }
-
-    .inhcol {
-        background-color: inherit;
-        border: none;
-    }
-
-    .popular-links :nth-child(odd):hover {
-        background-color: salmon;
-        color: white;
-    }
-
-
-    .popular-links :nth-child(even):hover {
-        background-color: lightseagreen;
-        color: white;
-    }
-
 //Styling pages:
 
+.small-height {
+  min-height: 500px;
+}
 
 .card.dash {
   display: flex;
