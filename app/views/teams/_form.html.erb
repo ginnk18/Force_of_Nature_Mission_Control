@@ -4,7 +4,6 @@
 <%= f.input :name, label: 'Team Name'%>
 <%= f.label :team_category_id %>
 <%= f.select :team_category_id, @team_categories.map { |category| [category.name, category.id] } %>
-<%= f.label :Member %>
 <%= f.association :members, collection: @users, :include_blank => true, input_html:  { class: 'chosen-select'} ,  :label_method => lambda { |user| "#{user.first_name} #{user.last_name}"  }%>
 
 <%= f.submit %>

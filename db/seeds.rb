@@ -1,22 +1,22 @@
 ##############USER CATEGORY! DO NOT RESEED UNLESS CRITICAL!!!!###########
-UserCategory.destroy_all
-TeamCategory.destroy_all
-EventCategory.destroy_all
+# UserCategory.destroy_all
+# TeamCategory.destroy_all
+# EventCategory.destroy_all
 User.destroy_all
 Team.destroy_all
 Event.destroy_all
 #############################################################################
-UserCategory.create(name:'Guest')
-UserCategory.create(name: 'General Volunteer')
-UserCategory.create(name: 'Team Lead')
-UserCategory.create(name: 'Admin')
-TeamCategory.create(name: 'Regional')
-TeamCategory.create(name: 'Operational')
-EventCategory.create(name: 'Canvas')
-EventCategory.create(name: 'Slideshow')
-EventCategory.create(name: 'Meeting')
-EventCategory.create(name: 'PhoneBank')
-EventCategory.create(name: 'Other')
+# UserCategory.create(name:'Guest')
+# UserCategory.create(name: 'General Volunteer')
+# UserCategory.create(name: 'Team Lead')
+# UserCategory.create(name: 'Admin')
+# TeamCategory.create(name: 'Regional')
+# TeamCategory.create(name: 'Operational')
+# EventCategory.create(name: 'Canvas')
+# EventCategory.create(name: 'Slideshow')
+# EventCategory.create(name: 'Meeting')
+# EventCategory.create(name: 'PhoneBank')
+# EventCategory.create(name: 'Other')
 
 ##########################################################################
 
@@ -24,25 +24,24 @@ EventCategory.create(name: 'Other')
 
 PASSWORD = 'thissectionclosed'
 super_user_category = UserCategory.where(name: "Admin").first
-p super_user_category
+
 super_user = User.create(
-    first_name: 'This',
-    last_name: 'SectionMcClosed',
+    first_name: 'Addy',
+    last_name: 'McAdmin',
     email: 'example@example.ca',
     password: PASSWORD,
     user_category: super_user_category
 )
 operation_category = TeamCategory.where(name: 'Operational').first
 regional_category = TeamCategory.where(name: 'Regional').first
-p regional_category
-p operation_category
+
 Team.create(name: 'Recruitment', team_category: operation_category)
 Team.create(name: 'Data', team_category: operation_category)
 Team.create(name: 'Research', team_category: operation_category)
 Team.create(name: 'SlideShow', team_category: operation_category)
 
 5.times.each do
-    name = Faker::Cat.name
+    name = Faker::Team.name
     Team.create(
         name: name,
         team_category: regional_category
