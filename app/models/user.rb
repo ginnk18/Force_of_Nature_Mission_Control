@@ -39,7 +39,7 @@ class User < ApplicationRecord
 	end
 
 	def set_defaults
-		@guest_category = UserCategory.first 
+		@guest_category = UserCategory.where(name: 'Guest').first
 		self.user_category ||= @guest_category
 	end
 

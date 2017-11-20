@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     end_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.end_time.hour, @event.end_time.min)
 
     if start_date > end_date
-      flash[:notice] = "Invlaid Time Range."
+      flash[:notice] = "Invalid Time Range."
       render :new
 
       return
@@ -71,46 +71,48 @@ class EventsController < ApplicationController
   end
 
   def update
+        if @event.update event_params
+          redirect_to @event
+          @calendar_helper = GoogleCalendarHelper.new
+          @calendar = @calendar_helper.calendar
+
+
+          start_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.start_time.hour, @event.start_time.min)
+          end_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.end_time.hour, @event.end_time.min)
+
+          if start_date > end_date
+            flash[:notice] = "Invalid Time Range."
+            render :edit
+
+            return
+          end
+
+          start_date = start_date.change(:offset => "-0800")
+          end_date = end_date.change(:offset => "-0800")
+          g_event = Google::Apis::CalendarV3::Event.new({
+            summary: @event.name,
+            location: @event.location,
+            description: @event.additional_info,
+            start: {
+              date_time: start_date
+            },
+          end: {
+            date_time: end_date
+          }
+          })
+          result = @calendar.patch_event(GoogleCalendarHelper::CALENDAR_ID,@event.google_event_id, g_event)
+          puts "Event-ID #{result.id}"
+          # @event.creator_id = current_user.id # creator of Event
+          # @event.google_event_id = result.id
+
+            ############################
+        else
+          render :edit
+        end
     # return head :unauthorized unless can?(:update, @event)
 #######################
-@calendar_helper = GoogleCalendarHelper.new
-@calendar = @calendar_helper.calendar
 
 
-start_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.start_time.hour, @event.start_time.min)
-end_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day, @event.end_time.hour, @event.end_time.min)
-
-if start_date > end_date
-  flash[:notice] = "Invlaid Time Range."
-  render :edit
-
-  return
-end
-
-start_date = start_date.change(:offset => "-0800")
-end_date = end_date.change(:offset => "-0800")
-g_event = Google::Apis::CalendarV3::Event.new({
-  summary: @event.name,
-  location: @event.location,
-  description: @event.additional_info,
-  start: {
-    date_time: start_date
-  },
-end: {
-  date_time: end_date
-}
-})
-result = @calendar.patch_event(GoogleCalendarHelper::CALENDAR_ID,@event.google_event_id, g_event)
-puts "Event-ID #{result.id}"
-@event.creator_id = current_user.id # creator of Event
-@event.google_event_id = result.id
-
-  ############################
-    if @event.update event_params
-      redirect_to @event
-    else
-      render :edit
-    end
   end
 
   def destroy
@@ -145,7 +147,8 @@ puts "Event-ID #{result.id}"
   end
 
   def get_users
-    @lead_users = User.where(user_category: '3')
+    @team_lead_id = UserCategory.where(name: 'Team Lead')
+    @lead_users = User.where(user_category: @team_lead_id)
   end
 
   def get_teams
