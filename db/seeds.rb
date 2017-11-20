@@ -22,7 +22,7 @@ Event.destroy_all
 
 
 
-PASSWORD = 'thissectionclosed'
+PASSWORD = 'missioncontrol'
 super_user_category = UserCategory.where(name: "Admin").first
 
 super_user = User.create(
@@ -41,7 +41,7 @@ Team.create(name: 'Research', team_category: operation_category)
 Team.create(name: 'SlideShow', team_category: operation_category)
 
 5.times.each do
-    name = Faker::Team.name
+    name = Faker::Space.star
     Team.create(
         name: name,
         team_category: regional_category
@@ -58,7 +58,7 @@ user_categories = UserCategory.where.not(name: "Admin")
     User.create(
         first_name: first_name,
         last_name: last_name,
-        email: "#{first_name}.#{last_name}@thissectionclosed.io",
+        email: "#{first_name}.#{last_name}@mail.org",
         password: PASSWORD,
         user_category: c
     )
