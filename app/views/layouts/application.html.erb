@@ -35,12 +35,16 @@
           <% if current_user %>
             <span class="nav-link" style="color:white;"><%= fa_icon('slack')%></span>
             <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white' %>
-            <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
             <% if current_user.user_category.name === 'Admin' %>
               <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
             <% end %>
+            <% if current_user.first_name %>
             <li class="nav-item nav-link" style="color:white"> Welcome, <%= current_user.full_name %>  </li>
+            <% else %>
+              <li class="nav-item nav-link" style="color:white"> Welcome Guest</li>
+            <% end %>
             <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %><h3>
+            <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
               <div style="color:white">&nbsp;|&nbsp;</div></h3>
               <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
