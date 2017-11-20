@@ -61,7 +61,7 @@ user_categories = UserCategory.where.not(name: "Admin")
         last_name: last_name,
         email: "#{first_name}.#{last_name}@thissectionclosed.io",
         password: PASSWORD,
-        # user_category: c
+        user_category: c
     )
 end
 users = User.all
