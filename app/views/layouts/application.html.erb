@@ -8,13 +8,14 @@
   <%= favicon_link_tag 'fon_favicon.ico' %>
 </head>
 
-<body>
 
+
+<body>
   <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
-  <nav class="navbar navbar-expand-md" style="background: linear-gradient(black, transparent);">
+      <nav class="navbar navbar-expand-md" style="background: linear-gradient(black, transparent);">
     <% else %>
-    <nav class="navbar navbar-expand-md" style="background-color:#293d52" >
-      <% end %>
+      <nav class="navbar navbar-expand-md" style="background-color:#293d52" >
+    <% end %>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
