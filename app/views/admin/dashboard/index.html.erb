@@ -20,6 +20,13 @@
                         <br>
                         <strong>Email:</strong> <%= volunteer.email %>
                         </div>
+                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %> 
+                        <div class=“field”>
+                           <%= label(:user_category, "user_category") %>
+                           <%= select_tag "user_category", "<option>Guest</option><option>Team Lead</option>".html_safe %>
+                        <%= submit_tag "Submit" %>
+                        <% end %>
+                       </div>
                     <% end %>
             </div>
             <div class='card col-11 p-0 mt-2'>
@@ -30,6 +37,13 @@
                         <br>
                         <strong>Email:</strong> <%= volunteer.email %>
                         </div>
+                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
+                       <div class=“field”>
+                           <%= label(:user_category, "user_category") %>
+                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe %>
+                           <%= submit_tag "Submit" %>
+                       </div>
+                        <% end %>
                     <% end %>
             </div>
         </div>
@@ -55,7 +69,7 @@
                 <td><%= event.lead.full_name %></td>
                 <td><%= event.creator.full_name %></td>
                 <td><%= link_to 'Show', event %></td>
-                <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to fa_icon('times 2x'), event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
             <% end %>
         </tbody>
@@ -68,9 +82,10 @@
                 <div class="card-header"><%= team.name %></div>
                 <div class="list-group">
                 <% team.members.each do |member| %>
-                   <a href="#" class="list-group-item list-group-item-action"> <%= member.full_name %></a>
+                   <div class="list-group-item list-group-item-action"> <%= member.full_name %>
                    <% user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
-                   <%= link_to 'Remove from team', userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'} %>
+                   <%= link_to fa_icon('times 2x'), userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'}, class: "pull-right" %>
+                   </div>
                    <br>
                 <% end %>
                 </div>
