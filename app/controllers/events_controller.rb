@@ -107,7 +107,8 @@ class EventsController < ApplicationController
   end
 
   def get_users
-    @lead_users = User.where(user_category: '3')
+    @team_lead_id = UserCategory.where(name: 'Team Lead')
+    @lead_users = User.where(user_category: @team_lead_id)
   end
 
   def get_teams
