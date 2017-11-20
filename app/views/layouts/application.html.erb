@@ -43,12 +43,14 @@
             <% else %>
               <li class="nav-item nav-link" style="color:white"> Welcome Guest</li>
             <% end %>
-            <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %><h3>
+            <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
             <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
-              <div style="color:white">&nbsp;|&nbsp;</div></h3>
+              <div style="color:white">&nbsp;|&nbsp;</div>
               <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
+              <% if current_user.teams.first %>
               <%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'color: white' %>
+              <% end %>
             <% end %>
             <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
           <% else %>
