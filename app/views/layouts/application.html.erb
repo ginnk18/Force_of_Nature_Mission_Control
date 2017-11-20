@@ -38,7 +38,7 @@
               <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
             <% end %>
             <li class="nav-item nav-link" style="color:white"> Welcome, <%= current_user.full_name %>  </li>
-            <% if current_user.user_category.name === 'Team Lead' %><h3>
+            <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %><h3>
               <div style="color:white">&nbsp;|&nbsp;</div></h3>
               <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
@@ -54,20 +54,14 @@
 
     <% if controller.controller_name != "welcome" && controller.action_name != "index" %>
 
-    <% if flash[:notice].present? %>
-    <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <%=flash[:notice]%>
-    </div>
-    <% end %>
-
-
-
-    <% elsif flash[:alert].present? %>
-
-    <%= flash[:alert] %>
+      <% if flash[:notice].present? %>
+      <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%=flash[:notice]%>
+      </div>
+      <% end %>
 
     <% end %>
 
