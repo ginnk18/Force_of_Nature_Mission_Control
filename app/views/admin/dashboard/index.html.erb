@@ -11,7 +11,7 @@
  </div>
 
     <div class="row d-flex justify-content-between">
-            <div class='card col-md-4' style="border:0">
+            <div class='card col-md-6' style="border:0">
             <div class='card-header'><strong>Team Leads: </strong><%= @stats[:teamleads] %></div>
                     <% @lead_users.each do |volunteer| %>
                         <div class="mt-2 mb-2">
@@ -28,7 +28,7 @@
                        </div>
                     <% end %>
             </div>
-            <div class='col-md-4' style="border:0">
+            <div class='col-md-6' style="border:0">
             <div class='card-header'><strong>General Volunteers: </strong><%= @stats[:genvol] %></div>
                     <% @gen_vol_users.each do |volunteer| %>
                         <div class="mt-2 mb-2">
@@ -45,20 +45,20 @@
                        </div>
                     <% end %>
             </div>
-            <div class='card col-md-4' style="border:0">
-            <div class='card-header'><strong> Guests: </strong><%= @stats[:guests] %></div>
+            <div class='card col-md-12' style="border:0">
+            <div class='card-header d-flex'><strong> Guests: </strong><%= @stats[:guests] %></div>
                     <% @guest_users.each do |volunteer| %>
-                        <div class="mt-2 mb-2">
+                        <div class="mt-2 mb-2 border border-bottom-1">
                         <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
                         <br>
                         <strong class="pl-2">Email:</strong> <%= volunteer.email %>
-                        </div>
-                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
-                       <div class="field pb-1 pl-2" style="border-bottom:1px solid grey">
+                        <%= form_tag("upcat/#{volunteer.id}", method: :patch, class: "pull-right") do %>
+                       <div class="field pb-1 pl-2">
                            <%= label(:user_category, "user_category") %>
                            <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
                            <%= submit_tag "Submit", class:"btn btn-primary"%>
                        </div>
+                    </div>
                         <% end %>
                     <% end %>
             </div>
@@ -91,7 +91,7 @@
     </table>
     <div>
       <h3 class="mt-3" id="teams">Teams</h3>
-        <div class="card-block row d-flex justify-content-between" style="background-col:lightgrey">
+        <div class="card-block row d-flex justify-content-around" style="background-col:lightgrey">
         <% @teams.each do |team| %>
             <% if team.members.count > 0 %>
             <div class="card col-md-4" style="border:0">
