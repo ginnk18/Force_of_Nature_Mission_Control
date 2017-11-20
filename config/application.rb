@@ -29,5 +29,6 @@ module ThisSectionClosed
     config.generators.system_tests = nil
     config.autoload_paths += %W(#{config.root}/lib) # add this line
     config.active_job.queue_adapter = :delayed_job
+    config.assets.initialize_on_precompile = false
   end
 end
