@@ -1,0 +1,16 @@
+
+<div class="container-fluid">
+	<div class="row d-flex justify-content-center">
+	<div class="col-lg-4">
+		<h2 class="page-head"> Sign-up </h2>
+		<%= simple_form_for(@user) do |f| %>
+		        <%= f.input :first_name%>
+		        <%= f.input :last_name%>
+		        <%= f.input :email%>
+		        <%= f.input :password%>
+		        <%= f.input :password_confirmation%>
+		        <%= f.submit class: "btn btn-primary"%>
+		<%end%>
+	</div>
+	</div>
+</div>

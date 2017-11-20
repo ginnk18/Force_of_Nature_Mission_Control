@@ -1,14 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ThisSectionClosed</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Force of Nature</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= favicon_link_tag 'fon_favicon.ico' %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
 
-  <body>
+
+<body>
+  <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
+      <nav class="navbar navbar-expand-md" style="background: linear-gradient(black, transparent);">
+    <% else %>
+      <nav class="navbar navbar-expand-md" style="background-color:#293d52" >
+    <% end %>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/"> <%=image_tag("logo-white.png")%> </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <%= link_to 'Home', root_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Calendar', events_path, class: "nav-link" %>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <% if current_user %>
+            <span class="nav-link" style="color:white;"><%= fa_icon('slack')%></span>
+            <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white' %>
+            <% if current_user.user_category.name === 'Admin' %>
+              <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
+            <% end %>
+            <% if current_user.first_name %>
+            <li class="nav-item nav-link" style="color:white"> Welcome, <%= current_user.full_name %>  </li>
+            <% else %>
+              <li class="nav-item nav-link" style="color:white"> Welcome Guest</li>
+            <% end %>
+            <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
+            <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
+              <h3><div style="color:white">&nbsp;|&nbsp;</div></h3>
+              <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white' %>
+            <% elsif current_user.user_category.name === 'General Volunteer' %>
+              <% if current_user.teams.first %>
+              <%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'color: white' %>
+              <% end %>
+              <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white'  %>
+            <% end %>
+            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
+          <% else %>
+          <li class="nav-item"> <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %> </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <% if controller.controller_name != "welcome" && controller.action_name != "index" %>
+
+      <% if flash[:notice].present? %>
+      <div class="alert onTop alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%=flash[:notice]%>
+      </div>
+      <% end %>
+
+    <% end %>
+
     <%= yield %>
+
+  <div class="footer">
+    <div class="footer-social-icons">
+    <p>©Force of Nature Alliance 2017</p>
+        <ul class="social-icons mb-0">
+            <li><a href="https://www.facebook.com/readytoflip/" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+            <li><a href="" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
+            <li><a href="" class="social-icon"> <i class="fa fa-rss"></i></a></li>
+            <li><a href="" class="social-icon"> <i class="fa fa-youtube"></i></a></li>
+            <li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
+            <li><a href="" class="social-icon"> <i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </div>
+  </div>
+
+
   </body>
-</html>
+  </html>

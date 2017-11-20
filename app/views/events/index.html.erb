@@ -1,0 +1,54 @@
+
+<div class="container-fluid cal-con">
+	<div class="row">
+		<div class="col-lg">
+	<h1 class="page-head">All Events</h1>
+    <div id="calendar"></div>
+
+
+    <div class="modal fade" id="eventShow" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="eventDescription"></p>
+                    <p id="starttime"></p>
+                    <p id="endtime"></p>
+                    <p id="location"></p>
+                    <p id='message'></p>
+                    <%= form_tag("newsignup", :id => 'eventsignupform', method: "post", class: "form-inline d-flex justify-content-center") do %>
+                        <div class="field d-flex">
+                            <%= label(:email, "E-mail:", placeholder: 'user@domain.com', class:"mr-2") %>
+                            <%= email_field(:email, "email", class:"form-control") %>
+														<%= submit_tag "Sign up!", class: "btn btn-success ml-2"%>
+                        </div>
+                    <% end %>
+                    <div class="modal-footer border-0">
+											<button id='moredetails' type="button" class="btn btn-secondary">View More Details</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+										</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+	</div>
+
+
+<div class="col-lg-3">
+	<div class="list-group" style="margin-top:5rem">
+	<% @events.each do |event| %>
+	<% @anevent = event.name.to_s + " - " + event.date.to_s %>
+	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
+	<% end %>
+    <% if current_user && current_user.user_category.name != 'Guest' %>
+	 <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div>
+     <% end %>
+</div>
+</div>
+</div>
+</div>

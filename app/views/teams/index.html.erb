@@ -1,0 +1,39 @@
+
+<div class="container">
+	<div class="row">
+
+
+		<div class="col-md">
+
+	<h2>Your Teams: </h2>
+<div class="list-group">
+	<% current_user.teams.each do |team| %>
+		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
+	<% end %>
+
+	<div class="add-team-button">
+		<%= link_to 'Add a team', new_team_path, style: 'color: black' %>
+	</div>
+</div>
+
+</div>
+
+	<div class="col-md">
+		<h3>Operational Teams</h3>
+	<div class="list-group ">
+		<% @operational_teams.each do |team| %>
+			<div class="list-group-item team"> <%= team.name %> </div>
+		<% end %>
+	</div>
+</div>
+
+	<div class="col-md">
+		<h2>Regional Teams</h2>
+   <div class="list-group">
+		<% @regional_teams.each do |team| %>
+			<div class="list-group-item team"> <%= team.name %> </div>
+		<% end %>
+	</div>
+	</div>
+	</div>
+	</div>

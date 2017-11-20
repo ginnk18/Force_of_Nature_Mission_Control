@@ -1,0 +1,57 @@
+<div class="container">
+
+	<div class="row d-flex justify-content-center">
+		<div class="col-md">
+		<h1 class="event"><%= @event.name %></h1>
+		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
+  <div class="details">
+		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
+		</p>
+		<p> <strong>Category:</strong><%= @category.name%> </p>
+		<p> <strong>Location</strong> <%= @event.location%> sfcdscscdscdscdscsdcdsc</p>
+	</div>
+
+		<p> <%= @event.additional_info %> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p> <%= @event.attachment_url %></p>
+
+	<% if current_user %>
+		<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
+			<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-warning' %>
+			<%= link_to('Delete',
+				event_path(@event),data: {confirm: 'Are you sure?'},method: :delete, class: 'btn btn-danger') %>
+		<% end %>
+	<% end %>
+
+
+		<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-success" %>
+  </div>
+
+		<%# `&.` is the safe navigation operator. It can be used to avoid
+		    "undefined method `...' for nil:NilClass" errors. When used instead of `.`,
+		    it will check the object before it before trying to execute the method after
+		    it. If the object is `nil`, then it will immediately return `nil`.
+		%>
+
+  <div class="col-md-3">
+		<h3>Team Lead </h3>
+		<p> <%= @lead&.full_name %></p>
+		<h3>Created By </h3>
+		<p> <%= @event.creator&.full_name %></p>
+    <h3>Team</h3>
+    <p><%= @event.team&.name %></p>
+	</div>
+
+  <div class="col-md-3">
+
+		<h3>Attendees </h3>
+		<ul class="list-group">
+		<% @event.guests.each do |guest| %>
+  <li class="list-group-item"> <%= guest.full_name %> </li>
+		<% end %>
+		<li class="list-group-item"> <%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %> </li>
+	</ul>
+	</div>
+
+</div>
+
+</div>
