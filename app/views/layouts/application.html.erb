@@ -32,12 +32,18 @@
 
         <ul class="navbar-nav ml-auto">
           <% if current_user %>
-          <li class="nav-item nav-link" style="color:lightblue"> Welcome, <%= current_user.full_name %>  </li>
-          <% if current_user.user_category.name === 'Team Lead' %><h3><div style="color:lightblue">&nbsp;|&nbsp;</div></h3>
-          <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:lightblue" %>
-          <% end %>
-          <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
-
+            <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
+            <% if current_user.user_category.name === 'Admin' %>
+              <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
+            <% end %>
+            <li class="nav-item nav-link" style="color:white"> Welcome, <%= current_user.full_name %>  </li>
+            <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
+            <% if current_user.user_category.name === 'Team Lead' %><h3>
+              <div style="color:lightblue">&nbsp;|&nbsp;</div></h3>
+              <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
+            <% elsif current_user.user_category.name === 'General Volunteer' %>
+              <%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'style: white' %>
+            <% end %>
           <% else %>
           <li class="nav-item"> <%= link_to 'Sign In', new_session_path, class: "nav-link btn btn-primary" %> </li>
           <% end %>

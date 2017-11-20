@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
   end
-
+  patch("/admin/upcat/:id", to: 'users#changestatus')  
   match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
-
 end
