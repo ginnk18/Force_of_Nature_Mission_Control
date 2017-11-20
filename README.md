@@ -1,4 +1,5 @@
 # Force of Nature Mission Control
+By Team Section Closed
 
 Ruby on Rails backend, this volunnter management/calandar app connects to Google calandar API to simultaneously create events on the internal datbase calandar and on google calandar.
 
