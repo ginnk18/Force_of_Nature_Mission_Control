@@ -1,6 +1,16 @@
 
 
 <div class="panel" id="welcome">
+
+  <% if flash[:notice].present? %>
+    <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+   <%=flash[:notice]%>
+ </div>
+    <% end %>
+
   <h2 class="panel-text"> Be the Change </h2>
 </div>
 
