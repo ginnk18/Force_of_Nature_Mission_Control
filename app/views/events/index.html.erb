@@ -45,7 +45,9 @@
 	<% @anevent = event.name.to_s + " - " + event.date.to_s %>
 	 <div class="list-group-item"> <%= link_to @anevent, eventshow_path(event) %> </div>
 	<% end %>
+    <% if current_user %>
 	 <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div>
+     <% end %>
 </div>
 </div>
 </div>
