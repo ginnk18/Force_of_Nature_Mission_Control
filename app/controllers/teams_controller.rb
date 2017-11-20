@@ -51,8 +51,8 @@ end
 
 	def authorize_user!
 		if current_user
-			unless current_user.user_category.name == 'Team Lead' || current_user.user_category.name == 'Admin'
-				flash[:alert] = 'Access denied sucka!'
+			if current_user.user_category.name === 'Guest'
+				flash[:notice] = 'Access denied.'
 				redirect_to root_path
 			end
 		else

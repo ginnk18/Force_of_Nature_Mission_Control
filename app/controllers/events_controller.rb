@@ -1,7 +1,7 @@
 require_relative '../../lib/google_calendar_helper'
 class EventsController < ApplicationController
 
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_event, only: [:show, :edit, :update, :destroy]
   before_action :get_categories, only: [:new, :create, :edit, :update]
   before_action :get_users, only: [:new, :create, :edit, :update]
