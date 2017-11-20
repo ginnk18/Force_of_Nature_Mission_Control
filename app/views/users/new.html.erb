@@ -1,6 +1,7 @@
 
-<div class="container-fluid d-flex justify-content-center" style="min-height:50vh;">
-	<div class="col-lg-4 small-height">
+<div class="container-fluid d-flex justify-content-center">
+	<div class="row">
+	<div class="col-lg-4">
 		<h2 class="page-head"> Sign-up </h2>
 		<%= simple_form_for(@user) do |f| %>
 		        <%= f.input :first_name%>
@@ -10,5 +11,6 @@
 		        <%= f.input :password_confirmation%>
 		        <%= f.submit class: "btn btn-primary"%>
 		<%end%>
+	</div>
 	</div>
 </div>
