@@ -1,24 +1,17 @@
 # Force of Nature Mission Control
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails backend, this volunnter management/calandar app connects to Google calandar API to simultaneously create events on the internal datbase calandar and on google calandar.
 
-Things you may want to cover:
+## Getting it in
+Clone this project and bundle 
 
-* Ruby version
+## Database creation
+rails db:create
 
-* System dependencies
+## Database initialization
+rails db:migrate
+rails db:seed 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run the test suite
+There is none :-P
+rails s and have a click around!
