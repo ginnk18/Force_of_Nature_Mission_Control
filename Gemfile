@@ -49,6 +49,7 @@ gem 'google-api-client', '~> 0.9.1'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-rails'
+gem 'chosen-rails'
 
 
 group :development, :test do
