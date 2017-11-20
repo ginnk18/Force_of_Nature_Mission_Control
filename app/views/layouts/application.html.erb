@@ -8,7 +8,13 @@
     <%= favicon_link_tag 'fon_favicon.ico' %>
   </head>
 
-  <body>
+
+    <% if controller.controller_name == "sessions" && controller.action_name == "new" %>
+   <link rel="stylesheet" href="/bodyimg.css">
+   <% else %>
+   <body>
+   <% end%>
+
 
     <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
     <nav class="navbar navbar-expand-md" style="background-color:rgba(0, 0, 0, 0.3)">

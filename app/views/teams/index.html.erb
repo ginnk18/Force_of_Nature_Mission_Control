@@ -14,20 +14,12 @@
 </div>
 
 	<div class="col-md">
-		<h2>Operational Teams</h2>
-
-<div class="list-group">
-
-</div>
-
-	<div class="card col-sm-4" style="display: flex; justify-content: left;">
 		<h3>Operational Teams</h3>
-	<div class="card-block ">
+	<div class="list-group ">
 		<% @operational_teams.each do |team| %>
 			<div class="list-group-item team"> <%= team.name %> </div>
 		<% end %>
 	</div>
-
 </div>
 
 	<div class="col-md">
@@ -40,5 +32,3 @@
 	</div>
 	</div>
 	</div>
-</div>
-

@@ -1,7 +1,7 @@
 
 <div class="container cal-con">
 	<h1 class="page-head">All Events</h1>
-
+		<%= link_to 'Add Event', new_event_path %>
     <div id="calendar"></div>
 
     <div class="modal fade" id="eventShow" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -19,18 +19,17 @@
                     <p id="endtime"></p>
                     <p id="location"></p>
                     <p id='message'></p>
-                    <%= form_tag("newsignup", :id => 'eventsignupform', method: "post") do %>
+                    <%= form_tag("newsignup", :id => 'eventsignupform', method: "post", class: "form-inline d-flex justify-content-center") do %>
                         <div class="field">
-                            <%= label(:email, "Email:") %>
-                            <%= email_field(:email, "email") %>
+                            <%= label(:email, "Email", placeholder: 'user@domain.com') %>
+                            <%= email_field(:email, "email", class:"form-control") %>
+														<%= submit_tag "Sign up!", class: "btn btn-success"%>
                         </div>
-
-                        <%= submit_tag "Sign up!"%>
                     <% end %>
-                    </div>
-                        <button id='moredetails' type="button" class="btn btn-secondary">View More Details</button>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+											<button id='moredetails' type="button" class="btn btn-secondary">View More Details</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+										</div>
                     </div>
             </div>
         </div>

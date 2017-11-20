@@ -21,6 +21,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 
+
+
+
 .btn-primary {
   background: #888888;
   border-color: #293d52;
@@ -178,7 +181,6 @@
 //page styling
 .container, .container-fluid {
   margin-top: 1rem;
-  background-color: white;
 }
 
 
@@ -223,13 +225,12 @@ h1.page-head {
   background-image: image-url('bear.png');
   background-attachment: fixed;
   background-position: top;
-    background-size: cover;
-
 }
 
 #welcome2 {
   background-image: image-url('forest.jpg');
-  background-size: cover;
+    background-attachment: fixed;
+    align-self: flex-start;
 }
 
 #fixed {
