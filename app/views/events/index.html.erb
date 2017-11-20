@@ -22,13 +22,13 @@
                     <p id="location"></p>
                     <p id='message'></p>
                     <%= form_tag("newsignup", :id => 'eventsignupform', method: "post", class: "form-inline d-flex justify-content-center") do %>
-                        <div class="field">
-                            <%= label(:email, "Email", placeholder: 'user@domain.com') %>
+                        <div class="field d-flex">
+                            <%= label(:email, "E-mail:", placeholder: 'user@domain.com', class:"mr-2") %>
                             <%= email_field(:email, "email", class:"form-control") %>
-														<%= submit_tag "Sign up!", class: "btn btn-success"%>
+														<%= submit_tag "Sign up!", class: "btn btn-success ml-2"%>
                         </div>
                     <% end %>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-0">
 											<button id='moredetails' type="button" class="btn btn-secondary">View More Details</button>
 											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 										</div>
@@ -43,7 +43,7 @@
 	<div class="list-group" style="margin-top:5rem">
 	<% @events.each do |event| %>
 	<% @anevent = event.name.to_s + " - " + event.date.to_s %>
-	 <div class="list-group-item"> <%= link_to @anevent, eventshow_path(event) %> </div>
+	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
 	<% end %>
 	 <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div>
 </div>

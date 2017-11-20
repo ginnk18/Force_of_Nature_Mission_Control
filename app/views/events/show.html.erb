@@ -1,5 +1,4 @@
-
-<div class="container small-height">
+<div class="container" style="min-height:60vh;">
 
 	<div class="row d-flex justify-content-center">
 		<div class="col-md">
@@ -14,12 +13,12 @@
 
 		<p> <%= @event.additional_info %> </p>
 		<p> <%= @event.attachment_url %></p>
-		<%= link_to 'Edit', edit_event_path(@event) %>
+		<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %>
 		<%= link_to('Delete',
-			event_path(@event),data: {confirm: 'Are you sure?'},method: :delete) %>
+			event_path(@event),data: {confirm: 'Are you sure?'},method: :delete, class: "btn btn-danger") %>
 
 
-		<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-primary" %>
+		<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-success" %>
   </div>
 
 		<%# `&.` is the safe navigation operator. It can be used to avoid
