@@ -1,13 +1,8 @@
 
 
-<%= form_for @team do |f| %>
-   <% if @team.errors.present? %>
-     <p>
-       <%= @team.errors.full_messages.join(', ') %>
-     </p>
-   <% end %>
-<%= select_tag(:team_id, '<option value="1">Lisbon</option>...') %>
-   <%=f.select_tag :team_id,options_for_select(@users.collect{ |u| [u.first_name, u.id] }) %>
-
-   <%= f.submit %>
+<%= simple_form_for @team do |f| %>
+<%= f.input :name, label: 'Team Name'%>
+<%= f.label :team_category_id %>
+<%= f.select :team_category_id, @team_categories.map { |category| [category.name, category.id] } %>
+<%= f.submit %>
  <% end %>
