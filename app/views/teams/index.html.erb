@@ -1,33 +1,45 @@
 
-<div class="container">
-<div class="card col-sm-4" style="display: flex; justify-content: left;">
-	<h1>Your Teams: </h1>
-<div class="card-block ">
+<div class="container-fluid">
+	<div class="row small-height">
+
+		<div class="col-md">
+
+	<h2>Your Teams: </h2>
+<div class="list-group">
 	<% current_user.teams.each do |team| %>
-		<h3><%= link_to(team.name, team_path(team)) %></h3>
+		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
 </div>
+
 </div>
 
+	<div class="col-md">
+		<h2>Operational Teams</h2>
 
+<div class="list-group">
+
+</div>
 
 	<div class="card col-sm-4" style="display: flex; justify-content: left;">
 		<h3>Operational Teams</h3>
 	<div class="card-block ">
 		<% @operational_teams.each do |team| %>
-			<h5><%= team.name %></h5>
+			<div class="list-group-item team"> <%= team.name %> </div>
 		<% end %>
 	</div>
-	</div>
 
+</div>
 
-	<div class="card col-sm-4" style="display: flex; justify-content: left;">
-		<h3 >Regional Teams</h3>
-	<div class="card-block ">
+	<div class="col-md">
+		<h2>Regional Teams</h2>
+   <div class="list-group">
 		<% @regional_teams.each do |team| %>
-			<h5><%= team.name %></h5>
+			<div class="list-group-item team"> <%= team.name %> </div>
 		<% end %>
 	</div>
+	</div>
+		<% end %>
+	</div>
+	</div>
 </div>
-</div>
-</div>
+
