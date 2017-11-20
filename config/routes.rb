@@ -1,3 +1,21 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'welcome#index'
+  # root 'events#new'
+  resources :welcome, only: [:index]
+  resource :session, only:[:new, :create, :destroy]
+  resources :users, only: [:new, :create, :update, :edit]
+  resources :teams
+  resources :events, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
+     get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
+     post('newsignup', to: 'eventsignup#create')
+  end
+  resources :userteams, only:[:destroy, :update, :edit]
+  post('newsignup/:id', to: 'eventsignup#modalsignup')
+  get('eventscal/:id', to: 'events#translate', as: :eventshow)
+
+  namespace :admin do
+    resources :dashboard, only: [:index]
+  end
+  patch("/admin/upcat/:id", to: 'users#changestatus')  
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 end

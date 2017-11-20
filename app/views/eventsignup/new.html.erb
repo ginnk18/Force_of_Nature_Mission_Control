@@ -1,0 +1,13 @@
+<div class="row d-flex justify-content-center align-items-center">
+  <div class="col-md-5">
+      <h2>Sign-up for an event!</h2>
+
+        <%= form_tag("newsignup", method: "post", class:"form") do %>
+            <div class="form-group">
+                <%= label(:email, "Email", class:'form-label') %>
+                <%= email_field(:email, "email", class: "form-control") %>
+            </div>
+            <%= submit_tag "Sign up!", class: "btn btn-success pull-right"%>
+        <% end %>
+  </div>
+ </div>

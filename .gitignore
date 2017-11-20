@@ -4,8 +4,15 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+/.DS_Store
+app/assets/.DS_Store
+
 # Ignore bundler config.
 /.bundle
+
+/config/initializers/app_keys.rb
+
+.DS_Store
 
 # Ignore all logfiles and tempfiles.
 /log/*

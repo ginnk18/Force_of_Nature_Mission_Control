@@ -1,0 +1,478 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require fullcalendar
+*= require bootstrap-datepicker
+*= require chosen
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+
+
+
+.btn-primary {
+  background: #888888;
+  border-color: #293d52;
+}
+
+.row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+// footer styling
+
+
+html { height: 100%; }
+body {
+    min-height:100%;
+    position:relative;
+    padding-bottom: 130px;
+    margin:0;
+}
+.footer {
+    position: absolute;
+    left: 0 ; right: 0; bottom: 0;
+    height:130px;
+    background-color: #293d52;
+    color: white;
+    padding-top:5px;;
+
+}
+
+.footer-social-icons {
+      width: 350px;
+      display: block;
+      margin: 0 auto;
+  }
+
+  .footer-social-icons p {
+    margin-top: 10px;
+  }
+
+
+  .footer_up {
+      position: relative;
+      padding: .5rem;
+      margin: 0px;
+      padding-top: 12px;
+      background-color: #293d52;
+      text-align: center;
+      color: #fff;
+      height: 6em;
+  }
+
+
+  .social-icon {
+          color: #fff;
+      }
+
+      ul.social-icons {
+          margin-left: 0px;
+          padding: 0px;
+      }
+
+      .social-icons li {
+          vertical-align: top;
+          display: inline;
+          height: 50px;
+      }
+
+      .social-icons a {
+          color: #fff;
+          text-decoration: none;
+      }
+
+      .footer-social-icons {
+          width: 350px;
+          display: block;
+          margin: 0 auto;
+      }
+
+.fa-facebook {
+    padding: 10px 14px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #888888;
+}
+
+.fa-facebook:hover {
+    background-color: #3d5b99;
+}
+
+.fa-twitter {
+    padding: 10px 12px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #888888;
+}
+
+.fa-twitter:hover {
+       background-color: #00aced;
+   }
+
+   .fa-rss {
+       padding: 10px 14px;
+       -o-transition: .5s;
+       -ms-transition: .5s;
+       -moz-transition: .5s;
+       -webkit-transition: .5s;
+       transition: .5s;
+       background-color: #293d52;
+   }
+
+
+   .fa-rss:hover {
+       background-color: #eb8231;
+   }
+
+   .fa-youtube {
+       padding: 10px 14px;
+       -o-transition: .5s;
+       -ms-transition: .5s;
+       -moz-transition: .5s;
+       -webkit-transition: .5s;
+       transition: .5s;
+       background-color: #293d52;
+   }
+
+   .fa-youtube:hover {
+       background-color: #e64a41;
+   }
+
+
+   .fa-google-plus {
+    padding: 10px 9px;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background-color: #293d52;
+}
+
+.fa-google-plus:hover {
+    background-color: #e25714;
+}
+
+.fa-linkedin {
+      padding: 10px 14px;
+      -o-transition: .5s;
+      -ms-transition: .5s;
+      -moz-transition: .5s;
+      -webkit-transition: .5s;
+      transition: .5s;
+      background-color: #293d52;
+  }
+
+  .fa-linkedin:hover {
+      background-color: #0073a4;
+  }
+
+.linksstyle{
+    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+//page styling
+
+.container, .container-fluid {
+  flex: 1 0 auto;
+}
+
+
+.navbar navbar-expand-md {
+  background-color: #293d52;
+}
+.navbar ul li a {
+color: #fff;
+font-weight: bold;
+}
+
+.second-nav a {
+  // link styles for secondary nav
+}
+
+.greet {
+  color: aliceblue;
+  margin-right: 1rem;
+}
+
+
+h1.page-head {
+  text-align: center;
+}
+
+/* welcome page styles  */
+
+.panel {
+  background-position:center;
+  background-size: cover;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel:first-of-type {
+  margin-top: -100px;
+}
+
+#welcome {
+  background-image: image-url('bear.png');
+  background-attachment: fixed;
+  background-position: top;
+}
+
+#welcome2 {
+  background-image: image-url('forest.jpg');
+    background-attachment: fixed;
+    align-self: flex-start;
+}
+
+#fixed {
+  background: #293d52;
+  background-attachment: scroll;
+  height: 300px;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.panel-text {
+  color: white;
+}
+
+.time {
+  font-size: 16px;
+  font-weight: bold;
+}
+.navbar {
+  // background-image: image-url('bear.png');
+}
+
+.cal-con {
+  // for styling calandar background
+}
+.details {
+  margin-top: 1rem;
+}
+.details p {
+  line-height: 1.2em;
+}
+
+
+// footer
+
+ .footer-social-icons {
+        width: 350px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .social-icon {
+        color: #fff;
+    }
+
+    ul.social-icons {
+        margin-left: 0px;
+        padding: 0px;
+    }
+
+    .social-icons li {
+        vertical-align: top;
+        display: inline;
+        height: 50px;
+    }
+
+    .social-icons a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .fa-facebook {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #293d52;
+    }
+
+    .fa-facebook:hover {
+        background-color: #3d5b99;
+    }
+
+    .fa-twitter {
+        padding: 10px 12px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #293d52;
+    }
+
+    .fa-twitter:hover {
+        background-color: #00aced;
+    }
+
+    .fa-rss {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #293d52;
+    }
+
+    .fa-rss:hover {
+        background-color: #eb8231;
+    }
+
+    .fa-youtube {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #293d52;
+    }
+
+    .fa-youtube:hover {
+        background-color: #e64a41;
+    }
+
+    .fa-linkedin {
+        padding: 10px 14px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #293d52;
+    }
+
+    .fa-linkedin:hover {
+        background-color: #0073a4;
+    }
+
+    .fa-google-plus {
+        padding: 10px 9px;
+        -o-transition: .5s;
+        -ms-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+        background-color: #293d52;
+    }
+
+    .fa-google-plus:hover {
+        background-color: #e25714;
+    }
+
+//Styling pages:
+
+.small-height {
+  min-height: 500px;
+}
+
+.card.dash {
+  display: flex;
+  padding: 15px 5px;
+  margin: 15px 5px;
+  border: 2px black solid;
+  text-align: center;
+}
+
+.card.item {
+  display: flex;
+  padding: 15px;
+  margin: 15px 5px;
+  border: 2px black solid;
+  text-align: center;
+}
+
+table {
+  text-align: left;
+}
+
+.card.dash:hover {
+  background-color: rgb(239, 239, 239);
+}
+
+.content-link, .content-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.card.details {
+  text-align: left;
+  margin: 0px 5px;
+  border-top: 0;
+  margin-top: -20px;
+  padding: 15px 5px;
+ border-left: 2px black solid;
+ border-right: 2px black solid;
+ border-bottom: 2px black solid;
+}
+
+.files {
+  text-align: left;
+}
+
+.flexi {
+  width: 50%;
+}
+
+.team {
+  font-size: 20px;
+}
+///////////////////// CSS for Forms
+
+////////////
+
+/// Team Index Page
+
+.add-team-button {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.adminteamheader{
+    text-align: center;
+}
+.adminteams{
+    text-decoration: none;
+    color: grey;
+}
+.adminteams:hover{
+    text-decoration: none;
+}
