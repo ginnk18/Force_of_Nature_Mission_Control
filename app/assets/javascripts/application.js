@@ -18,6 +18,7 @@
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require bootstrap-datepicker
+//= require chosen-jquery
 //= require_tree .
 
 
@@ -41,15 +42,15 @@ $(document).ready(function() {
                         $( '#endtime' ).html("End Time: " + calEvent.end._d);
                         $('#location').html("Location: " + calEvent.location);;
 
-                        
+
                         $('#moredetails').on('click', (event)=>{
                         window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
-                            
+
                         });
                         $('#eventsignupform').on('submit', (event)=> {
                         event.preventDefault();
                         let email = event.target.querySelector('#email_email').value;
-                        fetch(`/newsignup/${calEvent.id}`, { method: 'post', 
+                        fetch(`/newsignup/${calEvent.id}`, { method: 'post',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
                         },

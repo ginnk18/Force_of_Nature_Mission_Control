@@ -12,6 +12,7 @@
  *
  *= require fullcalendar
 *= require bootstrap-datepicker
+*= require chosen
  *= require_tree .
  *= require_self
  */
@@ -126,7 +127,7 @@
        -moz-transition: .5s;
        -webkit-transition: .5s;
        transition: .5s;
-       background-color: #888888;
+       background-color: #293d52;
    }
 
 
@@ -141,7 +142,7 @@
        -moz-transition: .5s;
        -webkit-transition: .5s;
        transition: .5s;
-       background-color: #888888;
+       background-color: #293d52;
    }
 
    .fa-youtube:hover {
@@ -156,7 +157,7 @@
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
-    background-color: #888888;
+    background-color: #293d52;
 }
 
 .fa-google-plus:hover {
@@ -170,13 +171,18 @@
       -moz-transition: .5s;
       -webkit-transition: .5s;
       transition: .5s;
-      background-color: #888888;
+      background-color: #293d52;
   }
 
   .fa-linkedin:hover {
       background-color: #0073a4;
   }
 
+.linksstyle{
+    -moz-box-shadow: 5px 5px rgb(0,0,0);
+    -webkit-box-shadow: 5px 5px rgb(0,0,0);
+    box-shadow: 5px 5px rgb(0,0,0);
+}
 
 //page styling
 
@@ -300,7 +306,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #888888;
+        background-color: #293d52;
     }
 
     .fa-facebook:hover {
@@ -314,7 +320,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #888888;
+        background-color: #293d52;
     }
 
     .fa-twitter:hover {
@@ -328,7 +334,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #888888;
+        background-color: #293d52;
     }
 
     .fa-rss:hover {
@@ -342,7 +348,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #888888;
+        background-color: #293d52;
     }
 
     .fa-youtube:hover {
@@ -356,7 +362,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #888888;
+        background-color: #293d52;
     }
 
     .fa-linkedin:hover {
@@ -370,7 +376,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #888888;
+        background-color: #293d52;
     }
 
     .fa-google-plus:hover {
@@ -437,3 +443,13 @@ table {
 ///////////////////// CSS for Forms
 
 ////////////
+
+/// Team Index Page
+
+.add-team-button {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}

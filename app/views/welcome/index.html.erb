@@ -1,21 +1,25 @@
 
 
 
-  <div class="panel" id="welcome2">
+  <div class="panel d-flex flex-column" id="welcome2">
+  <div>
   <% if flash[:notice].present? %>
-    <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
+    <div class="alert onTop alert-success alert-dismissible fade show" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
    <%=flash[:notice]%>
  </div>
     <% end %>
-
+  </div>
+  <br>
+  <div>
   <h2 class="panel-text"> Be the Change </h2>
+</div>
 </div>
 
 <div class="panel" id="fixed">
-  <p class="panel-text"> Welcome to Force of Nature.  From stopping the Site C dam and raising thousands of dollars for First Nation's legal challenges, to mobilizing tens of thousands of voters in the last three elections and promoting rooftop solar energy in Metro Vancouver municipalities, our community organizing projects empower local leaders, constituents and volunteers to to accelerate the Lower Mainland's transition to a just and democratic low-carbon future. </p>
+  <p class="panel-text"> Welcome to Force of Nature.  From stopping the Site C dam and raising thousands of dollars for First Nation's legal challenges, to mobilizing tens of thousands of voters in the last three elections and promoting rooftop solar energy in Metro Vancouver municipalities, our community organizing projects empower local leaders, constituents and volunteers to accelerate the Lower Mainland's transition to a just and democratic low-carbon future. </p>
 </div>
 
 <div class="panel" id="welcome">
