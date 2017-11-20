@@ -1,17 +1,21 @@
 
 
 
-  <div class="panel" id="welcome2">
+  <div class="panel d-flex flex-column" id="welcome2">
+  <div>
   <% if flash[:notice].present? %>
-    <div class="alert onTop alert-warning alert-dismissible fade show" role="alert">
+    <div class="alert onTop alert-success alert-dismissible fade show" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
    <%=flash[:notice]%>
  </div>
     <% end %>
-
+  </div>
+  <br>
+  <div>
   <h2 class="panel-text"> Be the Change </h2>
+</div>
 </div>
 
 <div class="panel" id="fixed">
