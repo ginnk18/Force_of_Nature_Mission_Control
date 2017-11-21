@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]  
-  before_action :find_user, only: [:edit, :update]
+  before_action :find_user, only: [:edit, :update, :changestatus]
   before_action :authorize_user!, except: [:new, :create]
   
   def new
