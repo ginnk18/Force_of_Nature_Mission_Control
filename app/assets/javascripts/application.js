@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 
                         $('#moredetails').on('click', function(event){
-                        window.location.href = 'http://localhost:3000/eventscal/' + calEvent.id;
+                        window.location.href = 'http://fonmissioncontrol.herokuapp.com/eventscal' + calEvent.id;
 
                         });
                         $('#eventsignupform').on('submit', function(event) {
