@@ -50,6 +50,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-rails'
 gem 'chosen-rails'
+gem 'faker'
 
 
 group :development, :test do
@@ -68,7 +69,6 @@ group :development do
   gem 'pry-rails'
   gem 'hirb'
   gem 'letter_opener'
-  gem 'faker'
   gem "better_errors"
   gem "binding_of_caller"
 end
