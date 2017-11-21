@@ -44,13 +44,13 @@ $(document).ready(function() {
 
 
                         $('#moredetails').on('click', function(event){
-                        window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                        window.location.href = 'http://localhost:3000/eventscal/' + calEvent.id;
 
                         });
                         $('#eventsignupform').on('submit', function(event) {
                         event.preventDefault();
                         var email = event.target.querySelector('#email_email').value;
-                        fetch(`/newsignup/${calEvent.id}`, { method: 'post',
+                        fetch('/newsignup/' + calEvent.id, { method: 'post',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
                         },
