@@ -37,7 +37,7 @@ class EventsignupController < ApplicationController
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
-            redirect_to events_path ,notice: 'Thanks for signing up!'
+            redirect_to events_path, notice: 'Thanks for signing up!'
         else
             redirect_to events_path, notice: 'You have already signed up!'
         end
@@ -56,6 +56,7 @@ class EventsignupController < ApplicationController
             user.save
             signup = UserEvent.new(user: user ,event: @event )
         end 
+
         if signup.save
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
