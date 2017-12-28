@@ -2,7 +2,20 @@ class EventsignupController < ApplicationController
     skip_before_action :verify_authenticity_token
     before_action :find_event, only: [:new, :create]
     def new
-      
+      if session[:user_id]
+      user=User.find_by_id session[:user_id]
+      signup =  UserEvent.new(user: user ,event: @event )
+      # byebug
+      if signup.save
+          EventSignUpMailer.event_sign_up(@event, user).deliver_now
+          remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+          ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+
+          redirect_to events_path ,notice: 'Thanks for signing up!'
+      else
+          redirect_to events_path, notice: 'You have already signed up!'
+      end
+      end
     end
 
     def create
