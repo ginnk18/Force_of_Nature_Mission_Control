@@ -33,10 +33,6 @@ class User < ApplicationRecord
 	end
 	
 	private
-    
-	def is_approved?
-		approved
-	end
 
 	def set_defaults
 		@guest_category = UserCategory.where(name: 'Guest').first

@@ -6,8 +6,10 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+
   def show
   end
+
   def create
     @user = User.new user_params
     if @user.save
@@ -20,11 +22,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
   def changestatus
     @user.user_category = UserCategory.find_by_name params["user_category"]
     @user.save
     redirect_to admin_dashboard_index_path
   end
+
   def update
     respond_to do |format|
       if @user.update_attributes(user_params)
@@ -36,17 +40,22 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def edit
   end
+
   private
+
   def find_user
     @user = User.find(params[:id])    
   end
+
   def user_params
     params.require(:user).permit(
       :first_name,
       :last_name,
       :email,
+      :phone_number,
       :password,
       :password_confirmation
     )
