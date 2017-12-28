@@ -18,8 +18,17 @@ class EventsignupController < ApplicationController
         if user
             signup = UserEvent.new(user: user, event: @event )
         else
-            user = User.new user_params
-            user.save
+            user = User.new(
+                    first_name: first_name, 
+                    last_name: last_name, 
+                    email: email,
+                    phone_number: phone_number,
+                    additional_info: additional_info,
+                    previous_volunteer: previous_volunteer
+                )
+            # puts 'THIS IS THE NEWLY CREATED USER: '
+            # puts user.first_name
+            user.save!
             signup = UserEvent.new(user: user, event: @event )
         end
 
