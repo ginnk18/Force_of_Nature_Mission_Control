@@ -66,25 +66,16 @@ body {
   }
 
 
-  .footer_up {
-      position: relative;
-      padding: .5rem;
-      margin: 0px;
-      padding-top: 12px;
-      background-color: #293d52;
-      text-align: center;
-      color: #fff;
-      height: 6em;
-  }
 
-
-  .social-icon {
+      .social-icon {
           color: #fff;
       }
 
       ul.social-icons {
           margin-left: 0px;
           padding: 0px;
+            display: flex;
+            justify-content: center;
       }
 
       .social-icons li {

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resource :session, only:[:new, :create, :destroy]
   resources :users, only: [:new, :create, :update, :edit]
+
+  get('users/dashboard', to:'users#dashboard', as: :user_dashboard_index)
+
   resources :teams
   resources :events, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
@@ -16,6 +19,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
   end
-  patch("/admin/upcat/:id", to: 'users#changestatus')  
+  patch("/admin/upcat/:id", to: 'users#changestatus')
   match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 end
