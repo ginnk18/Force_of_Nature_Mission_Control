@@ -21,8 +21,12 @@ class UsersController < ApplicationController
     end
   end
   def dashboard
-     @events = Event.order(created_at: :desc).limit(5)
+    @events = Event.order(created_at: :desc).limit(5)
+    if current_user.user_category.name === 'Admin'
+      redirect_to admin_dashboard_index_path
+    else
     render '/users/dashboard/index.html.erb'
+    end
   end
   def changestatus
     @user.user_category = UserCategory.find_by_name params["user_category"]
