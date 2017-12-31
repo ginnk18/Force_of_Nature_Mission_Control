@@ -3,12 +3,13 @@ class Ability
 
   def initialize(user)
     #Define abilities for the passed in user here. For example:
-    
+can :read, :all
       user ||= User.new # guest user (not logged in)
+      # byebug
       if user.user_category.name == 'Admin'
         can :manage, :all
       else
-        can :read, :all
+        can :read, :Event
       end
     #
     # The first argument to `can` is the action you are giving the user
@@ -32,6 +33,6 @@ class Ability
     can :manage, User do |user1|
       user == user1
     end
-    
+
   end
 end

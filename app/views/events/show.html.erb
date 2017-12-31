@@ -3,6 +3,7 @@
 	<div class="row d-flex justify-content-center">
 		<div class="col-md">
 		<h1 class="event"><%= @event.name %></h1>
+		
 		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
   <div class="details">
 		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>

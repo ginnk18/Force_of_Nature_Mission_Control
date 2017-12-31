@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226191121) do
+ActiveRecord::Schema.define(version: 20171228023320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 20171226191121) do
     t.bigint "lead_id"
     t.string "google_event_id"
     t.bigint "team_id"
+    t.integer "data_captain_id"
+    t.integer "sign_ups"
+    t.integer "show_ups"
+    t.integer "signatures"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
     t.index ["lead_id"], name: "index_events_on_lead_id"
