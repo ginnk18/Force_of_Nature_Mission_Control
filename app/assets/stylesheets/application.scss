@@ -416,9 +416,14 @@ table {
   background-color: rgb(239, 239, 239);
 }
 
-.content-link, .content-link:hover {
-  color: black;
+.content-link {
   text-decoration: none;
+  color: black;
+}
+
+.content-link:hover {
+  text-decoration: none;
+  color: #293d52;
 }
 
 .card.details {

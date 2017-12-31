@@ -7,11 +7,12 @@
 
   <div class="row">
     <div class="col-md">
-
+      <%= link_to (events_path), class: 'content-link' do%>
       <div class="card dash">
         <i class="fa fa-calendar-o fa-3x" aria-hidden="true"></i>
         <h3 class="dash-text"> Calendar </h3>
       </div>
+      <% end %>
       <div class="card details">
 
     	<div class="list-group">
@@ -20,7 +21,9 @@
     	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
     	<% end %>
        <%= link_to 'See All Events', events_path, class:"btn btn-dark btn-block" %>
+       	<% if current_user.user_category == "Admin" || current_user.user_category == "Team Lead" %>
     	 <%= link_to 'Add Event', new_event_path, class:"btn btn-primary btn-block" %>
+        <% end %>
       </div>
      </div>
    </div>
@@ -33,10 +36,10 @@
 
     <div class="col-md">
 
-      <%= link_to (teams_path) do%>
+      <%= link_to (teams_path), class: 'content-link' do%>
       <div class="card dash">
         <i class="fa fa-users fa-3x" aria-hidden="true"></i>
-        <h3> Teams </h3>
+        <h3> Personnel </h3>
       </div>
       <% end %>
 

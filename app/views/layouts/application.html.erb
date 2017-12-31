@@ -48,7 +48,7 @@
             <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
             <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
               <h3><div style="color:white">&nbsp;|&nbsp;</div></h3>
-              <%= link_to 'Your Teams', teams_path, class:"nav-link",style:"color:white" %>
+              <%= link_to 'Personnel', teams_path, class:"nav-link",style:"color:white" %>
               <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white' %>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
               <% if current_user.teams.first %>
