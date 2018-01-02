@@ -1,17 +1,5 @@
 <div class="container">
 	<div class="col-md-9">
-		<div class="row d-flex justify-content-center">
-			<div class="col-md">
-				<h1 class="event"><%= @event.name %></h1>
-				<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
-				<div class="details">
-					<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
-					</p>
-					<p> <strong>Category:</strong><%= @category.name%> </p>
-					<p> <strong>Location</strong> <%= @event.location%> sfcdscscdscdscdscsdcdsc</p>
-				</div>
-
-<<<<<<< HEAD
 	<div class="row d-flex justify-content-center">
 		<div class="col-md">
 		<h1 class="event"><%= @event.name %></h1>
@@ -53,9 +41,6 @@
     <h3>Team</h3>
     <p><%= @event.team&.name %></p>
 	</div>
-=======
-				<p> <%= @event.additional_info %> </p>
-				<p> <%= @event.attachment_url %></p>
 
 				<% if current_user %>
 				<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
@@ -64,10 +49,6 @@
 					event_path(@event),data: {confirm: 'Are you sure?'},method: :delete, class: 'btn btn-danger') %>
 					<% end %>
 					<% end %>
->>>>>>> b2bfa5dfca1db8ae2e795e19f203be8488a88674
-
-
-					<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-success" %>
 				</div>
 
 				<%# `&.` is the safe navigation operator. It can be used to avoid
