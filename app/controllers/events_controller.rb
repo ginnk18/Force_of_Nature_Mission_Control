@@ -60,6 +60,7 @@ class EventsController < ApplicationController
   def show
     @category=@event.event_category
     @lead=@event.lead
+    @data_captain=@event.data_captain
   end
 
   def edit
@@ -135,7 +136,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id, :team_id)
+      :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_ups,
+      :show_ups,:signatures)
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and
     # all query params. It's as if we merged `request.query`, `request.params`
@@ -149,6 +151,7 @@ class EventsController < ApplicationController
   def get_users
     @team_lead_id = UserCategory.where(name: 'Team Lead')
     @lead_users = User.where(user_category: @team_lead_id)
+    @data_captain_users = User.where(user_category: @data_captain_id)
   end
 
   def get_teams
