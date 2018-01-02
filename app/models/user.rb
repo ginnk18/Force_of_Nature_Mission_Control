@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
-    validates :first_name, :last_name, presence: true, if: :is_approved?
+    validates :first_name, :last_name, presence: true
     before_validation :set_defaults
 
 	def full_name
@@ -33,10 +33,6 @@ class User < ApplicationRecord
 	end
 	
 	private
-    
-	def is_approved?
-		approved
-	end
 
 	def set_defaults
 		@guest_category = UserCategory.where(name: 'Guest').first

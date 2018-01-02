@@ -8,10 +8,11 @@
 		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
 		</p>
 		<p> <strong>Category:</strong><%= @category.name%> </p>
-		<p> <strong>Location</strong> <%= @event.location%> sfcdscscdscdscdscsdcdsc</p>
+		<p> <strong>Location</strong> <%= @event.location%></p>
 	</div>
 
 		<p> <%= @event.additional_info %> </p>
+		
 		<p> <%= @event.attachment_url %></p>
 
 	<% if current_user %>
