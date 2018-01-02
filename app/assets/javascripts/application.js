@@ -36,7 +36,7 @@ $(document).ready(function() {
                         $(this).css('border-color', 'red');
                         //window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
                         $('#eventShow').modal('toggle');
-                        setTimeout( ()=>{
+                        setTimeout( function() {
                         $( '#ModalLabel' ).html(calEvent.title);
                         $('#additionalInfo').html("Info: " + calEvent.additional)
                         $( '#starttime' ).html("Start Time: " + calEvent.start._d);
@@ -44,8 +44,8 @@ $(document).ready(function() {
                         $('#location').html("Location: " + calEvent.location);
 
 
-                        $('#moredetails').on('click', (event)=>{
-                        window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                        $('#moredetails').on('click', function(event){
+                        window.location.href = 'http://fonmissioncontrol.herokuapp.com/eventscal/' + calEvent.id;
 
                         });
                         // $('#eventsignupform').on('submit', (event)=> {
