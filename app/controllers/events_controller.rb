@@ -1,12 +1,12 @@
 require_relative '../../lib/google_calendar_helper'
 class EventsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :translate]
   before_action :find_event, only: [:show, :edit, :update, :destroy]
   before_action :get_categories, only: [:new, :create, :edit, :update]
   before_action :get_users, only: [:new, :create, :edit, :update]
   before_action :get_teams, only: [:new, :create, :edit, :update]
-  before_action :authorize_user!, except: [:index, :show]
+  before_action :authorize_user!, except: [:index, :show,:translate]
 
   def new
     @event = Event.new
@@ -60,6 +60,7 @@ class EventsController < ApplicationController
   def show
     @category=@event.event_category
     @lead=@event.lead
+    @data_captain=@event.data_captain
   end
 
   def edit
@@ -135,7 +136,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id, :team_id)
+      :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_ups,
+      :show_ups,:signatures)
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and
     # all query params. It's as if we merged `request.query`, `request.params`
@@ -149,6 +151,7 @@ class EventsController < ApplicationController
   def get_users
     @team_lead_id = UserCategory.where(name: 'Team Lead')
     @lead_users = User.where(user_category: @team_lead_id)
+    @data_captain_users = User.where(user_category: @data_captain_id)
   end
 
   def get_teams
@@ -164,7 +167,6 @@ class EventsController < ApplicationController
     # `head` (methods that terminate the response), it will stop the request from
     # getting to the action.
     def authorize_user!
-      # binding.pry
       if current_user.user_category.name === 'Guest'
         flash[:notice] = "Access Denied!"
         redirect_to root_path

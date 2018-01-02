@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]  
+  before_action :authenticate_user!, except: [:new, :create]
   before_action :find_user, only: [:edit, :update, :changestatus]
-  before_action :authorize_user!, except: [:new, :create]
-  
+  before_action :authorize_user!, except: [:new, :create, :dashboard]
+
   def new
     @user = User.new
   end
+
   def show
   end
+
   def create
     @user = User.new user_params
     if @user.save
@@ -20,11 +22,22 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def dashboard
+    @events = Event.order(created_at: :desc).limit(5)
+    if current_user.user_category.name === 'Admin'
+      redirect_to admin_dashboard_index_path
+    else
+    render '/users/dashboard/index.html.erb'
+    end
+  end
+  
   def changestatus
     @user.user_category = UserCategory.find_by_name params["user_category"]
     @user.save
     redirect_to admin_dashboard_index_path
   end
+
   def update
     respond_to do |format|
       if @user.update_attributes(user_params)
@@ -36,17 +49,22 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def edit
   end
+
   private
+
   def find_user
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])
   end
+
   def user_params
     params.require(:user).permit(
       :first_name,
       :last_name,
       :email,
+      :phone_number,
       :password,
       :password_confirmation
     )
@@ -58,5 +76,5 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
 end

@@ -1,17 +1,19 @@
 <div class="container">
-
+	<div class="col-md-9">
 	<div class="row d-flex justify-content-center">
 		<div class="col-md">
 		<h1 class="event"><%= @event.name %></h1>
+		
 		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
   <div class="details">
 		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
 		</p>
 		<p> <strong>Category:</strong><%= @category.name%> </p>
-		<p> <strong>Location</strong> <%= @event.location%> sfcdscscdscdscdscsdcdsc</p>
+		<p> <strong>Location</strong> <%= @event.location%></p>
 	</div>
 
 		<p> <%= @event.additional_info %> </p>
+		
 		<p> <%= @event.attachment_url %></p>
 
 	<% if current_user %>
@@ -41,17 +43,54 @@
     <p><%= @event.team&.name %></p>
 	</div>
 
-  <div class="col-md-3">
+				</div>
 
-		<h3>Attendees </h3>
-		<ul class="list-group">
-		<% @event.guests.each do |guest| %>
-  <li class="list-group-item"> <%= guest.full_name %> </li>
-		<% end %>
-		<li class="list-group-item"> <%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %> </li>
-	</ul>
+				<%# `&.` is the safe navigation operator. It can be used to avoid
+				"undefined method `...' for nil:NilClass" errors. When used instead of `.`,
+				it will check the object before it before trying to execute the method after
+				it. If the object is `nil`, then it will immediately return `nil`.
+				%>
+
+				<div class="col-md-3">
+
+							<p><b>Captain : </b><br>
+							<%= @lead&.full_name %><br></p>
+							<p><b>Data Captain : </b><br>
+							<%= @data_captain&.full_name %><br></p>
+
+					<h5 class='mt-3'>Targets</h5>
+					<ul class="list-group">
+						<li class="list-group-item">
+							<b>Sign Ups : </b><%= @event.sign_ups %>
+						</li>
+						<li class="list-group-item">
+							<b>Show Ups : </b><%=@event.show_ups %>
+						</li>
+						<li class="list-group-item">
+							<b>Signatures : </b><%=@event.signatures %>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-md-3">
+
+					<h3>Attendees </h3>
+					<ul class="list-group">
+						<% @event.guests.each do |guest| %>
+						<li class="list-group-item"> <%= guest.full_name %> </li>
+						<% end %>
+						<li class="list-group-item">
+							<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="row">
+
+			</div>
+		</div>
+
 	</div>
-
-</div>
-
-</div>

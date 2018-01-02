@@ -1,9 +1,5 @@
+$(document).ready(function() {
+  $.fn.datepicker.defaults.format = 'dd-M-yyyy';
 
-$(document).ready(function(){
-$.fn.datepicker.defaults.format = "dd-M-yyyy";
-
-$.fn.datepicker.defaults.startDate= '+1d';
-
-
-
+  $.fn.datepicker.defaults.startDate = '0d';
 });
