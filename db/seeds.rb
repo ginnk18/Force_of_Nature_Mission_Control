@@ -1,22 +1,22 @@
 ##############USER CATEGORY! DO NOT RESEED UNLESS CRITICAL!!!!###########
-# UserCategory.destroy_all
-# TeamCategory.destroy_all
-# EventCategory.destroy_all
+UserCategory.destroy_all
+TeamCategory.destroy_all
+EventCategory.destroy_all
 User.destroy_all
 Team.destroy_all
 Event.destroy_all
 #############################################################################
-# UserCategory.create(name:'Guest')
-# UserCategory.create(name: 'General Volunteer')
-# UserCategory.create(name: 'Team Lead')
-# UserCategory.create(name: 'Admin')
-# TeamCategory.create(name: 'Regional')
-# TeamCategory.create(name: 'Operational')
-# EventCategory.create(name: 'Canvas')
-# EventCategory.create(name: 'Slideshow')
-# EventCategory.create(name: 'Meeting')
-# EventCategory.create(name: 'PhoneBank')
-# EventCategory.create(name: 'Other')
+UserCategory.create(name:'Guest')
+UserCategory.create(name: 'General Volunteer')
+UserCategory.create(name: 'Team Lead')
+UserCategory.create(name: 'Admin')
+TeamCategory.create(name: 'Regional')
+TeamCategory.create(name: 'Operational')
+EventCategory.create(name: 'Canvas')
+EventCategory.create(name: 'Slideshow')
+EventCategory.create(name: 'Meeting')
+EventCategory.create(name: 'PhoneBank')
+EventCategory.create(name: 'Other')
 
 ##########################################################################
 
