@@ -16,9 +16,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+
 private
 
   def authenticate_user!
+    byebug
     if !user_signed_in?
       flash[:notice] = 'You must be signed in to perform that action.'
       redirect_to new_session_path #, alert: 'You must be signed in to perform that action.'
