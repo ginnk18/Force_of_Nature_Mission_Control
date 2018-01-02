@@ -43,13 +43,6 @@
     <p><%= @event.team&.name %></p>
 	</div>
 
-				<% if current_user %>
-				<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
-				<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-warning' %>
-				<%= link_to('Delete',
-					event_path(@event),data: {confirm: 'Are you sure?'},method: :delete, class: 'btn btn-danger') %>
-					<% end %>
-					<% end %>
 				</div>
 
 				<%# `&.` is the safe navigation operator. It can be used to avoid
@@ -64,10 +57,6 @@
 							<%= @lead&.full_name %><br></p>
 							<p><b>Data Captain : </b><br>
 							<%= @data_captain&.full_name %><br></p>
-							<p><b>Created By : </b><br>
-							<%= @event.creator&.full_name %><br></p>
-							<p><b>Team : </b><br>
-							<%= @event.team&.name %></p>
 
 					<h5 class='mt-3'>Targets</h5>
 					<ul class="list-group">
