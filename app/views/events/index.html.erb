@@ -1,7 +1,7 @@
 
 <div class="container-fluid cal-con">
-	<div class="row">
-		<div class="col-lg">
+	<div class="row d-flex justify-content-center">
+		<div class="col-lg-11">
 	<h1 class="page-head">All Events</h1>
     <div id="calendar"></div>
 
@@ -39,16 +39,5 @@
 	</div>
 
 
-<div class="col-lg-3">
-	<div class="list-group" style="margin-top:5rem">
-	<% @events.each do |event| %>
-	<% @anevent = event.name.to_s + " - " + event.date.to_s %>
-	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
-	<% end %>
-    <% if current_user && current_user.user_category.name != 'Guest' %>
-	 <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div>
-     <% end %>
-</div>
-</div>
 </div>
 </div>

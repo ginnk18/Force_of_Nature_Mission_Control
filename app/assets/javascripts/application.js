@@ -36,25 +36,25 @@ $(document).ready(function() {
                         $(this).css('border-color', 'red');
                         //window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
                         $('#eventShow').modal('toggle');
-                        setTimeout( ()=>{
+                        setTimeout( function(){
                         $( '#ModalLabel' ).html("Event: " + calEvent.title);
                         $( '#starttime' ).html("Start Time: " + calEvent.start._d)
                         $( '#endtime' ).html("End Time: " + calEvent.end._d);
                         $('#location').html("Location: " + calEvent.location);;
 
 
-                        $('#moredetails').on('click', (event)=>{
-                        window.location.href = `http://localhost:3000/eventscal/${calEvent.id}`;
+                        $('#moredetails').on('click', function(event){
+                        window.location.href = 'http://fonmissioncontrol.herokuapp.com/eventscal/' + calEvent.id;
 
                         });
-                        $('#eventsignupform').on('submit', (event)=> {
+                        $('#eventsignupform').on('submit', function(event) {
                         event.preventDefault();
-                        let email = event.target.querySelector('#email_email').value;
-                        fetch(`/newsignup/${calEvent.id}`, { method: 'post',
+                        var email = event.target.querySelector('#email_email').value;
+                        fetch('/newsignup/' + calEvent.id, { method: 'post',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
                         },
-                        body: email  }).then((res) => res.json()).then((data)=> $('#message').html(data.message));
+                        body: email  }).then(function(res) { return res.json()}).then(function(data) { return $('#message').html(data.message)});
                         });
                         },10 )
                         return false;

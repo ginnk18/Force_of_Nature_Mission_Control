@@ -11,11 +11,15 @@
 		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
 
+	<% if current_user.user_category == "Admin" || current_user.user_category == "Team Lead" %>
+
 	<div class="add-team-button">
 		<%= link_to 'Add a team', new_team_path, style: 'color: black' %>
 	</div>
+  <% else %>
+	<p> Don't see your team? Contact _____________ (email). </p>
+<% end %>
 </div>
-
 </div>
 
 	<div class="col-md">
