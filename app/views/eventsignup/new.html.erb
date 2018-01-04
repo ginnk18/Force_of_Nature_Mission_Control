@@ -14,10 +14,14 @@
                 <%= text_field(:phone_number, "phone number", class: "form-control") %>
                 <%= label(:additional_info, "Anything else we should know?", class:'form-label')%>
                 <%= text_field(:additional_info, "anything else we should know", class: "form-control") %>
-                <%= radio_button_tag(:previous_volunteer, true, class: "form-control") %>
-                <%= label_tag(:previous_volunteer_true, "I have volunteered with Force of Nature before", class:'form-label') %>
-                <%= radio_button_tag(:previous_volunteer, false, class: "form-control") %>
-                <%= label_tag(:previous_volunteer_false, "I am a new volunteer", class:'form-label') %>
+                <div>
+                  <%= radio_button_tag(:previous_volunteer, true, class: "form-control") %>
+                  <%= label_tag(:previous_volunteer_true, "I have volunteered with Force of Nature before", class:'form-label') %>
+                </div>
+                <div>
+                  <%= radio_button_tag(:previous_volunteer, false, class: "form-control") %>
+                  <%= label_tag(:previous_volunteer_false, "I am a new volunteer", class:'form-label') %>
+                </div>
             </div>
             <%= submit_tag "Sign up!", class: "btn btn-success pull-right"%>
         <% end %>
