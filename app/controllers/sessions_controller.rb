@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by(email: sessions_params[:email])
+        
         if user && user.authenticate(sessions_params[:password])
             session[:user_id] = user.id
             flash[:notice] = 'Welcome! Please check-out new events in events calendar'
