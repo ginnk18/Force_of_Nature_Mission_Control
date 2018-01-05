@@ -7,6 +7,29 @@
 
   </div>
  <div class="row">
+    <h3>New Sign Ups</h3>
+
+    <div class='card col-md-12' style="border:0">
+            <div class='card-header d-flex'><strong> New Sign Ups (Guests): </strong><%= @stats[:guests] %></div>
+                    <% @guest_users.each do |volunteer| %>
+                        <%= first_event = UserEvent.where(user: volunteer). %>
+                        <div class="mt-2 mb-2 border border-bottom-1">
+                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
+                        <br>
+                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
+                        <br>
+                        <strong class="pl-2">Date Signed up: </strong> <%= volunteer.created_at.strftime('%A %B %d %Y') %>
+                        <%= form_tag("upcat/#{volunteer.id}", method: :patch, class: "pull-right") do %>
+                       <div class="field pb-1 pl-2">
+                           <%= label(:user_category, "user_category") %>
+                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                           <%= submit_tag "Submit", class:"btn btn-primary"%>
+                       </div>
+                    </div>
+                        <% end %>
+                    <% end %>
+    </div>
+
    <h3 id="users">Users</h3>
  </div>
 
@@ -43,23 +66,6 @@
                         <%= submit_tag "Submit", class:"btn btn-primary" %>
                         <% end %>
                        </div>
-                    <% end %>
-            </div>
-            <div class='card col-md-12' style="border:0">
-            <div class='card-header d-flex'><strong> Guests: </strong><%= @stats[:guests] %></div>
-                    <% @guest_users.each do |volunteer| %>
-                        <div class="mt-2 mb-2 border border-bottom-1">
-                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
-                        <br>
-                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
-                        <%= form_tag("upcat/#{volunteer.id}", method: :patch, class: "pull-right") do %>
-                       <div class="field pb-1 pl-2">
-                           <%= label(:user_category, "user_category") %>
-                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
-                           <%= submit_tag "Submit", class:"btn btn-primary"%>
-                       </div>
-                    </div>
-                        <% end %>
                     <% end %>
             </div>
         </div>
