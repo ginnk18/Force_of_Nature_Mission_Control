@@ -5,25 +5,22 @@
 
 		<div class="col-md">
 
-	<h2>Your Teams: </h2>
+	<h2 class="head">Your Teams: </h2>
 <div class="list-group">
 	<% current_user.teams.each do |team| %>
 		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
 
-	<% if current_user.user_category == "Admin" || current_user.user_category == "Team Lead" %>
-
+<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
 	<div class="add-team-button">
 		<%= link_to 'Add a team', new_team_path, style: 'color: black' %>
 	</div>
-  <% else %>
-	<p> Don't see your team? Contact _____________ (email). </p>
 <% end %>
 </div>
 </div>
 
 	<div class="col-md">
-		<h3>Operational Teams</h3>
+		<h3 class="head">Operational Teams</h3>
 	<div class="list-group ">
 		<% @operational_teams.each do |team| %>
 			<div class="list-group-item team"> <%= team.name %> </div>
@@ -32,7 +29,7 @@
 </div>
 
 	<div class="col-md">
-		<h2>Regional Teams</h2>
+		<h2 class="head">Regional Teams</h2>
    <div class="list-group">
 		<% @regional_teams.each do |team| %>
 			<div class="list-group-item team"> <%= team.name %> </div>
