@@ -55,23 +55,38 @@
 
 				<div class="col-md-3">
 
-							<p><b>Captain : </b><br>
+							<p><b>Canvass Captain : </b><br>
 							<%= @lead&.full_name %><br></p>
 							<p><b>Data Captain : </b><br>
 							<%= @data_captain&.full_name %><br></p>
 
-					<h5 class='mt-3'>Targets</h5>
-					<ul class="list-group">
-						<li class="list-group-item">
-							<b>Sign Ups : </b><%= @event.sign_ups %>
-						</li>
-						<li class="list-group-item">
-							<b>Show Ups : </b><%=@event.show_ups %>
-						</li>
-						<li class="list-group-item">
-							<b>Signatures : </b><%=@event.signatures %>
-						</li>
-					</ul>
+					<h4 class='mt-3'>Targets</h4>
+					<table class="table table-striped">
+						<thead class="thead-inverse">
+							<tr>
+								<th></th>
+								<th>Goals</th>
+								<th>Outcome</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Sign Ups: </td>
+								<td><%= @event.sign_up_goals %></td>
+								<td><%= @event.sign_up_outcome %></td>
+							</tr>
+							<tr>
+								<td>Show Ups: </td>
+								<td><%= @event.show_up_goals %></td>
+								<td><%= @event.show_up_outcome %></td>
+							</tr>
+							<tr>
+								<td>Signatures: </td>
+								<td><%= @event.signature_goals %></td>
+								<td><%= @event.signature_outcome %></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 
 				<div class="col-md-3">
