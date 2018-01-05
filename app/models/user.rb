@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    after_initialize :set_defaults, unless: :persisted?    
+    after_initialize :set_defaults, unless: :persisted?
     has_secure_password :validations => false
 
     #A user can create many (has many) events, and also can belong to many events
@@ -17,6 +17,8 @@ class User < ApplicationRecord
     #Users can be general volunteers, team leads or admins
     belongs_to :user_category
 
+    
+
     #A user will usually just belong to one team (most general vols will belong to 1
     # regional team - but some users (team leads) can belong to a regional team and an
     #operational team)
@@ -25,18 +27,14 @@ class User < ApplicationRecord
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
-    validates :first_name, :last_name, presence: true, if: :is_approved?
+    validates :first_name, :last_name, presence: true
     before_validation :set_defaults
 
 	def full_name
 		"#{first_name} #{last_name}"
 	end
-	
+
 	private
-    
-	def is_approved?
-		approved
-	end
 
 	def set_defaults
 		@guest_category = UserCategory.where(name: 'Guest').first

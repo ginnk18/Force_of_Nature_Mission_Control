@@ -1,42 +1,54 @@
 <%=simple_form_for @event do |f|%>
-<%= f.input :name, label: 'Event Name'%>
+<%= f.input :name, label: 'Canvass Name'%>
 
 <div class="row">
   <div class="col-4">
     <%= f.label :date %><p>
       <!-- Goto date.js for changing defaults  -->
       <%= f.text_field :date, "data-provide" => 'datepicker'%>
-      <script>
 
-</script>
     </div>
     <div class="col-4">
-      <%= f.input :start_time, label: 'Start Time:'%>
+      <%= f.input :start_time, label: 'Start Time:', ampm: true%>
     </div>
     <div class="col-4">
-      <%= f.input :end_time, label: 'End Time'%>
+      <%= f.input :end_time, label: 'End Time',ampm: true%>
     </div>
   </div>
-  <%= f.input :location, label: 'Location'%>
+  <div class="row">
+<div class="col-6">
+  <%= f.input :location, label: 'Location (Address)'%>
   <%= f.input :additional_info, label: 'Additional Information'%>
   <%= f.input :attachment_url, label: 'Attachment URL'%>
-
-  <!-- Selecting an event category -->
+</div>
+<div class="col-6">
+  <h4>Targets</h4>
+  <%= f.input :sign_ups, label: 'Sign Ups'%>
+  <%= f.input :show_ups, label: 'Show Ups'%>
+  <%= f.input :signatures, label: 'Signatures'%>
+</div>
+</div>
+  <!-- Selecting an canvas captain -->
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <%= f.label :lead_id %><p>
         <%= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
       </div>
+      <!-- Selecting an data captain -->
+      <div class="col-3">
+        <%= f.label :data_captain_id %><p>
+          <%= f.select :data_captain_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
+        </div>
 
       <!-- Selecting a leader for that particular event (from all the team leads) -->
 
-      <div class="col-4">
+      <div class="col-3">
         <%= f.label :event_category_id %><p>
           <%= f.select :event_category_id, @event_categories.map { |category| [category.name, category.id] } %>
         </div>
 
         <!-- Selecting a team that this event belongs to  -->
-        <div class="col-4">
+        <div class="col-3">
           <%= f.label :team_id %><p>
             <%= f.select :team_id, @teams.map { |team| [team.name, team.id] } %>
           </div>
