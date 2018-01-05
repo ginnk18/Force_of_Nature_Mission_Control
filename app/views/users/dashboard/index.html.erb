@@ -1,11 +1,22 @@
 <div class="container-fluid">
-  <h2>User Dashboard</h2>
+  <h2 class="head">User Dashboard</h2>
 
   <div class="alert alert-info"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>"Messages here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum." </div>
 
+    <div class="alert alert-info"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>"Messages here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum." </div>
+
   <div class="row">
+    <div class="col-md">
+      <div class="card dash">
+        <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+        <h3> Briefings </h3>
+      </div>
+    </div>
+
     <div class="col-md">
       <%= link_to (events_path), class: 'content-link' do%>
       <div class="card dash">
@@ -15,25 +26,18 @@
       <% end %>
       <div class="card details">
 
-    	<div class="list-group">
-    	<% @events.each do |event| %>
-    	<% @anevent = event.name.to_s + " - " + event.date.strftime('%b %-d %Y at %l:%M %P ') %>
-    	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
-    	<% end %>
-       <%= link_to 'See All Events', events_path, class:"btn btn-dark btn-block" %>
-       	<% if current_user.user_category == "Admin" || current_user.user_category == "Team Lead" %>
-    	 <%= link_to 'Add Event', new_event_path, class:"btn btn-primary btn-block" %>
-        <% end %>
-      </div>
-     </div>
-   </div>
-    <div class="col-md">
-      <div class="card dash">
-        <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
-        <h3> Briefings </h3>
+        <div class="list-group">
+          <% @events.each do |event| %>
+          <% @anevent = event.name.to_s + " - " + event.date.strftime('%b %-d %Y at %l:%M %P ') %>
+          <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
+          <% end %>
+          <%= link_to 'See All Events', events_path, class:"btn btn-dark btn-block" %>
+          <% if current_user.user_category == "Admin" || current_user.user_category == "Team Lead" %>
+          <%= link_to 'Add Event', new_event_path, class:"btn btn-primary btn-block" %>
+          <% end %>
+        </div>
       </div>
     </div>
-
     <div class="col-md">
 
       <%= link_to (teams_path), class: 'content-link' do%>

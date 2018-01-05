@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="col-md-9">
 	<div class="row d-flex justify-content-center">
-		<div class="col-md">
+		<div class="col-md content">
 		<h1 class="event"><%= @event.name %></h1>
 		
 		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
@@ -34,7 +34,7 @@
 		    it. If the object is `nil`, then it will immediately return `nil`.
 		%>
 
-  <div class="col-md-3">
+  <div class="col-md-3 content">
 		<h3>Team Lead </h3>
 		<p> <%= @lead&.full_name %></p>
 		<h3>Created By </h3>
@@ -43,7 +43,9 @@
     <p><%= @event.team&.name %></p>
 	</div>
 
-				</div>
+
+  <div class="col-md-3 content">
+
 
 				<%# `&.` is the safe navigation operator. It can be used to avoid
 				"undefined method `...' for nil:NilClass" errors. When used instead of `.`,
@@ -100,8 +102,10 @@
 					</ul>
 				</div>
 
-			</div>
-		</div>
+	</div>
+
+	</div>
+
 		<div class="col-md-3">
 			<div class="row">
 
@@ -109,3 +113,4 @@
 		</div>
 
 	</div>
+</div> <!-- end of container -->

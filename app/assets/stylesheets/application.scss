@@ -24,10 +24,38 @@
 
 
 
+body {
+  background-image: image-url('darkspace.jpg');
+  background-size: cover;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+h1.head, h2.head, h3.head, h4.head, h5.head {
+  color: white;
+}
+
+
+.site-title {
+  font-size: 25px;
+  color: #BF55EC;
+}
+
+#calendar {
+  background-color: white;
+  padding: 1rem;
+}
+
+label, .control-label {
+  color:white;
+}
+
 
 .btn-primary {
-  background: #888888;
-  border-color: #293d52;
+  background: #BF55EC;
+  color: white;
 }
 
 .row {
@@ -49,7 +77,7 @@ body {
     position: absolute;
     left: 0 ; right: 0; bottom: 0;
     height:130px;
-    background-color: #293d52;
+    background-color: black;
     color: white;
     padding-top:5px;;
 
@@ -116,7 +144,6 @@ body {
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
-    background-color: #888888;
 }
 
 .fa-twitter:hover {
@@ -130,7 +157,7 @@ body {
        -moz-transition: .5s;
        -webkit-transition: .5s;
        transition: .5s;
-       background-color: #293d52;
+       background-color: black;
    }
 
 
@@ -145,7 +172,7 @@ body {
        -moz-transition: .5s;
        -webkit-transition: .5s;
        transition: .5s;
-       background-color: #293d52;
+       background-color: black;
    }
 
    .fa-youtube:hover {
@@ -160,7 +187,7 @@ body {
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
-    background-color: #293d52;
+    background-color: black;
 }
 
 .fa-google-plus:hover {
@@ -174,7 +201,7 @@ body {
       -moz-transition: .5s;
       -webkit-transition: .5s;
       transition: .5s;
-      background-color: #293d52;
+      background-color: black;
   }
 
   .fa-linkedin:hover {
@@ -195,7 +222,7 @@ body {
 
 
 .navbar navbar-expand-md {
-  background-color: #293d52;
+  background-color: black;
 }
 .navbar ul li a {
 color: #fff;
@@ -244,7 +271,7 @@ h1.page-head {
 }
 
 #fixed {
-  background: #293d52;
+  background: black;
   background-attachment: scroll;
   height: 300px;
   padding-right: 100px;
@@ -260,6 +287,7 @@ h1.page-head {
   font-weight: bold;
 }
 .navbar {
+  font-family: 'Orbitron', sans-serif;
   // background-image: image-url('bear.png');
 }
 
@@ -309,7 +337,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #293d52;
+        background-color: black;
     }
 
     .fa-facebook:hover {
@@ -323,7 +351,6 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #293d52;
     }
 
     .fa-twitter:hover {
@@ -337,7 +364,6 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #293d52;
     }
 
     .fa-rss:hover {
@@ -351,7 +377,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #293d52;
+        background-color: black;
     }
 
     .fa-youtube:hover {
@@ -365,7 +391,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #293d52;
+        background-color: black;
     }
 
     .fa-linkedin:hover {
@@ -379,7 +405,7 @@ h1.page-head {
         -moz-transition: .5s;
         -webkit-transition: .5s;
         transition: .5s;
-        background-color: #293d52;
+        background-color: black;
     }
 
     .fa-google-plus:hover {
@@ -392,13 +418,16 @@ h1.page-head {
   min-height: 500px;
 }
 
-.card.dash {
+.card.dash  {
   display: flex;
   padding: 15px 5px;
   margin: 15px 5px;
   border: 2px black solid;
   text-align: center;
+  background-color: black;
+  color: #BF55EC;
 }
+
 
 .card.item {
   display: flex;
@@ -408,13 +437,15 @@ h1.page-head {
   text-align: center;
 }
 
+.card.dash:hover {
+  background: white;
+  color: black;
+}
+
 table {
   text-align: left;
 }
 
-.card.dash:hover {
-  background-color: rgb(239, 239, 239);
-}
 
 .content-link {
   text-decoration: none;
@@ -423,7 +454,7 @@ table {
 
 .content-link:hover {
   text-decoration: none;
-  color: #293d52;
+  color: black;
 }
 
 .card.details {
@@ -435,6 +466,11 @@ table {
  border-left: 2px black solid;
  border-right: 2px black solid;
  border-bottom: 2px black solid;
+}
+
+.content {
+  background-color: white;
+  padding: 1rem;
 }
 
 .files {
@@ -460,6 +496,11 @@ table {
   padding: 10px;
   display: flex;
   justify-content: center;
+  background: white;
+}
+
+.add-team-button:hover {
+  background-color: #f5f5f5;
 }
 
 .adminteamheader{
