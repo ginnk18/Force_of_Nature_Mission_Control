@@ -24,15 +24,19 @@
 
 
 
-body {git
+body {
   background-image: image-url('darkspace.jpg');
   background-size: cover;
 }
 
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Orbitron', sans-serif;
-
 }
+
+h1.head, h2.head, h3.head, h4.head, h5.head {
+  color: white;
+}
+
 
 .site-title {
   font-size: 25px;
@@ -42,6 +46,10 @@ h1,h2,h3,h4,h5,h6 {
 #calendar {
   background-color: white;
   padding: 1rem;
+}
+
+label, .control-label {
+  color:white;
 }
 
 
@@ -136,7 +144,6 @@ body {
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
-    background-color: #888888;
 }
 
 .fa-twitter:hover {
@@ -411,7 +418,7 @@ h1.page-head {
   min-height: 500px;
 }
 
-.card.dash {
+.card.dash  {
   display: flex;
   padding: 15px 5px;
   margin: 15px 5px;
@@ -489,6 +496,11 @@ table {
   padding: 10px;
   display: flex;
   justify-content: center;
+  background: white;
+}
+
+.add-team-button:hover {
+  background-color: #f5f5f5;
 }
 
 .adminteamheader{
