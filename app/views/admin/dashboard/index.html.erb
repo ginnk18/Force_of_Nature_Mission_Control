@@ -12,6 +12,17 @@
 
     <div class='card col-md-12' style="border:0">
             <div class='card-header d-flex'><strong>Guests:&nbsp;</strong> <%= @stats[:guests] %></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Additional Info</th>
+                            <th>Previous Volunteer?</th>
+                        </tr>
+                    </thead>
+                </table>
                     <% @guest_users.each do |volunteer| %>
                         <% first_event = volunteer.attended_events.first %>
                         <div class="mt-2 mb-2 border border-bottom-1">
