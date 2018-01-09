@@ -1,9 +1,8 @@
 <div class="container">
-	<div class="col-md-9">
 	<div class="row d-flex justify-content-center">
 		<div class="col-md content">
 		<h1 class="event"><%= @event.name %></h1>
-		
+
 		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
   <div class="details">
 		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
@@ -13,7 +12,7 @@
 	</div>
 
 		<p> <%= @event.additional_info %> </p>
-		
+
 		<p> <%= @event.attachment_url %></p>
 
 	<% if current_user %>
@@ -41,7 +40,18 @@
 		<p> <%= @event.creator&.full_name %></p>
     <h3>Team</h3>
     <p><%= @event.team&.name %></p>
-	</div>
+
+
+		<h3>Attendees </h3>
+		<ul class="list-group">
+			<% @event.guests.each do |guest| %>
+			<li class="list-group-item"> <%= guest.full_name %> </li>
+			<% end %>
+			<li class="list-group-item">
+				<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
+			</li>
+		</ul>
+</div>
 
 
   <div class="col-md-3 content">
@@ -53,7 +63,6 @@
 				it. If the object is `nil`, then it will immediately return `nil`.
 				%>
 
-				<div class="col-md-3">
 
 							<p><b>Captain : </b><br>
 							<%= @lead&.full_name %><br></p>
@@ -74,25 +83,7 @@
 					</ul>
 				</div>
 
-				<div class="col-md-3">
 
-					<h3>Attendees </h3>
-					<ul class="list-group">
-						<% @event.guests.each do |guest| %>
-						<li class="list-group-item"> <%= guest.full_name %> </li>
-						<% end %>
-						<li class="list-group-item">
-							<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
-						</li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="row">
-
-			</div>
 		</div>
 
 	</div>
