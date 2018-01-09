@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :teams
   resources :events, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
+     get('/share', to: 'eventsignup#share', as: :shareevent)
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
      post('newsignup', to: 'eventsignup#create')
   end

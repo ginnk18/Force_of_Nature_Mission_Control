@@ -1,6 +1,6 @@
 <div class="row d-flex justify-content-center align-items-center">
   <div class="col-md-5">
-      <h2>Sign-up for this event!</h2>
+      <h2 class="head">Sign-up for this event!</h2>
 
         <%= form_tag("newsignup", method: "post", class:"form") do %>
             <div class="form-group">
@@ -15,7 +15,7 @@
                 <%= label(:additional_info, "Anything else we should know?", class:'form-label')%>
                 <%= text_field(:additional_info, "anything else we should know", class: "form-control") %>
                 <%= radio_button_tag(:previous_volunteer, true, class: "form-control") %>
-                <%= label_tag(:previous_volunteer_true, "I have volunteered with Force of Nature before", class:'form-label') %>
+                <%= label_tag(:previous_volunteer_true, "I have volunteered with Force of Nature before", class:'form-label') %> <br>
                 <%= radio_button_tag(:previous_volunteer, false, class: "form-control") %>
                 <%= label_tag(:previous_volunteer_false, "I am a new volunteer", class:'form-label') %>
             </div>
