@@ -97,18 +97,6 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="col-md-3">
-
-					<h3>Attendees </h3>
-					<ul class="list-group">
-						<% @event.guests.each do |guest| %>
-						<li class="list-group-item"> <%= guest.full_name %> </li>
-						<% end %>
-						<li class="list-group-item">
-							<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
-						</li>
-					</ul>
-				</div>
 
 	</div>
 
