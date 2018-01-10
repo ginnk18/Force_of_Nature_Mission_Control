@@ -83,6 +83,7 @@ class EventsignupController < ApplicationController
       def share
       end
 
+      # this is for admin or team lead removing guests on the event show page
       def destroy
           userevent = UserEvent.find params[:event_id] # can't figure out why the URL is 
           #switching the event_id and the userevent id, so here 'event_id' is actually the
