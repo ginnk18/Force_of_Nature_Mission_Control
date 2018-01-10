@@ -1,7 +1,7 @@
 class EventsignupController < ApplicationController
 
-    skip_before_action :verify_authenticity_token  
-    before_action :find_event, only: [:new, :create]
+    skip_before_action :verify_authenticity_token
+    before_action :find_event, only: [:new, :create, :share]
 
     def new
       if session[:user_id]
@@ -13,7 +13,7 @@ class EventsignupController < ApplicationController
           remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
           ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
-          redirect_to event_path(@event), notice: 'Thanks for signing up!'
+          redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
       else
           redirect_to events_path, notice: 'You have already signed up!'
       end
@@ -33,8 +33,8 @@ class EventsignupController < ApplicationController
             signup = UserEvent.new(user: user, event: @event )
         else
             user = User.new(
-                    first_name: first_name, 
-                    last_name: last_name, 
+                    first_name: first_name,
+                    last_name: last_name,
                     email: email,
                     phone_number: phone_number,
                     additional_info: additional_info,
@@ -51,7 +51,7 @@ class EventsignupController < ApplicationController
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
-            redirect_to event_path(@event), notice: 'Thanks for signing up!'
+            redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
         else
             redirect_to events_path, notice: 'You have already signed up!'
         end
@@ -69,7 +69,7 @@ class EventsignupController < ApplicationController
             user = User.new(email: email, user_category_id: 1)
             user.save
             signup = UserEvent.new(user: user ,event: @event )
-        end 
+        end
 
         if signup.save
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
@@ -79,6 +79,9 @@ class EventsignupController < ApplicationController
             render json: { message: "You have already signed up!"}
         end
     end
+
+      def share
+      end
 
     private
 

@@ -27,6 +27,8 @@
 body {
   background-image: image-url('darkspace.jpg');
   background-size: cover;
+  background-attachment: fixed;
+  background-color: black;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -130,7 +132,6 @@ body {
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
-    background-color: #888888;
 }
 
 .fa-facebook:hover {
@@ -187,7 +188,6 @@ body {
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
-    background-color: black;
 }
 
 .fa-google-plus:hover {
@@ -201,7 +201,6 @@ body {
       -moz-transition: .5s;
       -webkit-transition: .5s;
       transition: .5s;
-      background-color: black;
   }
 
   .fa-linkedin:hover {
@@ -298,7 +297,7 @@ h1.page-head {
   margin-top: 1rem;
 }
 .details p {
-  line-height: 1.2em;
+  line-height: 1.4em;
 }
 
 

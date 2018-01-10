@@ -121,6 +121,7 @@ class EventsController < ApplicationController
     redirect_to admin_dashboard_index_path
   end
 
+
   def translate
       @event = Event.find_by google_event_id: params[:id]
       redirect_to event_path(@event)
