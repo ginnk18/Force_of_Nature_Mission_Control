@@ -47,9 +47,23 @@
 			<% @event.guests.each do |guest| %>
 			<li class="list-group-item"> <%= guest.full_name %> </li>
 			<% end %>
+	<% if current_user %>
+		<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
+			<button 
+				class="mt-2 btn btn-primary"
+				data-toggle="modal"
+				data-target="#manageGuests"
+			>Manage or Email Guests</button>
+		<% else %>
 			<li class="list-group-item">
 				<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
 			</li>
+		<% end %>
+	<% else %>
+			<li class="list-group-item">
+				<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
+			</li>
+	<% end %>
 		</ul>
 </div>
 
@@ -109,4 +123,50 @@
 		</div>
 
 	</div>
+
+	<!-- Modal for Managing and Emailing Guests -->
+	<div class="modal fade" id="manageGuests" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="manageGuestsLabel">Manage Guests</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <table class="table">
+	        	<thead>
+	        		<tr>
+	        			<th>Name</th>
+	        			<th>Email</th>
+	        			<th>Phone Number</th>
+	        			<th>Remove</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<% @event.guests.each do |guest| %>
+		        		<tr>
+		        			<td><%= guest.full_name %></td>
+		        			<td><%= guest.email %></td>
+		        			<td><%= guest.phone_number %></td>
+		        			<% user_event_record = UserEvent.where(user: guest.id).where(event: @event.id).first %>
+		        			<td><%= link_to fa_icon('times'), event_removeguest_path(user_event_record), method: :delete, data: {confirm: "Are you sure you want to remove #{guest.full_name}?"} %></td>
+		        		</tr>
+	        		<% end %>
+	        	</tbody>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-primary">Email All Personnel</button>
+	      	<button type="button" class="btn btn-primary">Add Personnel</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Save & Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div> <!-- end of container -->
+
+
+ <%# user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
+                   <%#= link_to fa_icon('times 2x'), userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'}, class: "pull-right" %>

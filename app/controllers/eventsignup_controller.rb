@@ -83,6 +83,22 @@ class EventsignupController < ApplicationController
       def share
       end
 
+      def destroy
+          userevent = UserEvent.find params[:event_id] # can't figure out why the URL is 
+          #switching the event_id and the userevent id, so here 'event_id' is actually the
+          #ID for the UserEvent record I want to delete, and the id below is for the event I
+          #am redirecting back to
+          event = Event.find params[:id]
+          userevent.destroy
+          redirect_to event_path(event)
+      end
+
+    #       def destroy
+    #     userteam = UserTeam.find params[:id]
+    #     userteam.destroy
+    #     redirect_to admin_dashboard_index_path
+    # end
+
     private
 
     def find_event
