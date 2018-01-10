@@ -6,7 +6,7 @@ class Admin::DashboardController < Admin::ApplicationController
     @team_lead_id = UserCategory.where(name: 'Team Lead')
     @lead_users = User.where(user_category: @team_lead_id)
     @guest_id = UserCategory.where(name: 'Guest')
-    @guest_users = User.where(user_category: @guest_id)
+    @guest_users = User.where(user_category: @guest_id).order(created_at: :desc)
     @gen_vol_id = UserCategory.where(name: 'General Volunteer')
     @gen_vol_users = User.where(user_category: @gen_vol_id)
     @stats = {
