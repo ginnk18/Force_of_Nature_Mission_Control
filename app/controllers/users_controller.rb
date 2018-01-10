@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
-  before_action :find_user, only: [:edit, :update, :changestatus]
+  before_action :find_user, only: [:edit, :update, :changestatus, :contacted]
   before_action :authorize_user!, except: [:new, :create, :dashboard]
 
   def new
@@ -34,6 +34,12 @@ class UsersController < ApplicationController
   
   def changestatus
     @user.user_category = UserCategory.find_by_name params["user_category"]
+    @user.save
+    redirect_to admin_dashboard_index_path
+  end
+
+  def contacted
+    @user.contacted = true
     @user.save
     redirect_to admin_dashboard_index_path
   end

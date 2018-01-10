@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
   end
   patch("/admin/upcat/:id", to: 'users#changestatus')
+  patch("/admin/contacted/:id", to: 'users#contacted')
   match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 end
