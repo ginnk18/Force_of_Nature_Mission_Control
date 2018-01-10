@@ -34,7 +34,7 @@
           </li>
           <% if current_user %>
             <span class="nav-link" style="color:white;"><%= fa_icon('slack')%></span>
-            <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white' %>
+            <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white', target: '_blank' %>
             <% if current_user.user_category.name === 'Admin' %>
               <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
               <% else %>
