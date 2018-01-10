@@ -121,6 +121,7 @@ class EventsController < ApplicationController
     redirect_to admin_dashboard_index_path
   end
 
+
   def translate
       @event = Event.find_by google_event_id: params[:id]
       redirect_to event_path(@event)
@@ -136,8 +137,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_ups,
-      :show_ups,:signatures)
+      :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_up_goals,
+      :show_up_goals,:signature_goals)
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and
     # all query params. It's as if we merged `request.query`, `request.params`

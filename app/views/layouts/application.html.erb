@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Force of Nature</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -14,14 +15,16 @@
   <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
       <nav class="navbar navbar-expand-md" style="background: linear-gradient(black, transparent);">
     <% else %>
-      <nav class="navbar navbar-expand-md" style="background-color:#293d52" >
+      <nav class="navbar navbar-expand-md" style="background-color:black" >
     <% end %>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="/"> <%=image_tag("logo-white.png")%> </a>
+      <a class="navbar-brand" href="/"> <h1 class="site-title"> Force of Nature Mission Control </h1> </a>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+
+
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item ">
             <%= link_to 'Home', root_path, class: "nav-link" %>
           </li>
@@ -29,21 +32,18 @@
           <li class="nav-item">
             <%= link_to 'Calendar', events_path, class: "nav-link" %>
           </li>
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
           <% if current_user %>
             <span class="nav-link" style="color:white;"><%= fa_icon('slack')%></span>
-            <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white' %>
+            <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white', target: '_blank' %>
             <% if current_user.user_category.name === 'Admin' %>
               <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
               <% else %>
                 <%= link_to 'User Dashboard', user_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
             <% end %>
             <% if current_user.first_name %>
-            <li class="nav-item nav-link" style="color:white"> Welcome, <%= current_user.full_name %>  </li>
+            <li class="nav-item nav-link" style="color:#BF55EC"> Welcome, <%= current_user.full_name %>  </li>
             <% else %>
-              <li class="nav-item nav-link" style="color:white"> Welcome Guest</li>
+              <li class="nav-item nav-link" style="color:#BF55EC"> Welcome Guest</li>
             <% end %>
             <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
             <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>

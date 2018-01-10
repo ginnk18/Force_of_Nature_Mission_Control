@@ -23,7 +23,7 @@ EventCategory.create(name: 'Other')
 
 
 
-PASSWORD = 'missioncontrol'
+PASSWORD = 'forceofnature'
 super_user_category = UserCategory.where(name: "Admin").first
 
 super_user = User.create(
