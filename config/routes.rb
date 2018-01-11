@@ -12,10 +12,10 @@ Rails.application.routes.draw do
      get('/share', to: 'eventsignup#share', as: :shareevent)
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
      post('newsignup', to: 'eventsignup#create')
+     post('adminsignup', to: 'eventsignup#adminsignup')
      delete('/:id', to: 'eventsignup#destroy', as: :removeguest)
   end
 
-  # delete("events/:event_id/:id", to: 'eventsignup#destroy')
   resources :userteams, only:[:destroy, :update, :edit]
   post('newsignup/:id', to: 'eventsignup#modalsignup')
   get('eventscal/:id', to: 'events#translate', as: :eventshow)

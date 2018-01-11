@@ -156,10 +156,16 @@
 	        		<% end %>
 	        	</tbody>
 	        </table>
+	        <h4>Add Personnel</h4>
+	        <%= form_for("events/#{@event.id}/adminsignup") do |f| %>
+	        	<%= f.collection_select :user_ids, User.order(:last_name), :id, :full_name,
+	        								{},
+	        								{multiple: true, class: 'chosen-select'} %>
+	        	<%= f.submit 'Add Personnel', class: "btn btn-primary" %>
+	        <% end %>
 	      </div>
 	      <div class="modal-footer">
 	      	<button type="button" class="btn btn-primary">Email All Personnel</button>
-	      	<button type="button" class="btn btn-primary">Add Personnel</button>
 	        <button type="button" class="btn btn-primary" data-dismiss="modal">Save & Close</button>
 	      </div>
 	    </div>
@@ -168,5 +174,13 @@
 </div> <!-- end of container -->
 
 
- <%# user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
-                   <%#= link_to fa_icon('times 2x'), userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'}, class: "pull-right" %>
+<%#= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
+
+ <%#= form.collection_select :tag_ids, Tag.order(:name), :id, :name,
+							{},
+							{ multiple: true, class: 'chosen-select'} %>
+
+
+<!-- Working:  -->
+
+<%#= f.select :user_id, @all_users.map { |user| [user.full_name, user.id] } %>

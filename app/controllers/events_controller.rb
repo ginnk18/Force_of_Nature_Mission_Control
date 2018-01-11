@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :translate]
   before_action :find_event, only: [:show, :edit, :update, :destroy]
   before_action :get_categories, only: [:new, :create, :edit, :update]
-  before_action :get_users, only: [:new, :create, :edit, :update]
+  before_action :get_users, only: [:new, :create, :edit, :update, :show]
   before_action :get_teams, only: [:new, :create, :edit, :update]
   before_action :authorize_user!, except: [:index, :show,:translate]
 
@@ -153,6 +153,7 @@ class EventsController < ApplicationController
     @team_lead_id = UserCategory.where(name: 'Team Lead')
     @lead_users = User.where(user_category: @team_lead_id)
     @data_captain_users = User.where(user_category: @data_captain_id)
+    @all_users = User.order(:last_name)
   end
 
   def get_teams
