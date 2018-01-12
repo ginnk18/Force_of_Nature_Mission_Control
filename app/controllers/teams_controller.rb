@@ -48,8 +48,8 @@ class TeamsController < ApplicationController
 	end
 
 	def team_params
-	params.require(:team).permit(:name, :team_category_id, :user_id, {member_ids:[]})
-end
+		params.require(:team).permit(:name, :team_category_id, :user_id, {member_ids:[]})
+	end
 
 	def authorize_user!
 		if current_user

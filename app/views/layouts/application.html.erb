@@ -64,7 +64,7 @@
       </div>
     </nav>
 
-    <% if controller.controller_name != "welcome" && controller.action_name != "index" %>
+    <%# if controller.controller_name != "welcome" && controller.action_name != "index" %>
 
       <% if flash[:notice].present? %>
       <div class="alert onTop alert-success alert-dismissible fade show" role="alert">
@@ -75,7 +75,7 @@
       </div>
       <% end %>
 
-    <% end %>
+    <%# end %>
 
     <%= yield %>
 
