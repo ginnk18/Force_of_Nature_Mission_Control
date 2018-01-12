@@ -1,6 +1,6 @@
 class Admin::DashboardController < Admin::ApplicationController
   def index
-    @events = Event.all
+    @events = Event.order(date: :asc)
     @users = User.all
     @teams = Team.all
     @team_lead_id = UserCategory.where(name: 'Team Lead')

@@ -156,9 +156,9 @@
 	        		<% end %>
 	        	</tbody>
 	        </table>
-	        <h4>Add Personnel</h4>
-	        <%= form_for("events/#{@event.id}/adminsignup") do |f| %>
-	        	<%= f.collection_select :user_ids, User.order(:last_name), :id, :full_name,
+	        <h5>Add Personnel</h5>
+	        <%= form_for [@event, @userevent], url: event_userevents_url(@event) do |f| %>
+	        	<%= f.collection_select :user_id, User.order(:last_name), :id, :full_name,
 	        								{},
 	        								{multiple: true, class: 'chosen-select'} %>
 	        	<%= f.submit 'Add Personnel', class: "btn btn-primary" %>
@@ -174,11 +174,9 @@
 </div> <!-- end of container -->
 
 
-<%#= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
+<%#= form_for @post, as: :post, url: post_path(@post), method: :patch, html: { class: "edit_post", id: "edit_post_45" } do |f| %>
 
- <%#= form.collection_select :tag_ids, Tag.order(:name), :id, :name,
-							{},
-							{ multiple: true, class: 'chosen-select'} %>
+
 
 
 <!-- Working:  -->

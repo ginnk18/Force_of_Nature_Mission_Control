@@ -61,6 +61,7 @@ class EventsController < ApplicationController
     @category=@event.event_category
     @lead=@event.lead
     @data_captain=@event.data_captain
+    @userevent = UserEvent.new
   end
 
   def edit
