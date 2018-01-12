@@ -95,7 +95,7 @@ class EventsignupController < ApplicationController
           #am redirecting back to
           event = Event.find params[:id]
           userevent.destroy
-          redirect_to event_path(event)
+          redirect_to event_path(event), notice: 'Guest has been removed.'
       end
 
     #       def destroy

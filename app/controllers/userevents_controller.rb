@@ -18,7 +18,9 @@ class UsereventsController < ApplicationController
 					EventSignUpMailer.event_sign_up(@event, guest).deliver_now
             		remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             		ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,guest)
-            		redirect_to event_path(@event), notice: "You added #{new_guests.length - 1} new guests."
+            		if index == new_guests.length - 1
+            			redirect_to event_path(@event), notice: "You added #{new_guests.length - 1} new guests."
+            		end
 				else
 					redirect_to event_path(@event), notice: "You already signed up #{guest.full_name} to this event."
 					break
