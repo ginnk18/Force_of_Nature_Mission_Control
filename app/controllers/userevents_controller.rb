@@ -13,8 +13,18 @@ class UsereventsController < ApplicationController
 		if new_guests.length == 3
 			guest1 = User.find new_guests[1]
 			guest2 = User.find new_guests[2]
+			signup1 = UserEvent.new(user: guest1, event: @event)
+			signup2 = UserEvent.new(user: guest2, event: @event)
+			if signup1.save && signup2.save 
+				EventSignUpMailer.event_sign_up(@event, guest1).deliver_now
+				EventSignUpMailer.event_sign_up(@event, guest2).deliver_now
+            	remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+            	ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,guest1)
+            	ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,guest2)
+            	redirect_to event_path(@event), notice: "You added #{new_guests.length - 1} new guests." 
+			end
 		end
-		render json: guest1
+
 	end
 
 	def destroy
@@ -42,18 +52,21 @@ end
 
 #########
 
-# def event_params
-#     # With this method, we will extract the parameters related to
-#     # question from the `params` object. And, we'll only permit
-#     # fields of our choice. In this case, we specifically permit
-#     # the fields we allow the user to edit in the new_question form.
-#     params.require(:event).permit(
-#       :name,:date,:start_time,:end_time,
-#       :location,:additional_info,:attachment_url,
-#       :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_up_goals,
-#       :show_up_goals,:signature_goals, :sign_up_outcome, :show_up_outcome, :signature_outcome)
-#     # The `params` object is available inside all controllers. It's
-#     # a "hash" that holds all URL params, all fields from the form and
-#     # all query params. It's as if we merged `request.query`, `request.params`
-#     # and `request.body` from Express into one object.
-#   end
+# if user
+#             signup = UserEvent.new(user: user, event: @event )
+#         else
+#             user = User.new(
+#                     first_name: first_name,
+#                     last_name: last_name,
+#                     email: email,
+#                     phone_number: phone_number,
+#                     additional_info: additional_info,
+#                     previous_volunteer: previous_volunteer
+#                 )
+#             # puts 'THIS IS THE NEWLY CREATED USER: '
+#             # puts user.first_name
+#             user.save!
+#             signup = UserEvent.new(user: user, event: @event )
+#         end
+
+#         if signup.save

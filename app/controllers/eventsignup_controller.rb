@@ -80,9 +80,9 @@ class EventsignupController < ApplicationController
         end
     end
 
-    def adminsignup
+    # def adminsignup
         
-    end
+    # end
 
       def share
       end
