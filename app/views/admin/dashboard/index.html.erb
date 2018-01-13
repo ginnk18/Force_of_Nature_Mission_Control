@@ -45,7 +45,7 @@
                        </div>
                             <% end %></td>
                             </tr>
-                            <td>
+                            <td style="border-bottom: 1px solid black;">
                                 <% if volunteer.contacted === false %>
                                     <%= form_tag("contacted/#{volunteer.id}", method: :patch) do %>
                                         <%= submit_tag "Not Contacted", class: 'btn btn-danger' %>

@@ -40,8 +40,11 @@ class UsersController < ApplicationController
 
   def contacted
     @user.contacted = true
-    @user.save
-    redirect_to admin_dashboard_index_path
+    if @user.save!
+      redirect_to admin_dashboard_index_path
+    else
+      redirect_to admin_dashboard_index_path, notice: 'Something went wrong.'
+    end
   end
 
   def update
