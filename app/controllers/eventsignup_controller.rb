@@ -8,7 +8,7 @@ class EventsignupController < ApplicationController
       user=User.find_by_id session[:user_id]
       signup =  UserEvent.new(user: user ,event: @event )
       # byebug
-      if signup.save
+      if signup.save!
           EventSignUpMailer.event_sign_up(@event, user).deliver_now
           remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
           ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
@@ -46,7 +46,7 @@ class EventsignupController < ApplicationController
             signup = UserEvent.new(user: user, event: @event )
         end
 
-        if signup.save
+        if signup.save!
             EventSignUpMailer.event_sign_up(@event, user).deliver_now
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
@@ -67,11 +67,11 @@ class EventsignupController < ApplicationController
             signup =  UserEvent.new(user: user ,event: @event )
         else
             user = User.new(email: email, user_category_id: 1)
-            user.save
+            user.save!
             signup = UserEvent.new(user: user ,event: @event )
         end
 
-        if signup.save
+        if signup.save!
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
             render json: { message: "Thanks for signing up!" }
