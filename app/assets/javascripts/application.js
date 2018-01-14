@@ -19,6 +19,7 @@
 //= require fullcalendar/gcal
 //= require bootstrap-datepicker
 //= require chosen-jquery
+//= require social-share-button
 //= require_tree .
 
 
@@ -62,8 +63,6 @@ $(document).ready(function() {
                     }
                 });
 
-
-              
 
 
 });

@@ -43,6 +43,7 @@ gem 'chosen'
 gem 'cancancan', '~> 2.0'
 gem 'bootstrap'
 gem 'bootstrap-datepicker-rails' # for date-picker
+gem 'social-share-button'
 
 # gem for Google Calendar
 gem 'google-api-client', '~> 0.9.1'
