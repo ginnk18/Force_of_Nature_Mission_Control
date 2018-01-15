@@ -13,6 +13,7 @@
  *= require fullcalendar
 *= require bootstrap-datepicker
 *= require chosen
+*= require social-share-button
  *= require_tree .
  *= require_self
  */
@@ -511,4 +512,29 @@ table {
 }
 .adminteams:hover{
     text-decoration: none;
+}
+
+// Social sharing icon size
+
+$size: 35px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
+
+.addeventatc {
+  width:200px;
+}
+
+.eventshare {
+  padding-top:1rem;
+}
+
+.share-event {
+  display: inline-block;
+  padding-bottom: 2rem;
 }

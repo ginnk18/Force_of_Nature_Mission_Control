@@ -1,29 +1,28 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
+<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 
 
   <div class="card container eventshare", style="margin-top:1rem">
-    <h1>Thank you for signing up!!</h1>
-    <p>You have signed up for <%= @event.name %> beginning at  <%= @event.start_time.strftime('%A %B %d %Y at %l:%M %P') %> </p>
-    <p> <%= link_to "View Event Details", event_path(@event), class: "btn btn-dark" %> </p>
+    <h1>Thank you for signing up!</h1>
+    <p>You have signed up for  <strong> <%= @event.name %> </strong> beginning at  <strong> <%= @event.start_time.strftime('%A %B %d %Y at %l:%M %P') %> </strong> </p>
+    <div class="share-event">
+     <%= link_to "View Event Details", event_path(@event), class: "btn btn-dark" %>
 
-  <div class="social-share">
-
-    <div class="fb-share-button" data-href="<%=event_url(@event)%>" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-
-   <br>
-
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-url="<%=event_url(@event)%>"data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+      <div title="Add to Calendar" class="addeventatc">
+        Add to Calendar
+        <span class="start"> <%=@event.start_time %> </span>
+        <span class="end"> <%=@event.end_time %> </span>
+        <span class="title"> <%=@event.name %></span>
+        <span class="description"> <%=@event.additional_info %> <%= @event.attachment_url %> </span>
+        <span class="location"> <%=@event.location %></span>
+    </div>
   </div>
 
-  <p>Add to your calendar (webcal link or google cal sign in)</p>
+
+<h3> Share this event! </h3>
+
+    <%= social_share_button_tag(@event.name, :url => event_url(@event), desc: @event.name  ) %>
+
 
    <p>See you there!</p>
 
