@@ -4,7 +4,7 @@
 
   <div class="card container eventshare", style="margin-top:1rem">
     <h1>Thank you for signing up!</h1>
-    <p>You have signed up for  <strong> <%= @event.name %> </strong> beginning at  <strong> <%= @event.start_time.strftime('%A %B %d %Y at %l:%M %P') %> </strong> </p>
+    <p>You have signed up for  <strong> <%= @event.name %> </strong> beginning at  <strong> <%= @event.start_time.strftime('%l:%M %P') %> </strong> on <strong> <%= @event.date.strftime('%A %B %d %Y') %></strong> </p>
     <div class="share-event">
      <%= link_to "View Event Details", event_path(@event), class: "btn btn-dark" %>
 
