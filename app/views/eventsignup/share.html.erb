@@ -5,7 +5,7 @@
   <div class="card container eventshare", style="margin-top:1rem">
     <h1>Thank you for signing up!</h1>
     <p>You have signed up for  <strong> <%= @event.name %> </strong> beginning at  <strong> <%= @event.start_time.strftime('%l:%M %P') %> </strong> on <strong> <%= @event.date.strftime('%A %B %d %Y') %></strong> </p>
-    <p>If you need to cancel, please contact this event's team lead <strong><%= @event.team&.team_lead&.full_name %></strong> at <strong><%= @event.team&.team_lead.phone_number %></strong>.  Your canvass captain is <strong><%= @event&.canvas_captain&.full_name %></strong> at <strong><%= @event&.canvas_captain&.phone_number %></strong> - please make sure you have their information with you at the shift.</p>
+    <p>If you need to cancel, please contact this event's team lead <strong><%= @event.team&.team_lead&.full_name %></strong> at <strong><%= @event.team&.team_lead&.phone_number %></strong>.  Your canvass captain is <strong><%= @event&.canvas_captain&.full_name %></strong> at <strong><%= @event&.canvas_captain&.phone_number %></strong> - please make sure you have their information with you at the shift.</p>
     <div class="share-event">
      <%= link_to "View Event Details", event_path(@event), class: "btn btn-dark" %>
 
