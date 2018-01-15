@@ -35,7 +35,7 @@
 		<% if @event.guest_ids.include?(current_user.id) %>
 			<div class="card signed-up-message">
 				<h5>You are signed up for this event!</h5>
-				<p>If you need to cancel, please contact this event's team lead <strong><%= @event.team.team_lead.full_name %></strong> at <strong><%= @event.team.team_lead.phone_number %></strong>.  Your canvass captain is <strong><%= @event.canvas_captain.full_name %></strong> at <strong><%= @event.canvas_captain.phone_number %></strong> - please make sure you have their information with you at the shift.</p>
+				<p>If you need to cancel, please contact this event's team lead <strong><%= @event.team&.team_lead.full_name %></strong> at <strong><%= @event.team&.team_lead.phone_number %></strong>.  Your canvass captain is <strong><%= @event&.canvas_captain.full_name %></strong> at <strong><%= @event&.canvas_captain.phone_number %></strong> - please make sure you have their information with you at the shift.</p>
 			</div>
 		<% end %>
 	<% end %>
@@ -95,8 +95,8 @@
 
 
 							<p><b>Canvass Captain : </b><br>
-							<%= @canvas_captain&.full_name %><br>
-							<%= @canvas_captain&.phone_number %></p>
+							<%= @event&.canvas_captain&.full_name %><br>
+							<%= @event&.canvas_captain&.phone_number %></p>
 							<p><b>Data Captain : </b><br>
 							<%= @data_captain&.full_name %><br></p>
 
