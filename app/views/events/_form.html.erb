@@ -46,30 +46,17 @@
           <%= f.select :data_captain_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
         </div>
 
-      <div class="col-3"></div>
-      <div class="col-3"></div>
-
-  </div>
-
-  <div class="row">
-
       <!-- Selecting the type of event -->
 
-      <div class="col-4">
+      <div class="col-3">
         <%= f.label :event_category_id %><p>
           <%= f.select :event_category_id, @event_categories.map { |category| [category.name, category.id] } %>
         </div>
 
         <!-- Selecting a team that this event belongs to  -->
-        <div class="col-4">
+        <div class="col-3">
           <%= f.label :team_id %><p>
             <%= f.select :team_id, @teams.map { |team| [team.name, team.id] } %>
-        </div>
-
-          <!-- Select the leader of that team -->
-        <div class="col-4">
-          <%= f.label :team_lead_id %><p>
-          <%= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
         </div>
 
   </div>
