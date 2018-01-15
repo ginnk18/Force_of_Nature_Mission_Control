@@ -51,7 +51,7 @@
     	<h3>Team</h3>
     	<p><%= @event.team&.name %></p>
 		<h3>Team Lead </h3>
-		<p><%= @event.team.team_lead.full_name %></p>
+		<p><%= @event.team&.team_lead.full_name %></p>
 		<h3>Created By </h3>
 		<p> <%= @event.creator&.full_name %></p>
 
