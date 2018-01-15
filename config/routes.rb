@@ -17,15 +17,22 @@ Rails.application.routes.draw do
      delete('/:id', to: 'eventsignup#destroy', as: :removeguest)
   end
 
-  
+
   # post('adminsignup', to: 'eventsignup#adminsignup')
   resources :userteams, only:[:destroy, :update, :edit]
   post('newsignup/:id', to: 'eventsignup#modalsignup')
   get('eventscal/:id', to: 'events#translate', as: :eventshow)
 
   namespace :admin do
+    get('dashboard/signups', to: 'dashboard#signups', as: :signups)
+    get('dashboard/people', to: 'dashboard#people', as: :people)
+    get('dashboard/teams', to: 'dashboard#teams', as: :teams)
+    get('dashboard/teams', to: 'dashboard#events', as: :events)
+
+
     resources :dashboard, only: [:index]
   end
+
   patch("/admin/upcat/:id", to: 'users#changestatus')
   patch("/admin/contacted/:id", to: 'users#contacted')
   match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
