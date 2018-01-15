@@ -23,8 +23,16 @@
 		<% end %>
 	<% end %>
 
-
+	<% if !@event.guest_ids.include?(current_user.id) %>
 		<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-success" %>
+	<% end %>
+
+	<% if @event.guest_ids.include?(current_user.id) %>
+		<div class="card signed-up-message">
+			<h5>You are signed up for this event!</h5>
+			<p>If you need to cancel, please contact this event's team lead <strong><%= @event.team.team_lead.full_name %></strong> at <strong><%= @event.team.team_lead.phone_number %></strong>.  Your canvass captain is <strong><%= @event.canvas_captain.full_name %></strong> at <strong><%= @event.canvas_captain.phone_number %></strong> - please make sure you have their information with you at the shift.</p>
+		</div>
+	<% end %>
   </div>
 
 		<%# `&.` is the safe navigation operator. It can be used to avoid
@@ -55,9 +63,11 @@
 				data-target="#manageGuests"
 			>Manage or Email Guests</button>
 		<% else %>
+			<% if !@event.guest_ids.include?(current_user.id) %>
 			<li class="list-group-item">
 				<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
 			</li>
+			<% end %>
 		<% end %>
 	<% else %>
 			<li class="list-group-item">
