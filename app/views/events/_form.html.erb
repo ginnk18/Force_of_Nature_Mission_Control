@@ -1,5 +1,5 @@
 <%=simple_form_for @event do |f|%>
-<%= f.input :name, label: 'Canvass Name'%>
+<%= f.input :name, label: 'Name of Event'%>
 
 <div class="row">
   <div class="col-4">
@@ -31,19 +31,22 @@
   <%= f.input :signature_outcome, label: 'Signatures Outcome', placeholder: 'Fill in after event' %>
 </div>
 </div>
-  <!-- Selecting an canvas captain -->
   <div class="row">
-    <div class="col-3">
-      <%= f.label :lead_id %><p>
-        <%= f.select :lead_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
+
+      <!-- Selecting an canvas captain -->
+
+      <div class="col-3">
+        <%= f.label :canvas_captain_id %><p>
+        <%= f.select :canvas_captain_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>  
       </div>
+
       <!-- Selecting an data captain -->
       <div class="col-3">
         <%= f.label :data_captain_id %><p>
           <%= f.select :data_captain_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
         </div>
 
-      <!-- Selecting a leader for that particular event (from all the team leads) -->
+      <!-- Selecting the type of event -->
 
       <div class="col-3">
         <%= f.label :event_category_id %><p>
@@ -54,9 +57,9 @@
         <div class="col-3">
           <%= f.label :team_id %><p>
             <%= f.select :team_id, @teams.map { |team| [team.name, team.id] } %>
-          </div>
-
         </div>
+
+  </div>
 
         <%= f.submit class:"btn btn-primary"%>
         <% end %>

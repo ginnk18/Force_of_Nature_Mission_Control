@@ -25,6 +25,9 @@ class User < ApplicationRecord
     has_many :user_teams, dependent: :destroy
     has_many :teams, through: :user_teams
 
+    #as a team lead
+    has_many :teams
+
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
     validates :first_name, :last_name, presence: true

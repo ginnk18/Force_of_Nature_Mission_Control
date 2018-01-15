@@ -1,6 +1,8 @@
 class Team < ApplicationRecord
 	belongs_to :team_category
 
+	belongs_to :team_lead, class_name: "User"
+
 	# Teams can have many users (members), but users can belong to many
 	# teams (most users will belong to one team but have the option to belong 
 	#to 2 teams - a regional team and an operational team)

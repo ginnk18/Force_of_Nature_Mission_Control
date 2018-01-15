@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
   def show
     @category=@event.event_category
-    @lead=@event.lead
+    @canvas_captain = @event.canvas_captain
     @data_captain=@event.data_captain
     @userevent = UserEvent.new
   end
