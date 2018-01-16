@@ -116,7 +116,7 @@
                 <td><%= event.name %></td>
                 <td><%= event.start_time.strftime('%H:%M') %></td>
                 <td><%= event.end_time.strftime('%H:%M') %></td>
-                <td><%= event.lead.full_name %></td>
+                <td><%= event&.canvas_captain&.full_name %></td>
                 <td><%= event.creator.full_name %></td>
                 <td><%= link_to 'Show', event %></td>
                 <td><%= link_to fa_icon('times 2x'), event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
