@@ -23,7 +23,7 @@ class User < ApplicationRecord
     # regional team - but some users (team leads) can belong to a regional team and an
     #operational team)
     has_many :user_teams, dependent: :destroy
-    has_many :teams, through: :user_teams
+    has_many :team_memberships, through: :user_teams, source: :team
 
     #as a team lead
     has_many :teams

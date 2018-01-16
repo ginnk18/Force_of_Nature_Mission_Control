@@ -138,7 +138,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_up_goals,
+      :event_category_id,:lead_id, :team_id,:data_captain_id, :canvas_captain_id, :sign_up_goals,
       :show_up_goals,:signature_goals, :sign_up_outcome, :show_up_outcome, :signature_outcome)
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and

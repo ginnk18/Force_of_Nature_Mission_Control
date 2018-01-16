@@ -37,13 +37,13 @@
 
       <div class="col-3">
         <%= f.label :canvas_captain_id %><p>
-        <%= f.select :canvas_captain_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>  
+        <%= f.select :canvas_captain_id, @lead_users.map { |leader| [leader.full_name, leader.id] } %>  
       </div>
 
       <!-- Selecting an data captain -->
       <div class="col-3">
         <%= f.label :data_captain_id %><p>
-          <%= f.select :data_captain_id, @lead_users.map { |leader| [leader.first_name, leader.id] } %>
+          <%= f.select :data_captain_id, @lead_users.map { |leader| [leader.full_name, leader.id] } %>
         </div>
 
       <!-- Selecting the type of event -->
