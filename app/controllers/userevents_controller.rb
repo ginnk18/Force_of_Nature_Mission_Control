@@ -15,9 +15,9 @@ class UsereventsController < ApplicationController
 				guest = User.find new_guests[index]
 				signup = UserEvent.new(user: guest, event: @event)
 				if signup.save
-					# EventSignUpMailer.event_sign_up(@event, guest).deliver_now
+					EventSignUpMailer.event_sign_up(@event, guest).deliver_now
             		remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-            		# ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,guest)
+            		ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,guest)
             		if index == new_guests.length - 1
             			redirect_to event_path(@event), notice: "You added #{new_guests.length - 1} new guests."
             		end
