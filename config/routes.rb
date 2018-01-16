@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get('dashboard/signups', to: 'dashboard#signups', as: :signups)
     get('dashboard/people', to: 'dashboard#people', as: :people)
     get('dashboard/teams', to: 'dashboard#teams', as: :teams)
-    get('dashboard/teams', to: 'dashboard#events', as: :events)
+    get('dashboard/events', to: 'dashboard#events', as: :events)
 
 
     resources :dashboard, only: [:index]
