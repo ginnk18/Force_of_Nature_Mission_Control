@@ -15,14 +15,12 @@
       </div>
       <% end %>
       <div class="card details">
-        <ul>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-
+        <ul style="list-style-type: none;">
+          <% @events.each_with_index do |event, index| %>
+            <% if index <= 4 %>
+              <li><%= link_to event.name, event %></li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
       <a href="http://slack.com" class="content-link" target="_blank">
@@ -58,10 +56,12 @@
             </div>
             <% end %>
             <div class="card details">
-              <ul>
-                <li>User</li>
-                <li>User</li>
-                <li>User</li>
+              <ul style="list-style-type: none;">
+                <% @guest_users.each_with_index do |guest, index| %>
+                  <% if index <= 4 %>
+                    <li><%= link_to guest.full_name, admin_signups_path %></li>
+                  <% end %>
+                <% end %>
               </ul>
             </div>
       <%= link_to (admin_people_path), class: 'content-link' do%>
