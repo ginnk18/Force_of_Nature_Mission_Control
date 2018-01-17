@@ -34,6 +34,6 @@ Rails.application.routes.draw do
   end
 
   patch("/admin/upcat/:id", to: 'users#changestatus')
-  patch("/admin/contacted/:id", to: 'users#contacted')
+  patch("/admin/dashboard/contacted/:id", to: 'users#contacted')
   match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 end

@@ -41,9 +41,9 @@ class UsersController < ApplicationController
   def contacted
     @user.contacted = true
     if @user.save!
-      redirect_to admin_dashboard_index_path
+      redirect_to admin_signups_path
     else
-      redirect_to admin_dashboard_index_path, notice: 'Something went wrong.'
+      redirect_to admin_signups_path, notice: 'Something went wrong.'
     end
   end
 
