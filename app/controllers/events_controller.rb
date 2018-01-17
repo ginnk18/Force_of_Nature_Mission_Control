@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     @event.google_event_id = result.id
 
     if @event.save!
-      EventsMailer.notify_event_creator(@event).deliver_now
+      # EventsMailer.notify_event_creator(@event).deliver_now
       redirect_to event_path(@event)
     else
 
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
   def show
     @category=@event.event_category
-    @lead=@event.lead
+    @canvas_captain = @event.canvas_captain
     @data_captain=@event.data_captain
     @userevent = UserEvent.new
   end
@@ -138,7 +138,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id,:lead_id, :team_id,:data_captain_id,:sign_up_goals,
+      :event_category_id, :team_id,:data_captain_id, :canvas_captain_id, :sign_up_goals,
       :show_up_goals,:signature_goals, :sign_up_outcome, :show_up_outcome, :signature_outcome)
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and
