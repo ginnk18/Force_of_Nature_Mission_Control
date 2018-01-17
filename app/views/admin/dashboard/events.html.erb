@@ -1,0 +1,27 @@
+
+    <h3 class="mt-3 head" id="events">Current Events</h3>
+    <table class='table table-bordered table-light table-striped'>
+        <thead class='thead-inverse'>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Start Time</th>
+                <th>Event End Time</th>
+                <th>Event Lead</th>
+                <th>Event Creator</th>
+                <th  colspan="2">Manage</th>
+            </th>
+        </thead>
+        <tbody>
+        <% @events.each do |event| %>
+            <tr>
+                <td><%= event.name %></td>
+                <td><%= event.start_time.strftime('%H:%M') %></td>
+                <td><%= event.end_time.strftime('%H:%M') %></td>
+                <td><%= event.lead.full_name %></td>
+                <td><%= event.creator.full_name %></td>
+                <td><%= link_to 'Show', event %></td>
+                <td><%= link_to fa_icon('times 2x'), event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>

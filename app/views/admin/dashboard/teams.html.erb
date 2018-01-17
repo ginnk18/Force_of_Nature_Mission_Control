@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <h3 class="mt-3 head" id="teams">Teams</h3>
+
+    		<%= link_to 'Add a team', new_team_path, style: 'color: black', class: 'btn btn-block add-team-button' %>
+
+      <div class="row d-flex justify-content-around">
+      <% @teams.each do |team| %>
+          <% if team.members.count > 0 %>
+          <div class="col-md-3 teambg" style="background-color: rgba(255, 255, 255, 0.5)">
+              <div class="card-header"><strong><%= team.name %></strong></div>
+              <div class="list-group">
+              <% team.members.each do |member| %>
+                 <div class="list-group-item list-group-item-action border-0 linksstyle"> <%= member.full_name %>
+                 <% user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
+                 <%= link_to fa_icon('times 2x'), userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'}, class: "pull-right" %>
+                 </div>
+                 <br>
+              <% end %>
+              </div>
+          </div>
+          <% end %>
+      <% end %>
+      </div>
+  </div>
+</div>
