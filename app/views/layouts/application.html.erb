@@ -12,11 +12,7 @@
 
 
 <body>
-  <% if controller.controller_name == "welcome" && controller.action_name == "index" %>
-      <nav class="navbar navbar-expand-md" style="background: linear-gradient(black, transparent);">
-    <% else %>
-      <nav class="navbar navbar-expand-md" style="background-color:black" >
-    <% end %>
+      <nav class="navbar navbar-expand-lg  custom-toggler" style="background-color:black" >
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,13 +28,21 @@
           <li class="nav-item">
             <%= link_to 'Calendar', events_path, class: "nav-link" %>
           </li>
+
           <% if current_user %>
-            <span class="nav-link" style="color:white;"><%= fa_icon('slack')%></span>
-            <%= link_to 'Slack', 'https://slack.com/', class: 'nav-link', style: 'color: white', target: '_blank' %>
+          <li class="nav-item ">
+            <%= link_to ('https://slack.com'), class: 'nav-link', target:'_blank' do %>
+             <i class="fa fa-slack" aria-hidden="true"></i> Slack
+             <% end %>
+          </li>
             <% if current_user.user_category.name === 'Admin' %>
+            <li class="nav-item">
               <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
+            </li>
               <% else %>
+            <li class="nav-item">
                 <%= link_to 'User Dashboard', user_dashboard_index_path, class: 'nav-link', style: 'color: white' %>
+            </li>
             <% end %>
             <% if current_user.first_name %>
             <li class="nav-item nav-link" style="color:#BF55EC"> Welcome, <%= current_user.full_name %>  </li>
@@ -46,15 +50,17 @@
               <li class="nav-item nav-link" style="color:#BF55EC"> Welcome Guest</li>
             <% end %>
             <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
-            <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
-              <h3><div style="color:white">&nbsp;|&nbsp;</div></h3>
-              <%= link_to 'Personnel', teams_path, class:"nav-link",style:"color:white" %>
+              <li class="nav-item">
+              <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
+            </li>
+              <li class="nav-item">
               <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white' %>
+            </li>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
               <% if current_user.teams.first %>
-              <%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'color: white' %>
+              <li class="nav-item"><%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'color: white' %> </li>
               <% end %>
-              <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white'  %>
+              <li class="nav-item"> <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white'  %> </li>
             <% end %>
             <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>
           <% else %>

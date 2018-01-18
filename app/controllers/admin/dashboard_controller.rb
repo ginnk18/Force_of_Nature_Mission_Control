@@ -81,14 +81,11 @@ class Admin::DashboardController < Admin::ApplicationController
 
           def events
             @events = Event.order(date: :asc)
+
             @stats = {
-              team_count: Team.count,
-              user_count: User.count,
               event_count: Event.count,
-              signed_up: UserEvent.count,
-              teamleads: @lead_users.map.count,
-              guests: @guest_users.map.count,
-              genvol: @gen_vol_users.map.count
+              signed_up: UserEvent.count
             }
+
           end
 end
