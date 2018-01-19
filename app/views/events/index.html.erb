@@ -2,7 +2,10 @@
 <div class="container-fluid cal-con">
 	<div class="row d-flex justify-content-center">
 		<div class="col-lg-11">
-	<h1 class="page-head head">All Events</h1>
+    <div>
+	   <h1 class="page-head head">All Events</h1>
+       <button class="btn btn-primary"><%= link_to 'Create an Event', new_event_path, style: 'color: white' %></button>
+    </div>
     <div id="calendar"></div>
 
 
