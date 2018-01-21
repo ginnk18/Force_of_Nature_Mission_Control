@@ -15,7 +15,7 @@
                         <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
                         <div class="field pb-1 pl-2" style="border-bottom: 1px solid grey">
                            <%= label(:user_category, "user_category") %>
-                           <%= select_tag "user_category", "<option>General Volunteer</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Guest</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
                         <%= submit_tag "Submit", class:"btn btn-primary" %>
                         <% end %>
                        </div>
