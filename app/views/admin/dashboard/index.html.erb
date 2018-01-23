@@ -1,113 +1,81 @@
-<div class="container">
-  <div class="row justify-content-center">
-<%= link_to "Manage Users", admin_dashboard_index_path(anchor: 'Users'), class: "btn btn-primary", style: "margin:12px"%>
-<%= link_to "Manage Events", admin_dashboard_index_path(anchor: 'events'), class: "btn btn-primary",style: "margin:12px" %>
-<%= link_to "Manage Teams", admin_dashboard_index_path(anchor: 'teams'), class: "btn btn-primary", style: "margin:12px" %>
+<div class="container-fluid">
+  <h2 class="head mt-2">Admin Dashboard</h2>
 
-
+  <div class="alert alert-info"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>"Messages here" 
   </div>
- <div class="row">
-   <h3 id="users" class="head">Users</h3>
- </div>
 
-    <div class="row d-flex justify-content-between">
-            <div class='card col-md-6' style="border:0">
-            <div class='card-header'><strong>Team Leads: </strong><%= @stats[:teamleads] %></div>
-                    <% @lead_users.each do |volunteer| %>
-                        <div class="mt-2 mb-2">
-                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
-                        <br>
-                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
-                        </div>
-                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
-                        <div class="field pb-1 pl-2" style="border-bottom: 1px solid grey">
-                           <%= label(:user_category, "user_category") %>
-                           <%= select_tag "user_category", "<option>General Volunteer</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
-                        <%= submit_tag "Submit", class:"btn btn-primary" %>
-                        <% end %>
-                       </div>
-                    <% end %>
-            </div>
-            <div class='card col-md-6' style="border:0">
-            <div class='card-header'><strong>General Volunteers: </strong><%= @stats[:genvol] %></div>
-                    <% @gen_vol_users.each do |volunteer| %>
-                        <div class="mt-2 mb-2">
-                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
-                        <br>
-                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
-                        </div>
-                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
-                        <div class="field pb-1 pl-2" style="border-bottom: 1px solid grey">
-                           <%= label(:user_category, "user_category") %>
-                           <%= select_tag "user_category", "<option>Guest</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
-                        <%= submit_tag "Submit", class:"btn btn-primary" %>
-                        <% end %>
-                       </div>
-                    <% end %>
-            </div>
-            <div class='card col-md-12' style="border:0">
-            <div class='card-header d-flex'><strong> Guests: </strong><%= @stats[:guests] %></div>
-                    <% @guest_users.each do |volunteer| %>
-                        <div class="mt-2 mb-2 border border-bottom-1">
-                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
-                        <br>
-                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
-                        <%= form_tag("upcat/#{volunteer.id}", method: :patch, class: "pull-right") do %>
-                       <div class="field pb-1 pl-2">
-                           <%= label(:user_category, "user_category") %>
-                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
-                           <%= submit_tag "Submit", class:"btn btn-primary"%>
-                       </div>
-                    </div>
-                        <% end %>
-                    <% end %>
-            </div>
-        </div>
-    <h3 class="mt-3 head" id="events">Current Events</h3>
-    <table class='table table-bordered table-light table-striped'>
-        <thead class='thead-inverse'>
-            <tr>
-                <th>Event Name</th>
-                <th>Event Start Time</th>
-                <th>Event End Time</th>
-                <th>Event Lead</th>
-                <th>Event Creator</th>
-                <th  colspan="2">Manage</th>
-            </th>
-        </thead>
-        <tbody>
-        <% @events.each do |event| %>
-            <tr>
-                <td><%= event.name %></td>
-                <td><%= event.start_time.strftime('%H:%M') %></td>
-                <td><%= event.end_time.strftime('%H:%M') %></td>
-                <td><%= event.lead.full_name %></td>
-                <td><%= event.creator.full_name %></td>
-                <td><%= link_to 'Show', event %></td>
-                <td><%= link_to fa_icon('times 2x'), event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
+  <div class="row">
+    <div class="col-lg">
+      <%= link_to (admin_events_path), class: 'content-link' do%>
+      <div class="card dash">
+        <i class="fa fa-calendar-o fa-3x" aria-hidden="true"></i>
+        <h3 class="dash-text"> Manage Events </h3>
+      </div>
+      <% end %>
+      <div class="card details">
+        <ul style="list-style-type: none;">
+          <% @events.each_with_index do |event, index| %>
+            <% if index <= 4 %>
+              <li><%= link_to event.name, event %></li>
             <% end %>
-        </tbody>
-    </table>
-    <div>
-      <h3 class="mt-3 head" id="teams">Teams</h3>
-        <div class="card-block row d-flex justify-content-around" style="background-col:lightgrey">
-        <% @teams.each do |team| %>
-            <% if team.members.count > 0 %>
-            <div class="card col-md-4" style="border:0">
-                <div class="card-header"><strong><%= team.name %></strong></div>
-                <div class="list-group">
-                <% team.members.each do |member| %>
-                   <div class="list-group-item list-group-item-action border-0 linksstyle"> <%= member.full_name %>
-                   <% user_team_record = UserTeam.where(user: member.id).where(team: team.id).first%>
-                   <%= link_to fa_icon('times 2x'), userteam_url(user_team_record), method: :delete, data: {confirm: 'Are you sure?'}, class: "pull-right" %>
-                   </div>
-                   <br>
+          <% end %>
+        </ul>
+      </div>
+      <a href="http://slack.com" class="content-link" target="_blank">
+        <div class="card dash">
+          <i class="fa fa-slack fa-3x" aria-hidden="true"></i>
+          <h3> Slack </h3>
+        </div>
+     </div> <!-- end of column -->
+   </a>
+
+     <div class="col-lg">
+       <div class="card dash">
+         <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+         <h3> Manage Briefings and Files </h3>
+       </div>
+
+       <div class="card dash">
+         <i class="fa fa-bell fa-3x" aria-hidden="true"></i>
+         <h3> Manage Emails and Reminders </h3>
+       </div>
+
+       <div class="card dash">
+         <i class="fa fa-comment-o fa-3x" aria-hidden="true"></i>
+         <h3> Manage Messages </h3>
+       </div>
+     </div> <!-- end of column -->
+
+    <div class="col-lg">
+      <%= link_to (admin_signups_path), class: 'content-link' do%>
+      <div class="card dash">
+        <i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
+        <h3> Add/Approve New Users </h3>
+            </div>
+            <% end %>
+            <div class="card details">
+              <ul style="list-style-type: none;">
+                <% @guest_users.each_with_index do |guest, index| %>
+                  <% if index <= 4 %>
+                    <li><%= link_to guest.full_name, admin_signups_path %></li>
+                  <% end %>
                 <% end %>
-                </div>
+              </ul>
             </div>
-            <% end %>
-        <% end %>
-        </div>
-    </div>
-</div>
+      <%= link_to (admin_people_path), class: 'content-link' do%>
+      <div class="card dash">
+        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+        <h3> Manage Personnel </h3>
+      </div>
+     <% end %>
+
+      <%= link_to (admin_teams_path), class: 'content-link' do%>
+      <div class="card dash">
+        <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+        <h3> Manage Teams </h3>
+      </div>
+      <% end %>
+    </div> <!-- end of column -->
+ </div> <!-- end of container -->

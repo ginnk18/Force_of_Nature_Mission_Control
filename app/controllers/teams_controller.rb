@@ -45,11 +45,13 @@ class TeamsController < ApplicationController
 
 	def get_users
 		@users = User.where(:user_category_id => 2..3)
+		@team_lead_id = UserCategory.where(name: 'Team Lead')
+		@lead_users = User.where(user_category: @team_lead_id)
 	end
 
 	def team_params
-	params.require(:team).permit(:name, :team_category_id, :user_id, {member_ids:[]})
-end
+		params.require(:team).permit(:name, :team_category_id, :team_lead_id, :user_id, {member_ids:[]})
+	end
 
 	def authorize_user!
 		if current_user

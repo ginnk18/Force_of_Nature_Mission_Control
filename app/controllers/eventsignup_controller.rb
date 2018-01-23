@@ -1,19 +1,19 @@
 class EventsignupController < ApplicationController
 
-    skip_before_action :verify_authenticity_token  
-    before_action :find_event, only: [:new, :create]
+    skip_before_action :verify_authenticity_token
+    before_action :find_event, only: [:new, :create, :share]
 
     def new
       if session[:user_id]
       user=User.find_by_id session[:user_id]
       signup =  UserEvent.new(user: user ,event: @event )
       # byebug
-      if signup.save
-          EventSignUpMailer.event_sign_up(@event, user).deliver_now
+      if signup.save!
+          # EventSignUpMailer.event_sign_up(@event, user).deliver_now
           remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-          ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+          # ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
-          redirect_to event_path(@event), notice: 'Thanks for signing up!'
+          redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
       else
           redirect_to events_path, notice: 'You have already signed up!'
       end
@@ -33,8 +33,8 @@ class EventsignupController < ApplicationController
             signup = UserEvent.new(user: user, event: @event )
         else
             user = User.new(
-                    first_name: first_name, 
-                    last_name: last_name, 
+                    first_name: first_name,
+                    last_name: last_name,
                     email: email,
                     phone_number: phone_number,
                     additional_info: additional_info,
@@ -46,12 +46,12 @@ class EventsignupController < ApplicationController
             signup = UserEvent.new(user: user, event: @event )
         end
 
-        if signup.save
-            EventSignUpMailer.event_sign_up(@event, user).deliver_now
+        if signup.save!
+            # EventSignUpMailer.event_sign_up(@event, user).deliver_now
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+            # ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
-            redirect_to event_path(@event), notice: 'Thanks for signing up!'
+            redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
         else
             redirect_to events_path, notice: 'You have already signed up!'
         end
@@ -67,11 +67,11 @@ class EventsignupController < ApplicationController
             signup =  UserEvent.new(user: user ,event: @event )
         else
             user = User.new(email: email, user_category_id: 1)
-            user.save
+            user.save!
             signup = UserEvent.new(user: user ,event: @event )
-        end 
+        end
 
-        if signup.save
+        if signup.save!
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
             ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
             render json: { message: "Thanks for signing up!" }
@@ -79,6 +79,30 @@ class EventsignupController < ApplicationController
             render json: { message: "You have already signed up!"}
         end
     end
+
+    # def adminsignup
+        
+    # end
+
+      def share
+      end
+
+      # this is for admin or team lead removing guests on the event show page
+      def destroy
+          userevent = UserEvent.find params[:event_id] # can't figure out why the URL is 
+          #switching the event_id and the userevent id, so here 'event_id' is actually the
+          #ID for the UserEvent record I want to delete, and the id below is for the event I
+          #am redirecting back to
+          event = Event.find params[:id]
+          userevent.destroy
+          redirect_to event_path(event), notice: 'Guest has been removed.'
+      end
+
+    #       def destroy
+    #     userteam = UserTeam.find params[:id]
+    #     userteam.destroy
+    #     redirect_to admin_dashboard_index_path
+    # end
 
     private
 

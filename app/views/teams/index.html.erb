@@ -7,7 +7,7 @@
 
 	<h2 class="head">Your Teams: </h2>
 <div class="list-group">
-	<% current_user.teams.each do |team| %>
+	<% current_user&.team_memberships.each do |team| %>
 		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
 

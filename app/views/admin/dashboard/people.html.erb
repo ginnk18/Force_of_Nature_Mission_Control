@@ -1,0 +1,41 @@
+   
+    <h6 class="mt-2"><%= link_to 'Back to Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %></h6>
+   <h3 class="mt-3 head" id="users">Current Leads and Volunteers</h3>
+ </div>
+
+    <div class="row d-flex justify-content-between">
+            <div class='card col-md-6' style="border:0">
+            <div class='card-header'><strong>Team Leads: </strong><%= @stats[:teamleads] %></div>
+                    <% @lead_users.each do |volunteer| %>
+                        <div class="mt-2 mb-2">
+                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
+                        <br>
+                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
+                        </div>
+                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
+                        <div class="field pb-1 pl-2" style="border-bottom: 1px solid grey">
+                           <%= label(:user_category, "user_category") %>
+                           <%= select_tag "user_category", "<option>General Volunteer</option><option>Guest</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                        <%= submit_tag "Submit", class:"btn btn-primary" %>
+                        <% end %>
+                       </div>
+                    <% end %>
+            </div>
+            <div class='card col-md-6' style="border:0">
+            <div class='card-header'><strong>General Volunteers: </strong><%= @stats[:genvol] %></div>
+                    <% @gen_vol_users.each do |volunteer| %>
+                        <div class="mt-2 mb-2">
+                        <strong class="pl-2">Full name:</strong> <%= volunteer.full_name %>
+                        <br>
+                        <strong class="pl-2">Email:</strong> <%= volunteer.email %>
+                        </div>
+                        <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
+                        <div class="field pb-1 pl-2" style="border-bottom: 1px solid grey">
+                           <%= label(:user_category, "user_category") %>
+                           <%= select_tag "user_category", "<option>Guest</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                        <%= submit_tag "Submit", class:"btn btn-primary" %>
+                        <% end %>
+                       </div>
+                    <% end %>
+            </div>
+        </div>

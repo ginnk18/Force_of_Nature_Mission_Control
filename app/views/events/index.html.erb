@@ -2,7 +2,10 @@
 <div class="container-fluid cal-con">
 	<div class="row d-flex justify-content-center">
 		<div class="col-lg-11">
-	<h1 class="page-head head">All Events</h1>
+    <div style="display: flex; justify-content: center;">
+	   <h1 class="page-head head">All Events</h1>
+       <button class="btn btn-primary btn-lg mb-2 ml-2"><%= link_to 'Create an Event', new_event_path, style: 'color: white' %></button>
+    </div>
     <div id="calendar"></div>
 
 
@@ -50,9 +53,9 @@
         	<% @anevent = event.name.to_s + " - " + event.date.to_s %>
         	 <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
         	<% end %>
-            <% if current_user && current_user.user_category.name != 'Guest' %>
-        	 <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div>
-             <% end %>
+            <%# if current_user && current_user.user_category.name != 'Guest' %>
+        	 <!-- <div class="list-group-item">		<%= link_to 'Add Event', new_event_path, class:"btn btn-primary" %> </div> -->
+             <%# end %>
         </div>
     </div>
 </div>

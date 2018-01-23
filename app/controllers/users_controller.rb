@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
-  before_action :find_user, only: [:edit, :update, :changestatus]
+  before_action :find_user, only: [:edit, :update, :changestatus, :contacted]
   before_action :authorize_user!, except: [:new, :create, :dashboard]
 
   def new
@@ -36,6 +36,15 @@ class UsersController < ApplicationController
     @user.user_category = UserCategory.find_by_name params["user_category"]
     @user.save
     redirect_to admin_dashboard_index_path
+  end
+
+  def contacted
+    @user.contacted = true
+    if @user.save!
+      redirect_to admin_signups_path
+    else
+      redirect_to admin_signups_path, notice: 'Something went wrong.'
+    end
   end
 
   def update

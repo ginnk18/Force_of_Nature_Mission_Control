@@ -1,9 +1,8 @@
 <div class="container">
-	<div class="col-md-9">
 	<div class="row d-flex justify-content-center">
 		<div class="col-md content">
 		<h1 class="event"><%= @event.name %></h1>
-		
+
 		<h5 class="date"> <%= @event.date.strftime('%A %B %d %Y') %></h5>
   <div class="details">
 		<p><strong>Time:</strong> <span class="hours"> <%= @event.start_time.strftime('%l:%M %P') %> </span> to  <span class="hours"><%= @event.end_time.strftime('%l:%M %P') %> </span>
@@ -13,7 +12,7 @@
 	</div>
 
 		<p> <%= @event.additional_info %> </p>
-		
+
 		<p> <%= @event.attachment_url %></p>
 
 	<% if current_user %>
@@ -24,8 +23,22 @@
 		<% end %>
 	<% end %>
 
-
+	<% if current_user %>
+		<% if !@event.guest_ids.include?(current_user.id) %>
+			<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-success" %>
+		<% end %>
+	<% else %>
 		<%= link_to 'Sign Up for this Event!', event_neweventsignup_path(@event), class: "btn btn-success" %>
+	<% end %>
+
+	<% if current_user %>
+		<% if @event.guest_ids.include?(current_user.id) %>
+			<div class="card signed-up-message">
+				<h5>You are signed up for this event!</h5>
+				<p>If you need to cancel, please contact this event's team lead <strong><%= @event.team&.team_lead&.full_name %></strong> at <strong><%= @event.team&.team_lead&.phone_number %></strong>.  Your canvass captain is <strong><%= @event&.canvas_captain&.full_name %></strong> at <strong><%= @event&.canvas_captain&.phone_number %></strong> - please make sure you have their information with you at the shift.</p>
+			</div>
+		<% end %>
+	<% end %>
   </div>
 
 		<%# `&.` is the safe navigation operator. It can be used to avoid
@@ -35,13 +48,40 @@
 		%>
 
   <div class="col-md-3 content">
+    	<h3>Team</h3>
+    	<p><%= @event.team&.name %></p>
 		<h3>Team Lead </h3>
-		<p> <%= @lead&.full_name %></p>
+		<p><%= @event.team&.team_lead&.full_name %></p>
 		<h3>Created By </h3>
 		<p> <%= @event.creator&.full_name %></p>
-    <h3>Team</h3>
-    <p><%= @event.team&.name %></p>
-	</div>
+
+
+		<h3>Attendees </h3>
+		<ul class="list-group">
+			<% @event.guests.each do |guest| %>
+			<li class="list-group-item"> <%= guest.full_name %> </li>
+			<% end %>
+	<% if current_user %>
+		<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
+			<button 
+				class="mt-2 btn btn-primary"
+				data-toggle="modal"
+				data-target="#manageGuests"
+			>Manage or Email Guests</button>
+		<% else %>
+			<% if !@event.guest_ids.include?(current_user.id) %>
+			<li class="list-group-item">
+				<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
+			</li>
+			<% end %>
+		<% end %>
+	<% else %>
+			<li class="list-group-item">
+				<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
+			</li>
+	<% end %>
+		</ul>
+</div>
 
 
   <div class="col-md-3 content">
@@ -53,46 +93,108 @@
 				it. If the object is `nil`, then it will immediately return `nil`.
 				%>
 
-				<div class="col-md-3">
 
-							<p><b>Captain : </b><br>
-							<%= @lead&.full_name %><br></p>
+							<p><b>Canvass Captain : </b><br>
+							<%= @event&.canvas_captain&.full_name %><br>
+							<%= @event&.canvas_captain&.phone_number %></p>
 							<p><b>Data Captain : </b><br>
 							<%= @data_captain&.full_name %><br></p>
 
-					<h5 class='mt-3'>Targets</h5>
-					<ul class="list-group">
-						<li class="list-group-item">
-							<b>Sign Ups : </b><%= @event.sign_ups %>
-						</li>
-						<li class="list-group-item">
-							<b>Show Ups : </b><%=@event.show_ups %>
-						</li>
-						<li class="list-group-item">
-							<b>Signatures : </b><%=@event.signatures %>
-						</li>
-					</ul>
+					<h4 class='mt-3'>Targets</h4>
+					<table class="table table-striped">
+						<thead class="thead-inverse">
+							<tr>
+								<th></th>
+								<th>Goals</th>
+								<th>Outcome</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Sign Ups: </td>
+								<td><%= @event.sign_up_goals %></td>
+								<td><%= @event.sign_up_outcome %></td>
+							</tr>
+							<tr>
+								<td>Show Ups: </td>
+								<td><%= @event.show_up_goals %></td>
+								<td><%= @event.show_up_outcome %></td>
+							</tr>
+							<tr>
+								<td>Signatures: </td>
+								<td><%= @event.signature_goals %></td>
+								<td><%= @event.signature_outcome %></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 
-				<div class="col-md-3">
+	</div>
 
-					<h3>Attendees </h3>
-					<ul class="list-group">
-						<% @event.guests.each do |guest| %>
-						<li class="list-group-item"> <%= guest.full_name %> </li>
-						<% end %>
-						<li class="list-group-item">
-							<%= link_to 'I want to join!', event_neweventsignup_path(@event), class:"text-info" %>
-						</li>
-					</ul>
-				</div>
+	</div>
 
-			</div>
-		</div>
 		<div class="col-md-3">
 			<div class="row">
 
-			</div>
 		</div>
 
 	</div>
+
+	<!-- Modal for Managing and Emailing Guests -->
+	<div class="modal fade" id="manageGuests" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="manageGuestsLabel">Manage Guests</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <table class="table">
+	        	<thead>
+	        		<tr>
+	        			<th>Name</th>
+	        			<th>Email</th>
+	        			<th>Phone Number</th>
+	        			<th>Remove</th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+	        		<% @event.guests.each do |guest| %>
+		        		<tr>
+		        			<td><%= guest.full_name %></td>
+		        			<td><%= guest.email %></td>
+		        			<td><%= guest.phone_number %></td>
+		        			<% user_event_record = UserEvent.where(user: guest.id).where(event: @event.id).first %>
+		        			<td><%= link_to fa_icon('times'), event_removeguest_path(user_event_record), method: :delete, data: {confirm: "Are you sure you want to remove #{guest.full_name}?"} %></td>
+		        		</tr>
+	        		<% end %>
+	        	</tbody>
+	        </table>
+	        <h5>Add Personnel</h5>
+	        <%= form_for [@event, @userevent], url: event_userevents_url(@event) do |f| %>
+	        	<%= f.collection_select :user_id, User.order(:last_name), :id, :full_name,
+	        								{},
+	        								{multiple: true, class: 'chosen-select'} %>
+	        	<%= f.submit 'Add Personnel', class: "btn btn-primary" %>
+	        <% end %>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-primary">Email All Personnel</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Save & Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div> <!-- end of container -->
+
+
+<%#= form_for @post, as: :post, url: post_path(@post), method: :patch, html: { class: "edit_post", id: "edit_post_45" } do |f| %>
+
+
+
+
+<!-- Working:  -->
+
+<%#= f.select :user_id, @all_users.map { |user| [user.full_name, user.id] } %>
