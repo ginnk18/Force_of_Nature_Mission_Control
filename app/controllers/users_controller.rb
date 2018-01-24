@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      WelcomeMailer.welcome_user(@user).deliver_now
+      # WelcomeMailer.welcome_user(@user).deliver_now
       flash[:notice] = 'You signed up! Now go save the world!'
       redirect_to root_path
 
