@@ -7,18 +7,19 @@ Rails.application.routes.draw do
 
   get('users/dashboard', to:'users#dashboard', as: :user_dashboard_index)
 
-  resources :teams
+  resources :teams do
+    post('/addmembers', to: 'userteams#create', as: :addmembers)
+  end
+
   resources :events, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
      resources :userevents, only: [:new, :create, :destroy]
      get('/share', to: 'eventsignup#share', as: :shareevent)
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
      post('newsignup', to: 'eventsignup#create')
-     # post('adminsignup', to: 'eventsignup#adminsignup')
      delete('/:id', to: 'eventsignup#destroy', as: :removeguest)
   end
 
 
-  # post('adminsignup', to: 'eventsignup#adminsignup')
   resources :userteams, only:[:destroy, :update, :edit]
   post('newsignup/:id', to: 'eventsignup#modalsignup')
   get('eventscal/:id', to: 'events#translate', as: :eventshow)
