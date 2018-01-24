@@ -9,9 +9,9 @@ class EventsignupController < ApplicationController
       signup =  UserEvent.new(user: user ,event: @event )
       # byebug
       if signup.save!
-          # EventSignUpMailer.event_sign_up(@event, user).deliver_now
-          # remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-          # ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+          EventSignUpMailer.event_sign_up(@event, user).deliver_now
+          remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+          ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
           redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
       else
@@ -47,9 +47,9 @@ class EventsignupController < ApplicationController
         end
 
         if signup.save!
-            # EventSignUpMailer.event_sign_up(@event, user).deliver_now
-            # remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-            # ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+            EventSignUpMailer.event_sign_up(@event, user).deliver_now
+            remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
             redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
         else
@@ -73,7 +73,7 @@ class EventsignupController < ApplicationController
 
         if signup.save!
             remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-            # ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
             render json: { message: "Thanks for signing up!" }
         else
             render json: { message: "You have already signed up!"}

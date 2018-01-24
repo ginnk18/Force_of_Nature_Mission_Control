@@ -40,8 +40,8 @@ $(document).ready(function() {
                         setTimeout( function() {
                         $( '#ModalLabel' ).html(calEvent.title);
                         $('#additionalInfo').html("Info: " + calEvent.additional)
-                        $( '#starttime' ).html("Start Time: " + calEvent.start._d);
-                        $( '#endtime' ).html("End Time: " + calEvent.end._d);
+                        $( '#starttime' ).html("Start Time: " + calEvent.start._d.strftime('%l:%M %P'));
+                        $( '#endtime' ).html("End Time: " + calEvent.end._d.strftime('%l:%M %P'));
                         $('#location').html("Location: " + calEvent.location);
 
 

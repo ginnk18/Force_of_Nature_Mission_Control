@@ -2,6 +2,7 @@ class WelcomeMailer < ApplicationMailer
 
   def welcome_user(user)
     @user = user
-    mail(to: 'thissectionclosedcc@gmail.com', subject: 'Welcome!')
+    @email = @user.email
+    mail(to: @email, subject: 'Welcome to Force of Nature Mission Control!')
   end
 end
