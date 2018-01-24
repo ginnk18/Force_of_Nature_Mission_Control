@@ -8,12 +8,13 @@ class UserteamsController < ApplicationController
             if index != 0 
                 member = User.find new_members[index]
                 userteam = UserTeam.new(user: member, team: @team)
-                if userteam.save!
+                if userteam.save
                     if index == new_members.length - 1
                         redirect_to admin_teams_path, notice: "You added #{new_members.length - 1} new members to #{@team.name}"
                     end
                 else
                     redirect_to admin_teams_path, notice: "#{member.full_name} is already a member of #{@team.name}"
+                    break
                 end
             end
         end
