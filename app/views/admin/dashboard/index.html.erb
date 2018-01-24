@@ -1,9 +1,10 @@
 <div class="container-fluid">
-  <h2 class="head"> Admin Dashboard</h2>
+  <h2 class="head mt-2">Admin Dashboard</h2>
 
   <div class="alert alert-info"> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
-  </button>"Messages here" </div>
+  </button>"Messages here" 
+  </div>
 
   <div class="row">
     <div class="col-lg">
@@ -14,22 +15,20 @@
       </div>
       <% end %>
       <div class="card details">
-        <ul>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-          <li>Event</li>
-
+        <ul style="list-style-type: none;">
+          <% @events.each_with_index do |event, index| %>
+            <% if index <= 4 %>
+              <li><%= link_to event.name, event %></li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
-      <a href="http://slack.com" class="content-link">
+      <a href="http://slack.com" class="content-link" target="_blank">
         <div class="card dash">
           <i class="fa fa-slack fa-3x" aria-hidden="true"></i>
           <h3> Slack </h3>
         </div>
-     </div>
+     </div> <!-- end of column -->
    </a>
 
      <div class="col-lg">
@@ -47,7 +46,7 @@
          <i class="fa fa-comment-o fa-3x" aria-hidden="true"></i>
          <h3> Manage Messages </h3>
        </div>
-     </div>
+     </div> <!-- end of column -->
 
     <div class="col-lg">
       <%= link_to (admin_signups_path), class: 'content-link' do%>
@@ -57,10 +56,12 @@
             </div>
             <% end %>
             <div class="card details">
-              <ul>
-                <li>User</li>
-                <li>User</li>
-                <li>User</li>
+              <ul style="list-style-type: none;">
+                <% @guest_users.each_with_index do |guest, index| %>
+                  <% if index <= 4 %>
+                    <li><%= link_to guest.full_name, admin_signups_path %></li>
+                  <% end %>
+                <% end %>
               </ul>
             </div>
       <%= link_to (admin_people_path), class: 'content-link' do%>
@@ -76,5 +77,5 @@
         <h3> Manage Teams </h3>
       </div>
       <% end %>
-    </div>
- </div>
+    </div> <!-- end of column -->
+ </div> <!-- end of container -->

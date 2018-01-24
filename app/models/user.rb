@@ -23,7 +23,10 @@ class User < ApplicationRecord
     # regional team - but some users (team leads) can belong to a regional team and an
     #operational team)
     has_many :user_teams, dependent: :destroy
-    has_many :teams, through: :user_teams
+    has_many :team_memberships, through: :user_teams, source: :team
+
+    #as a team lead
+    has_many :teams
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, uniqueness: true, format: VALID_EMAIL_REGEX
