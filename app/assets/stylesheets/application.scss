@@ -229,6 +229,18 @@ color: #fff;
 font-weight: bold;
 }
 
+.navbar ul li {
+ font-size: 14px;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: #BF55EC;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#BF55EC' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
 .second-nav a {
   // link styles for secondary nav
 }
@@ -498,6 +510,19 @@ table {
 .team {
   font-size: 20px;
 }
+
+.vol-contact {
+  margin-top: 15px;
+}
+
+.field > select {
+  margin: 10px 0;
+}
+
+.field > label {
+  color: black;
+  margin: 0;
+}
 ///////////////////// CSS for Forms
 
 ////////////
@@ -526,6 +551,20 @@ table {
 }
 .adminteams:hover{
     text-decoration: none;
+}
+
+.people-info {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.teamname-head a {
+  color: rgb(175, 231, 255);
+  font-size: 20px;
+}
+
+.teambg {
+  background-color: rgba(0, 0, 0, 0.4)
 }
 
 // Social sharing icon size

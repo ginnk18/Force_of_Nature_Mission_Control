@@ -5,7 +5,7 @@
 
    <div class='card col-md-12' style="border:0">
            <div class='card-header d-flex'><strong>Guests:&nbsp;</strong> <%= @stats[:guests] %></div>
-               <table class="table table-striped">
+               <table class="table table-striped table-responsive">
                    <thead>
                        <tr>
                            <th>Full Name</th>
@@ -23,30 +23,33 @@
                        <% @guest_users.each do |volunteer| %>
                            <% first_event = volunteer.attended_events.first %>
                            <tr>
-                               <td><%= volunteer.full_name %></td>
+                               <td><%= volunteer.full_name %> <br>
+                                 <div class="vol-contact">
+                                 <% if volunteer.contacted === false %>
+                                 <%= form_tag("contacted/#{volunteer.id}", method: :patch) do %>
+                                 <%= submit_tag "Not Contacted", class: 'btn btn-danger' %>
+                                 <% end %>
+                                 <% else %>
+                                 <button class="btn btn-success">Contacted <%= fa_icon('check') %></button>
+                                 <% end %>
+                               </div>
+                               </td>
                                <td><%= volunteer.email %></td>
                                <td><%= volunteer.phone_number %></td>
                                <td><%= volunteer.additional_info %></td>
                                <td><%= volunteer.previous_volunteer %></td>
                                <td><%= volunteer.created_at.strftime('%B %d %Y') %></td>
                                <td><% if first_event %><%= first_event.name %><% end %></td>
-                               <td><%= form_tag("upcat/#{volunteer.id}", method: :patch, class: "pull-right") do %>
-                      <div class="field pb-1 pl-2">
-                          <%= label(:user_category, "user_category") %>
-                          <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
-                          <%= submit_tag "Submit", class:"btn btn-primary"%>
-                      </div>
-                           <% end %></td>
+                               <td>
+                                 <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
+                        <div class="field">
+                            <%= label(:user_category, "user_category") %>
+                            <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                            <%= submit_tag "Submit", class:"btn btn-primary"%>
+                        </div>
+                             <% end %>
+                         </td>
                            </tr>
-                           <td style="border-bottom: 1px solid black;">
-                               <% if volunteer.contacted === false %>
-                                   <%= form_tag("contacted/#{volunteer.id}", method: :patch) do %>
-                                       <%= submit_tag "Not Contacted", class: 'btn btn-danger' %>
-                                   <% end %>
-                               <% else %>
-                                   <button class="btn btn-success">Contacted <%= fa_icon('check') %></button>
-                               <% end %>
-                           </td>
                        <% end %>
                    </tbody>
                </table>
