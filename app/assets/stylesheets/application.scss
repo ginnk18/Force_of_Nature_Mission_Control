@@ -36,8 +36,17 @@ h1,h2,h3,h4,h5,h6 {
   font-family: 'Orbitron', sans-serif;
 }
 
-h1.head, h2.head, h3.head, h4.head, h5.head {
+h1.head, h2.head, h3.head, h4.head, h5.head, .head {
   color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  margin: 2px;
+  display: inline-block;
+}
+
+.head.backbutton {
+  display: block;
+  background-color: none;
 }
 
 

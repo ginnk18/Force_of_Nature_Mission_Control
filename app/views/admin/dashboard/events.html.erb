@@ -1,5 +1,7 @@
 
-    <h6 class="mt-2"><%= link_to 'Back to Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %></h6>
+    <h6 class="mt-2 backbutton"><%= link_to 'Back to Dashboard', admin_dashboard_index_path, class: 'nav-link', style: 'color: white' %></h6>
+    <div class="container">
+      <%= link_to 'Create an Event', new_event_path, style: 'color: white; float:right;margin-bottom:15px;', class:"btn btn-primary btn-lg" %>
     <h3 class="mt-3 head" id="events">Current Events</h3>
     <table class='table table-bordered table-light table-striped'>
         <thead class='thead-inverse'>
@@ -26,3 +28,4 @@
             <% end %>
         </tbody>
     </table>
+  </div>
