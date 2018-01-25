@@ -45,6 +45,7 @@ class Admin::DashboardController < Admin::ApplicationController
       end
 
         def teams
+          @userteam = UserTeam.new
           @events = Event.order(date: :asc)
           @users = User.all
           @teams = Team.all
