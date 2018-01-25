@@ -27,7 +27,12 @@
       <div class="card details">
 
         <div class="list-group">
-          <% @events.each do |event| %>
+          <h4>Your Events: </h4>
+          <% @user_events.each do |user_event| %>
+            <div class="list-group-item"> <%= link_to user_event.name, user_event %> </div>
+          <% end %>
+          <h4>Other Upcoming Events: </h4>
+          <% @all_events.each do |event| %>
           <% @anevent = event.name.to_s + " - " + event.date.strftime('%b %-d %Y at %l:%M %P ') %>
           <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
           <% end %>

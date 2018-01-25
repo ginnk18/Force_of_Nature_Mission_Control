@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :authenticate_user!, except: [:new, :create]
   before_action :find_user, only: [:edit, :update, :changestatus, :contacted]
   before_action :authorize_user!, except: [:new, :create, :dashboard]
@@ -24,7 +25,13 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @events = Event.order(created_at: :desc).limit(5)
+    @all_events = Event.order(date: :asc).limit(3)
+    user = User.find session[:user_id]
+    user_event_ids = UserEvent.where(user: user)
+    @user_events = [];
+    user_event_ids.each do |user_event|
+      @user_events.push(Event.find user_event.event_id)
+    end
     if current_user.user_category.name === 'Admin'
       redirect_to admin_dashboard_index_path
     else
