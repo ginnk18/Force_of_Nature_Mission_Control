@@ -6,7 +6,7 @@
 	   <h1 class="page-head head">All Events</h1>
        <% if current_user %>
         <% if current_user.user_category.name != 'Guest' %>
-            <button class="btn btn-primary btn-lg mb-2 ml-2"><%= link_to 'Create an Event', new_event_path, style: 'color: white' %></button> 
+            <button class="btn btn-primary btn-lg mb-2 ml-2"><%= link_to 'Create an Event', new_event_path, style: 'color: white' %></button>
         <% end %>
        <% end %>
     </div>
@@ -28,7 +28,7 @@
 										
                     <p id="endtime"></p>
                     <p id="location"></p>
-                    <p id="message"></p>
+                    <p id="additionalInfo"></p>
                     <%#= form_tag("newsignup", :id => 'eventsignupform', method: "post", class: "form-inline d-flex justify-content-center") do %>
                        <!--  <div class="field d-flex">
                             <%= label(:email, "E-mail:", placeholder: 'user@domain.com', class:"mr-2") %>

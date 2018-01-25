@@ -11,7 +11,8 @@ class Event < ApplicationRecord
 	belongs_to :creator, class_name: "User"
 	#each event has one lead, which holds a foreign key to a User
 	# belongs_to :lead, class_name: "User"
-	
+	belongs_to :lead, :foreign_key => 'lead_id',class_name: "User"
+	belongs_to :shift_manager, :foreign_key => 'shift_manager_id',class_name: "User"
 	belongs_to :data_captain, :foreign_key => 'data_captain_id',class_name: "User"
 	belongs_to :canvas_captain, :foreign_key => 'canvas_captain_id', class_name: "User"
 	# belongs_to :data_captain, class_name: "User"

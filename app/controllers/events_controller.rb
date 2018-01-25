@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
       return
     end
-
+# byebug
     start_date = start_date.change(:offset => "-0800")
     end_date = end_date.change(:offset => "-0800")
     g_event = Google::Apis::CalendarV3::Event.new({
@@ -60,7 +60,9 @@ class EventsController < ApplicationController
   def show
     @category=@event.event_category
     @canvas_captain = @event.canvas_captain
+    @lead = @event.lead
     @data_captain=@event.data_captain
+    @shift_manager=@event.shift_manager
     @userevent = UserEvent.new
   end
 
@@ -88,12 +90,13 @@ class EventsController < ApplicationController
 
             return
           end
-
+# byebug
           start_date = start_date.change(:offset => "-0800")
           end_date = end_date.change(:offset => "-0800")
           g_event = Google::Apis::CalendarV3::Event.new({
             summary: @event.name,
             location: @event.location,
+
             description: @event.additional_info,
             start: {
               date_time: start_date
@@ -138,8 +141,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :name,:date,:start_time,:end_time,
       :location,:additional_info,:attachment_url,
-      :event_category_id, :team_id,:data_captain_id, :canvas_captain_id, :sign_up_goals,
-      :show_up_goals,:signature_goals, :sign_up_outcome, :show_up_outcome, :signature_outcome)
+      :event_category_id, :team_id,:lead_id,:data_captain_id, :canvas_captain_id, :sign_up_goals,
+      :show_up_goals,:signature_goals,:shift_manager_id, :sign_up_outcome, :show_up_outcome, :signature_outcome)
     # The `params` object is available inside all controllers. It's
     # a "hash" that holds all URL params, all fields from the form and
     # all query params. It's as if we merged `request.query`, `request.params`
@@ -151,10 +154,15 @@ class EventsController < ApplicationController
   end
 
   def get_users
-    @team_lead_id = UserCategory.where(name: 'Team Lead')
-    @lead_users = User.where(user_category: @team_lead_id)
+    @lead_id = UserCategory.where({name: ['Team Lead','Admin']})
+    @lead_users = User.where(user_category: @lead_id)
+    @data_captain_id = UserCategory.where({name: ['General Volunteer','Team Lead','Admin']})
     @data_captain_users = User.where(user_category: @data_captain_id)
+    @canvas_captain_id = UserCategory.where({name: ['General Volunteer','Team Lead','Admin']})
+    @canvas_captain_users = User.where(user_category: @canvas_captain_id)
     @all_users = User.order(:last_name)
+    @shift_manager_id = UserCategory.where({name: ['Team Lead','Admin']})
+    @shift_manager_users = User.where(user_category: @shift_manager_id)
   end
 
   def get_teams

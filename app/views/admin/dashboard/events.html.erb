@@ -5,6 +5,8 @@
         <thead class='thead-inverse'>
             <tr>
                 <th>Event Name</th>
+                <th>Location</th>
+                <th>Date</th>
                 <th>Event Start Time</th>
                 <th>Event End Time</th>
                 <th>Event Lead</th>
@@ -16,6 +18,8 @@
         <% @events.each do |event| %>
             <tr>
                 <td><%= event.name %></td>
+                <td><%= event.location %></td>
+                <td><%= event.date %></td>
                 <td><%= event.start_time.strftime('%H:%M') %></td>
                 <td><%= event.end_time.strftime('%H:%M') %></td>
                 <td><%= event&.canvas_captain&.full_name %></td>
