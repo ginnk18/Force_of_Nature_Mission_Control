@@ -34,6 +34,8 @@
           <h4>Other Upcoming Events: </h4>
           <% @all_events.each do |event| %>
           <% @anevent = event.name.to_s + " - " + event.date.strftime('%b %-d %Y at %l:%M %P ') %>
+          <% puts DateTime.now.strftime('%d-%m-%Y') %>
+          <% puts event.date %> 
           <div class="list-group-item"> <%= link_to @anevent, event_path(event) %> </div>
           <% end %>
           <%= link_to 'See All Events', events_path, class:"btn btn-dark btn-block" %>

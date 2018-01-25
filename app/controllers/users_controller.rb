@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    datetime = DateTime.now.strftime('%d-%m-%Y')
     @all_events = Event.order(date: :asc).limit(3)
     user = User.find session[:user_id]
     user_event_ids = UserEvent.where(user: user)
