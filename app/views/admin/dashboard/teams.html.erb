@@ -10,6 +10,12 @@
           <div class="col-md-3 teambg">
               <div class="card-header teamname-head"><strong> <%=link_to(team_path(team)) do %>
                  <%= team.name %> <% end %> </strong></div>
+              <%= form_for [team, @userteam], url: team_addmembers_url(team) do |f| %>
+                <%= f.collection_select :user_id, User.order(:last_name), :id, :full_name,
+                                  {},
+                                  {multiple: true, class: 'chosen-select m-2'} %>
+                <%= f.submit 'Add Members', class: 'btn btn-primary m-2' %>
+              <% end %>
               <div class="list-group">
               <% team.members.each do |member| %>
                  <div class="list-group-item list-group-item-action border-0 linksstyle"> <%= member.full_name %>
@@ -25,3 +31,11 @@
       </div>
   </div>
 </div>
+
+<!-- <h5>Add Personnel</h5> -->
+          <%#= form_for [@event, @userevent], url: event_userevents_url(@event) do |f| %>
+            <%#= f.collection_select :user_id, User.order(:last_name), :id, :full_name,
+                          {},
+                          {multiple: true, class: 'chosen-select'} %>
+            <%#= f.submit 'Add Personnel', class: "btn btn-primary" %>
+          <%# end %>

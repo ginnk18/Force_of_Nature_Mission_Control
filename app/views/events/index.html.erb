@@ -4,7 +4,11 @@
 		<div class="col-lg-11">
     <div style="display: flex; justify-content: center;">
 	   <h1 class="page-head head">All Events</h1>
-       <button class="btn btn-primary btn-lg mb-2 ml-2"><%= link_to 'Create an Event', new_event_path, style: 'color: white' %></button>
+       <% if current_user %>
+        <% if current_user.user_category.name != 'Guest' %>
+            <button class="btn btn-primary btn-lg mb-2 ml-2"><%= link_to 'Create an Event', new_event_path, style: 'color: white' %></button> 
+        <% end %>
+       <% end %>
     </div>
     <div id="calendar"></div>
 
