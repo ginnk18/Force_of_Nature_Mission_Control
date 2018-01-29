@@ -11,6 +11,7 @@ class EventsignupController < ApplicationController
       if signup.save!
           EventSignUpMailer.event_sign_up(@event, user).deliver_now
           remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
+
           ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
 
           redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
@@ -48,8 +49,12 @@ class EventsignupController < ApplicationController
 
         if signup.save!
             EventSignUpMailer.event_sign_up(@event, user).deliver_now
-            remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+              remind_date_day = event_date - 1.day
+              remind_date_week = event_date - 1.week
+              ReminderMailerJob.set(wait_until: remind_date_day).perform_later(@event,user)
+              ReminderMailerJob.set(wait_until: remind_date_week).perform_later(@event,user)
+
+
 
             redirect_to event_shareevent_path(@event), notice: 'Thanks for signing up!'
         else
@@ -72,8 +77,12 @@ class EventsignupController < ApplicationController
         end
 
         if signup.save!
-            remind_date = DateTime.new(@event.date.year, @event.date.month, @event.date.day)
-            ReminderMailerJob.set(wait_until: remind_date).perform_later(@event,user)
+          EventSignUpMailer.event_sign_up(@event, user).deliver_now
+          remind_date_day = event_date - 1.day
+          remind_date_week = event_date - 1.week
+          ReminderMailerJob.set(wait_until: remind_date_day).perform_later(@event,user)
+          ReminderMailerJob.set(wait_until: remind_date_week).perform_later(@event,user)
+
             render json: { message: "Thanks for signing up!" }
         else
             render json: { message: "You have already signed up!"}
@@ -81,7 +90,7 @@ class EventsignupController < ApplicationController
     end
 
     # def adminsignup
-        
+
     # end
 
       def share
@@ -89,7 +98,7 @@ class EventsignupController < ApplicationController
 
       # this is for admin or team lead removing guests on the event show page
       def destroy
-          userevent = UserEvent.find params[:event_id] # can't figure out why the URL is 
+          userevent = UserEvent.find params[:event_id] # can't figure out why the URL is
           #switching the event_id and the userevent id, so here 'event_id' is actually the
           #ID for the UserEvent record I want to delete, and the id below is for the event I
           #am redirecting back to
@@ -108,6 +117,10 @@ class EventsignupController < ApplicationController
 
     def find_event
         @event = Event.find params[:event_id]
+    end
+
+    def event_date
+      DateTime.new(@event.date.year, @event.date.month, @event.date.day)
     end
 
     # def user_params
