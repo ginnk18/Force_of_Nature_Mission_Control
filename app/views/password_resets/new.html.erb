@@ -1,11 +1,27 @@
-<h1>Reset Password</h1>
+<div class="container">
+<div class="row d-flex justify-content-center">
+	<div class="col-lg-4">
+
+<h1 class="head">Reset Password</h1>
+
+    <% if !flash[:notice].nil? %>
+    <div class="row">
+            <%= flash[:notice] %>
+        </div>
+    </div>
+    <% end %>
 
 <%= form_tag password_resets_path, :method => :post do %>
   <div class='field'>
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+    <%= label_tag :email, nil, class: "control-label" %> <br>
+    <%= text_field_tag :email, params[:email], class: "form-control" %>
+    <br>
   </div>
     <div class='actions'>
-    <%= submit_tag "Reset Password" %>
+    <%= submit_tag "Reset Password", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+</div>
+</div>
+</div>
