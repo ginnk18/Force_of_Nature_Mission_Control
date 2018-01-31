@@ -15,6 +15,7 @@
 *= require chosen
 *= require social-share-button
  *= require_tree .
+ *= require trix
  *= require_self
  */
 
@@ -23,7 +24,35 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 
+// .trix-button--icon-code {
+//   display: none;
+// }
+//
+// .trix-button--icon-strike {
+//   display: none;
+// }
 
+button.trix-button {
+  background-color: white;
+}
+
+trix-editor.trix-content {
+  background-color: white;
+}
+
+.trix-content h1 {
+  font-family: serif;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+trix-editor.trix-editor, .trix-button {
+  background-color: white;
+}
+
+h1 .trix-editor {
+  font-family: serif !important;
+}
 
 body {
   background-image: image-url('darkspace.jpg');

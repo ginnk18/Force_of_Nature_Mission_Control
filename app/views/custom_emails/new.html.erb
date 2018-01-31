@@ -1,5 +1,11 @@
+<div class="container">
+<div style="color:white">
+You are emailing member of the event <strong> <%= @event&.name %> </strong>
+</div>
 <%= simple_form_for @email do |form| %>
-  <%= form.input :to_recipients, label: 'to' %>
-  <%= form.input :email_body %>
+  <%= form.input :to_recipients, label: 'to', input_html: {value: @user_emails.join(', ') }%>
+  <%= form.input :email_body, as: :trix_editor, placeholder: "type your email here"  %>
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>
+
+</div>
