@@ -1,9 +1,10 @@
 <div class="container">
 <div style="color:white">
-You are emailing member of the event <strong> <%= @event&.name %> </strong>
+<p> You are emailing members of the event <strong> <%= @event&.name %> </strong> </p>
+<p> All emails will be sent as blind carbon copy (BCC) </p>
 </div>
 <%= simple_form_for @email do |form| %>
-  <%= form.input :to_recipients, label: 'to', input_html: {value: @user_emails.join(', ') }%>
+  <%= form.input :to_recipients, label: 'To (comma-seperate emails, please)', input_html: {value: @user_emails.join(', ') }%>
   <%= form.input :email_body, as: :trix_editor, placeholder: "type your email here"  %>
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>
