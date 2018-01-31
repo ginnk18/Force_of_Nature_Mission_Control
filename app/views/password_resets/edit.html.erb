@@ -21,10 +21,10 @@
     <%= f.password_field :password, class: "form-control" %>
   </div>
   <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class='actions'><%= f.submit 'Update password' %></div>
+    <%= f.label :password_confirmation, nil, class: "control-label" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div> <br>
+  <div class='actions'><%= f.submit 'Update password', class: "btn btn-primary" %></div>
 <% end %>
 
 </div>
