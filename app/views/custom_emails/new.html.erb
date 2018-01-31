@@ -1,0 +1,5 @@
+<%= simple_form_for @email do |form| %>
+  <%= form.input :to_recipients, label: 'to' %>
+  <%= form.input :email_body %>
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>
