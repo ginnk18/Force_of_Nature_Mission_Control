@@ -591,3 +591,14 @@ $size: 35px;
   display: inline-block;
   padding-bottom: 2rem;
 }
+
+a.link-on-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  color:lightblue;
+  text-decoration: underline;
+}
+
+a.link-on-bg:hover {
+  color: #BF55EC;
+}

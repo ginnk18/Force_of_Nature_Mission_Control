@@ -1,15 +1,18 @@
+<% if flash[:danger].present? %>
+<div class="alert onTop alert-danger alert-dismissible fade show" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<%=flash[:danger]%>
+</div>
+<% end %>
+
 <div class="container">
 <div class="row d-flex justify-content-center">
 	<div class="col-lg-4">
 
 <h1 class="head">Reset Password</h1>
 
-    <% if !flash[:notice].nil? %>
-    <div class="row">
-            <%= flash[:notice] %>
-        </div>
-    </div>
-    <% end %>
 
 <%= form_tag password_resets_path, :method => :post do %>
   <div class='field'>
