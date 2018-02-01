@@ -1,7 +1,9 @@
 class CustomMailer < ApplicationMailer
-  def custom_mail(body, email)
+  def custom_mail(body, email, subject, event)
+  @event = event
   @email = email
+  @subject = subject
   @body = body
-  mail(bcc: @email, subject: 'Welcome to Force of Nature Mission Control!')
+  mail(bcc: @email, subject: @subject)
   end
 end

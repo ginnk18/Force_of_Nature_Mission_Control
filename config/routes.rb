@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update, :edit]
 
   get('users/dashboard', to:'users#dashboard', as: :user_dashboard_index)
-  resources :custom_emails, only: [:new, :create]
 
   resources :teams do
     post('/addmembers', to: 'userteams#create', as: :addmembers)
