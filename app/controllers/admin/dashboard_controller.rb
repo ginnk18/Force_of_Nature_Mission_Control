@@ -3,7 +3,7 @@ class Admin::DashboardController < Admin::ApplicationController
   before_action :find_users
 
   def index
-    @events = Event.order(date: :asc)
+    @events = Event.order(date: :desc)
     @users = User.all
     @teams = Team.all
     @stats = {
@@ -32,6 +32,8 @@ class Admin::DashboardController < Admin::ApplicationController
 
       def signups
         @users = User.all
+        @guest_users = User.where(user_category: @guest_id).order(created_at: :desc).page params[:page]
+        # @users = User.order(:name).page params[:page]
         @teams = Team.all
         @stats = {
           team_count: Team.count,
@@ -61,7 +63,8 @@ class Admin::DashboardController < Admin::ApplicationController
         end
 
           def events
-            @events = Event.order(date: :asc)
+            @events = Event.order(date: :desc).page params[:page]
+            # @users = User.order(:name).page params[:page]
 
             @stats = {
               event_count: Event.count,
