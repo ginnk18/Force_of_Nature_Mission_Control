@@ -20,6 +20,10 @@
   <%= f.input :location, label: 'Location (Address)'%>
   <%= f.input :additional_info, label: 'Additional Information'%>
   <%= f.input :attachment_url, label: 'Attachment URL'%>
+  <%= f.label :lead_id %><p>
+  <%= f.select :lead_id, @lead_users.map { |leader| [leader.full_name, leader.id] } %>
+  <%= f.label :shift_manager_id %><p>
+  <%= f.select :shift_manager_id, @shift_manager_users.map { |manager| [manager.full_name, manager.id] } %>
 </div>
 <div class="col-6">
   <h4 class="head">Targets</h4>
@@ -29,6 +33,7 @@
   <%= f.input :sign_up_outcome, label: 'Sign Up Outcome', placeholder: 'Fill in after event' %>
   <%= f.input :show_up_outcome, label: 'Show Up Outcome', placeholder: 'Fill in after event' %>
   <%= f.input :signature_outcome, label: 'Signatures Outcome', placeholder: 'Fill in after event' %>
+
 </div>
 </div>
   <div class="row">
@@ -37,13 +42,13 @@
 
       <div class="col-3">
         <%= f.label :canvas_captain_id %><p>
-        <%= f.select :canvas_captain_id, @lead_users.map { |leader| [leader.full_name, leader.id] } %>  
+        <%= f.select :canvas_captain_id, @canvas_captain_users.map { |canvas_captain| [canvas_captain.full_name, canvas_captain.id] } %>
       </div>
 
       <!-- Selecting an data captain -->
       <div class="col-3">
         <%= f.label :data_captain_id %><p>
-          <%= f.select :data_captain_id, @lead_users.map { |leader| [leader.full_name, leader.id] } %>
+          <%= f.select :data_captain_id, @data_captain_users.map { |data_captain| [data_captain.full_name, data_captain.id] } %>
         </div>
 
       <!-- Selecting the type of event -->

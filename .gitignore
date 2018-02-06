@@ -26,3 +26,6 @@ app/assets/.DS_Store
 
 .byebug_history
 erd.pdf
+
+client_secret.json
+quickstart.rb

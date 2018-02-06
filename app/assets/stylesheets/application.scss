@@ -19,7 +19,7 @@
  *= require_self
  */
 
-@import "bootstrap";
+@import 'bootstrap';
 
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
@@ -58,18 +58,26 @@ body {
   background-color: black;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Orbitron', sans-serif;
 }
 
-h1.head, h2.head, h3.head, h4.head, h5.head {
+h1.head,
+h2.head,
+h3.head,
+h4.head,
+h5.head {
   color: white;
 }
 
-
 .site-title {
   font-size: 25px;
-  color: #BF55EC;
+  color: #bf55ec;
 }
 
 #calendar {
@@ -77,13 +85,16 @@ h1.head, h2.head, h3.head, h4.head, h5.head {
   padding: 1rem;
 }
 
-label, .control-label {
-  color:white;
+#pagination {
+  color: white;
+}
+label,
+.control-label {
+  color: white;
 }
 
-
 .btn-primary {
-  background: #BF55EC;
+  background: #bf55ec;
   color: white;
 }
 
@@ -94,178 +105,177 @@ label, .control-label {
 
 // footer styling
 
-
-html { height: 100%; }
+html {
+  height: 100%;
+}
 body {
-    min-height:100%;
-    position:relative;
-    padding-bottom: 130px;
-    margin:0;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 130px;
+  margin: 0;
 }
 .footer {
-    position: absolute;
-    left: 0 ; right: 0; bottom: 0;
-    height:130px;
-    background-color: black;
-    color: white;
-    padding-top:5px;;
-
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 130px;
+  background-color: black;
+  color: white;
+  padding-top: 5px;
 }
 
 .footer-social-icons {
-      width: 350px;
-      display: block;
-      margin: 0 auto;
-  }
+  width: 350px;
+  display: block;
+  margin: 0 auto;
+}
 
-  .footer-social-icons p {
-    margin-top: 10px;
-  }
+.footer-social-icons p {
+  margin-top: 10px;
+}
 
+.social-icon {
+  color: #fff;
+}
 
+ul.social-icons {
+  margin-left: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+}
 
-      .social-icon {
-          color: #fff;
-      }
+.social-icons li {
+  vertical-align: top;
+  display: inline;
+  height: 50px;
+}
 
-      ul.social-icons {
-          margin-left: 0px;
-          padding: 0px;
-            display: flex;
-            justify-content: center;
-      }
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+}
 
-      .social-icons li {
-          vertical-align: top;
-          display: inline;
-          height: 50px;
-      }
-
-      .social-icons a {
-          color: #fff;
-          text-decoration: none;
-      }
-
-      .footer-social-icons {
-          width: 350px;
-          display: block;
-          margin: 0 auto;
-      }
+.footer-social-icons {
+  width: 350px;
+  display: block;
+  margin: 0 auto;
+}
 
 .fa-facebook {
-    padding: 10px 14px;
-    -o-transition: .5s;
-    -ms-transition: .5s;
-    -moz-transition: .5s;
-    -webkit-transition: .5s;
-    transition: .5s;
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .fa-facebook:hover {
-    background-color: #3d5b99;
+  background-color: #3d5b99;
 }
 
 .fa-twitter {
-    padding: 10px 12px;
-    -o-transition: .5s;
-    -ms-transition: .5s;
-    -moz-transition: .5s;
-    -webkit-transition: .5s;
-    transition: .5s;
+  padding: 10px 12px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .fa-twitter:hover {
-       background-color: #00aced;
-   }
+  background-color: #00aced;
+}
 
-   .fa-rss {
-       padding: 10px 14px;
-       -o-transition: .5s;
-       -ms-transition: .5s;
-       -moz-transition: .5s;
-       -webkit-transition: .5s;
-       transition: .5s;
-       background-color: black;
-   }
+.fa-rss {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: black;
+}
 
+.fa-rss:hover {
+  background-color: #eb8231;
+}
 
-   .fa-rss:hover {
-       background-color: #eb8231;
-   }
+.fa-youtube {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: black;
+}
 
-   .fa-youtube {
-       padding: 10px 14px;
-       -o-transition: .5s;
-       -ms-transition: .5s;
-       -moz-transition: .5s;
-       -webkit-transition: .5s;
-       transition: .5s;
-       background-color: black;
-   }
+.fa-youtube:hover {
+  background-color: #e64a41;
+}
 
-   .fa-youtube:hover {
-       background-color: #e64a41;
-   }
-
-
-   .fa-google-plus {
-    padding: 10px 9px;
-    -o-transition: .5s;
-    -ms-transition: .5s;
-    -moz-transition: .5s;
-    -webkit-transition: .5s;
-    transition: .5s;
+.fa-google-plus {
+  padding: 10px 9px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .fa-google-plus:hover {
-    background-color: #e25714;
+  background-color: #e25714;
 }
 
 .fa-linkedin {
-      padding: 10px 14px;
-      -o-transition: .5s;
-      -ms-transition: .5s;
-      -moz-transition: .5s;
-      -webkit-transition: .5s;
-      transition: .5s;
-  }
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
 
-  .fa-linkedin:hover {
-      background-color: #0073a4;
-  }
+.fa-linkedin:hover {
+  background-color: #0073a4;
+}
 
-.linksstyle{
-    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.linksstyle {
+  -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 //page styling
 
-.container, .container-fluid {
+.container,
+.container-fluid {
   flex: 1 0 auto;
 }
-
 
 .navbar navbar-expand-md {
   background-color: black;
 }
 .navbar ul li a {
-color: #fff;
-font-weight: bold;
+  color: #fff;
+  font-weight: bold;
 }
 
 .navbar ul li {
- font-size: 14px;
+  font-size: 14px;
 }
 
 .custom-toggler.navbar-toggler {
-    border-color: #BF55EC;
+  border-color: #bf55ec;
 }
 .custom-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#BF55EC' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-
 
 .second-nav a {
   // link styles for secondary nav
@@ -276,7 +286,6 @@ font-weight: bold;
   margin-right: 1rem;
 }
 
-
 h1.page-head {
   text-align: center;
 }
@@ -284,7 +293,7 @@ h1.page-head {
 /* welcome page styles  */
 
 .panel {
-  background-position:center;
+  background-position: center;
   background-size: cover;
   height: 450px;
   display: flex;
@@ -304,8 +313,8 @@ h1.page-head {
 
 #welcome2 {
   background-image: image-url('forest.jpg');
-    background-attachment: fixed;
-    align-self: flex-start;
+  background-attachment: fixed;
+  align-self: flex-start;
 }
 
 #fixed {
@@ -348,116 +357,115 @@ h1.page-head {
   display: flex;
 }
 
-
 // footer
 
- .footer-social-icons {
-        width: 350px;
-        display: block;
-        margin: 0 auto;
-    }
+.footer-social-icons {
+  width: 350px;
+  display: block;
+  margin: 0 auto;
+}
 
-    .social-icon {
-        color: #fff;
-    }
+.social-icon {
+  color: #fff;
+}
 
-    ul.social-icons {
-        margin-left: 0px;
-        padding: 0px;
-    }
+ul.social-icons {
+  margin-left: 0px;
+  padding: 0px;
+}
 
-    .social-icons li {
-        vertical-align: top;
-        display: inline;
-        height: 50px;
-    }
+.social-icons li {
+  vertical-align: top;
+  display: inline;
+  height: 50px;
+}
 
-    .social-icons a {
-        color: #fff;
-        text-decoration: none;
-    }
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+}
 
-    .fa-facebook {
-        padding: 10px 14px;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-        transition: .5s;
-        background-color: black;
-    }
+.fa-facebook {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: black;
+}
 
-    .fa-facebook:hover {
-        background-color: #3d5b99;
-    }
+.fa-facebook:hover {
+  background-color: #3d5b99;
+}
 
-    .fa-twitter {
-        padding: 10px 12px;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-        transition: .5s;
-    }
+.fa-twitter {
+  padding: 10px 12px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
 
-    .fa-twitter:hover {
-        background-color: #00aced;
-    }
+.fa-twitter:hover {
+  background-color: #00aced;
+}
 
-    .fa-rss {
-        padding: 10px 14px;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-        transition: .5s;
-    }
+.fa-rss {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
 
-    .fa-rss:hover {
-        background-color: #eb8231;
-    }
+.fa-rss:hover {
+  background-color: #eb8231;
+}
 
-    .fa-youtube {
-        padding: 10px 14px;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-        transition: .5s;
-        background-color: black;
-    }
+.fa-youtube {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: black;
+}
 
-    .fa-youtube:hover {
-        background-color: #e64a41;
-    }
+.fa-youtube:hover {
+  background-color: #e64a41;
+}
 
-    .fa-linkedin {
-        padding: 10px 14px;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-        transition: .5s;
-        background-color: black;
-    }
+.fa-linkedin {
+  padding: 10px 14px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: black;
+}
 
-    .fa-linkedin:hover {
-        background-color: #0073a4;
-    }
+.fa-linkedin:hover {
+  background-color: #0073a4;
+}
 
-    .fa-google-plus {
-        padding: 10px 9px;
-        -o-transition: .5s;
-        -ms-transition: .5s;
-        -moz-transition: .5s;
-        -webkit-transition: .5s;
-        transition: .5s;
-        background-color: black;
-    }
+.fa-google-plus {
+  padding: 10px 9px;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: black;
+}
 
-    .fa-google-plus:hover {
-        background-color: #e25714;
-    }
+.fa-google-plus:hover {
+  background-color: #e25714;
+}
 
 //Styling pages:
 
@@ -465,21 +473,20 @@ h1.page-head {
   min-height: 500px;
 }
 
-.card.dash  {
+.card.dash {
   display: flex;
   padding: 15px 5px;
   margin: 15px 5px;
   border: 2px black solid;
   text-align: center;
   background-color: black;
-  color: #BF55EC;
+  color: #bf55ec;
 }
 
 .card.dash > h3 {
   margin-top: 10px;
   line-height: 1.3em;
 }
-
 
 .card.item {
   display: flex;
@@ -498,7 +505,6 @@ table {
   text-align: left;
 }
 
-
 .content-link {
   text-decoration: none;
   color: black;
@@ -515,9 +521,9 @@ table {
   border-top: 0;
   margin-top: -20px;
   padding: 15px 5px;
- border-left: 2px black solid;
- border-right: 2px black solid;
- border-bottom: 2px black solid;
+  border-left: 2px black solid;
+  border-right: 2px black solid;
+  border-bottom: 2px black solid;
 }
 
 .content {
@@ -568,15 +574,15 @@ table {
   background-color: #f5f5f5;
 }
 
-.adminteamheader{
-    text-align: center;
+.adminteamheader {
+  text-align: center;
 }
-.adminteams{
-    text-decoration: none;
-    color: grey;
+.adminteams {
+  text-decoration: none;
+  color: grey;
 }
-.adminteams:hover{
-    text-decoration: none;
+.adminteams:hover {
+  text-decoration: none;
 }
 
 .people-info {
@@ -590,7 +596,7 @@ table {
 }
 
 .teambg {
-  background-color: rgba(0, 0, 0, 0.4)
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 // Social sharing icon size
@@ -606,11 +612,11 @@ $size: 35px;
 }
 
 .addeventatc {
-  width:200px;
+  width: 200px;
 }
 
 .eventshare {
-  padding-top:1rem;
+  padding-top: 1rem;
 }
 
 .share-event {

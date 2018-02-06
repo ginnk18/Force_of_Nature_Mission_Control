@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20180131200210) do
     t.integer "show_up_outcome"
     t.integer "signature_outcome"
     t.integer "canvas_captain_id"
+    t.integer "shift_manager_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
     t.index ["lead_id"], name: "index_events_on_lead_id"
