@@ -4,6 +4,6 @@ class ReminderMailer < ApplicationMailer
   @event = event
   @user = user
   @email = @user.email
-  mail(to: @email, subject: "REMINDER: #{@event.name} with Force of Nature")
+  mail(to: 'thissectionclosedcc@gmail.com', subject: "REMINDER: #{@event.name} with Force of Nature")
   end
 end

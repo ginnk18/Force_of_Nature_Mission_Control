@@ -31,11 +31,15 @@ class UsersController < ApplicationController
     render '/users/dashboard/index.html.erb'
     end
   end
-  
+
   def changestatus
     @user.user_category = UserCategory.find_by_name params["user_category"]
     @user.save
-    redirect_to admin_dashboard_index_path
+    if @user.user_category.id == 6
+    WelcomeMailer.approved(@user).deliver_now
+    end
+    redirect_to admin_people_path notice: "Update sucessful!"
+
   end
 
   def contacted
