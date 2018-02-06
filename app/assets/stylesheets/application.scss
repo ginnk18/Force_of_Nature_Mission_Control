@@ -28,7 +28,6 @@
   display: none;
 }
 
-
 button.trix-button {
   background-color: white;
 }
@@ -99,17 +98,17 @@ label, .control-label {
   margin-bottom: 20px;
 }
 
-// footer styling
-
 html {
   height: 100%;
 }
+
 body {
   min-height: 100%;
   position: relative;
   padding-bottom: 130px;
   margin: 0;
 }
+
 .footer {
   position: absolute;
   left: 0;
@@ -161,10 +160,6 @@ ul.social-icons {
 
 .fa-facebook {
   padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -174,10 +169,6 @@ ul.social-icons {
 
 .fa-twitter {
   padding: 10px 12px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -187,10 +178,6 @@ ul.social-icons {
 
 .fa-rss {
   padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   background-color: black;
 }
@@ -201,10 +188,6 @@ ul.social-icons {
 
 .fa-youtube {
   padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
   background-color: black;
 }
@@ -215,10 +198,6 @@ ul.social-icons {
 
 .fa-google-plus {
   padding: 10px 9px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -228,10 +207,6 @@ ul.social-icons {
 
 .fa-linkedin {
   padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
@@ -247,7 +222,7 @@ ul.social-icons {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-//page styling
+/* page and nav styling */
 
 .container,
 .container-fluid {
@@ -257,6 +232,7 @@ ul.social-icons {
 .navbar navbar-expand-md {
   background-color: black;
 }
+
 .navbar ul li a {
   color: #fff;
   font-weight: bold;
@@ -273,10 +249,6 @@ ul.social-icons {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#BF55EC' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.second-nav a {
-  // link styles for secondary nav
-}
-
 .greet {
   color: aliceblue;
   margin-right: 1rem;
@@ -286,57 +258,10 @@ h1.page-head {
   text-align: center;
 }
 
-/* welcome page styles  */
-
-.panel {
-  background-position: center;
-  background-size: cover;
-  height: 450px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.panel:first-of-type {
-  margin-top: -100px;
-}
-
-#welcome {
-  background-image: image-url('bear.png');
-  background-attachment: fixed;
-  background-position: top;
-}
-
-#welcome2 {
-  background-image: image-url('forest.jpg');
-  background-attachment: fixed;
-  align-self: flex-start;
-}
-
-#fixed {
-  background: black;
-  background-attachment: scroll;
-  height: 300px;
-  padding-right: 100px;
-  padding-left: 100px;
-}
-
-.panel-text {
-  color: white;
-}
-
-.time {
-  font-size: 16px;
-  font-weight: bold;
-}
-.navbar {
-  font-family: 'Orbitron', sans-serif;
-  // background-image: image-url('bear.png');
-}
-
 .cal-con {
   // for styling calandar background
 }
+
 .details {
   margin-top: 1rem;
 }
@@ -379,88 +304,6 @@ ul.social-icons {
 .social-icons a {
   color: #fff;
   text-decoration: none;
-}
-
-.fa-facebook {
-  padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: black;
-}
-
-.fa-facebook:hover {
-  background-color: #3d5b99;
-}
-
-.fa-twitter {
-  padding: 10px 12px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.fa-twitter:hover {
-  background-color: #00aced;
-}
-
-.fa-rss {
-  padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.fa-rss:hover {
-  background-color: #eb8231;
-}
-
-.fa-youtube {
-  padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: black;
-}
-
-.fa-youtube:hover {
-  background-color: #e64a41;
-}
-
-.fa-linkedin {
-  padding: 10px 14px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: black;
-}
-
-.fa-linkedin:hover {
-  background-color: #0073a4;
-}
-
-.fa-google-plus {
-  padding: 10px 9px;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: black;
-}
-
-.fa-google-plus:hover {
-  background-color: #e25714;
 }
 
 //Styling pages:
@@ -551,11 +394,9 @@ table {
   color: black;
   margin: 0;
 }
-///////////////////// CSS for Forms
 
-////////////
 
-/// Team Index Page
+/* Team Index Page */
 
 .add-team-button {
   margin-top: 20px;
@@ -597,14 +438,11 @@ table {
 
 // Social sharing icon size
 
-$size: 35px;
 
-.social-share-button {
-  .ssb-icon {
-    background-size: $size $size;
-    height: $size;
-    width: $size;
-  }
+.social-share-button .ssb-icon {
+    background-size: 35px 35px;
+    height: 35px;
+    width: 35px;
 }
 
 .addeventatc {
@@ -623,6 +461,7 @@ $size: 35px;
 .user-category {
   color: green;
   font-weight: bold;
+}
 
 a.link-on-bg {
   background-color: rgba(0, 0, 0, 0.5);
