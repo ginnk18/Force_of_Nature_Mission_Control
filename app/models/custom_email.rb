@@ -1,0 +1,2 @@
+class CustomEmail < ApplicationRecord
+end

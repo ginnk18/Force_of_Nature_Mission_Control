@@ -12,8 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20180130003355) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "custom_emails", force: :cascade do |t|
+    t.string "to_recipients"
+    t.text "email_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -28,6 +36,17 @@ ActiveRecord::Schema.define(version: 20180130003355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "email_templates", id: :serial, force: :cascade do |t|
+    t.string "subject"
+    t.string "from"
+    t.string "bcc"
+    t.string "cc"
+    t.string "slug", null: false
+    t.text "body", null: false
+    t.text "template", null: false
+    t.index ["slug"], name: "index_email_templates_on_slug"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -59,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180130003355) do
     t.integer "show_up_outcome"
     t.integer "signature_outcome"
     t.integer "canvas_captain_id"
+    t.integer "shift_manager_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
     t.index ["lead_id"], name: "index_events_on_lead_id"

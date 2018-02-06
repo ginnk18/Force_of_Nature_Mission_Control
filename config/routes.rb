@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
+      resources :custom_emails, only: [:new, :create]
      resources :userevents, only: [:new, :create, :destroy]
      get('/share', to: 'eventsignup#share', as: :shareevent)
      get('newsignup', to: 'eventsignup#new', as: :neweventsignup)
