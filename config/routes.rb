@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   root 'users#dashboard'
   # root 'events#new'
   resources :welcome, only: [:index]
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
      post('newsignup', to: 'eventsignup#create')
      delete('/:id', to: 'eventsignup#destroy', as: :removeguest)
   end
+
+  resources :password_resets
 
 
   resources :userteams, only:[:destroy, :update, :edit]

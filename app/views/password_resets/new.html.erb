@@ -1,0 +1,22 @@
+
+<div class="container">
+<div class="row d-flex justify-content-center">
+	<div class="col-lg-4">
+
+<h1 class="head">Reset Password</h1>
+
+
+<%= form_tag password_resets_path, :method => :post do %>
+  <div class='field'>
+    <%= label_tag :email, nil, class: "control-label" %> <br>
+    <%= text_field_tag :email, params[:email], class: "form-control" %>
+    <br>
+  </div>
+    <div class='actions'>
+    <%= submit_tag "Reset Password", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>

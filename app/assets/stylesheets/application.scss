@@ -85,12 +85,8 @@ h5.head {
   padding: 1rem;
 }
 
-#pagination {
-  color: white;
-}
-label,
-.control-label {
-  color: white;
+label, .control-label {
+  color:white !important;
 }
 
 .btn-primary {
@@ -622,4 +618,16 @@ $size: 35px;
 .share-event {
   display: inline-block;
   padding-bottom: 2rem;
+}
+
+a.link-on-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  color:lightblue;
+  text-decoration: underline;
+  float: right;
+}
+
+a.link-on-bg:hover {
+  color: #BF55EC;
 }

@@ -1,0 +1,32 @@
+<div class="container">
+<div class="row d-flex justify-content-center">
+	<div class="col-lg-4">
+
+<h1 class="head">Reset Password</h1>
+
+<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <% if @user.errors.any? %>
+    <div class='error_messages'>
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= f.label :password, nil, class: "control-label" %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class='field'>
+    <%= f.label :password_confirmation, nil, class: "control-label" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div> <br>
+  <div class='actions'><%= f.submit 'Update password', class: "btn btn-primary" %></div>
+<% end %>
+
+</div>
+</div>
+</div>
