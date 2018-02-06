@@ -1,0 +1,2 @@
+module CustomEmailerHelper
+end

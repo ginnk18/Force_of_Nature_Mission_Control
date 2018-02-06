@@ -47,6 +47,7 @@ gem 'social-share-button'
 gem 'kaminari'
 
 # gem for Google Calendar
+gem 'trix'
 gem 'google-api-client', '~> 0.9.1'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'

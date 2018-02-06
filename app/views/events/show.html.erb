@@ -183,7 +183,7 @@
 	        <% end %>
 	      </div>
 	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-primary">Email All Personnel</button>
+	      	<%= link_to "Email All Personnel", new_event_custom_email_path(@event), class: "btn btn-primary" %>
 	        <button type="button" class="btn btn-primary" data-dismiss="modal">Save & Close</button>
 	      </div>
 	    </div>
