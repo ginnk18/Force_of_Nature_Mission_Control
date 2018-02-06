@@ -17,7 +17,7 @@ class User < ApplicationRecord
     #Users can be general volunteers, team leads or admins
     belongs_to :user_category
 
-    
+
 
     #A user will usually just belong to one team (most general vols will belong to 1
     # regional team - but some users (team leads) can belong to a regional team and an
@@ -36,6 +36,20 @@ class User < ApplicationRecord
 	def full_name
 		"#{first_name} #{last_name}"
 	end
+
+  def send_password_reset
+  generate_token(:password_reset_token)
+  self.password_reset_sent_at = Time.zone.now
+  save!
+  UserMailer.forgot_password(self).deliver# This sends an e-mail with a link for the user to reset the password
+  end
+  
+# This generates a random password reset token for the user
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
 
 	private
 

@@ -50,8 +50,10 @@
   <div class="col-md-3 content">
     	<h3>Team</h3>
     	<p><%= @event.team&.name %></p>
-		<h3>Team Lead </h3>
-		<p><%= @event.team&.team_lead&.full_name %></p>
+		<h3>Team Lead</h3>
+		<p><%= @event.lead&.full_name %></p>
+		<h3>Shift Manager</h3>
+		<p><%= @event.shift_manager&.full_name %></p>
 		<h3>Created By </h3>
 		<p> <%= @event.creator&.full_name %></p>
 
@@ -63,7 +65,7 @@
 			<% end %>
 	<% if current_user %>
 		<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
-			<button 
+			<button
 				class="mt-2 btn btn-primary"
 				data-toggle="modal"
 				data-target="#manageGuests"
@@ -181,7 +183,7 @@
 	        <% end %>
 	      </div>
 	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-primary">Email All Personnel</button>
+	      	<%= link_to "Email All Personnel", new_event_custom_email_path(@event), class: "btn btn-primary" %>
 	        <button type="button" class="btn btn-primary" data-dismiss="modal">Save & Close</button>
 	      </div>
 	    </div>

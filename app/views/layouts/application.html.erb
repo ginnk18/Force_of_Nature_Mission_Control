@@ -81,6 +81,15 @@
       </div>
       <% end %>
 
+      <% if flash[:danger].present? %>
+      <div class="alert onTop alert-danger alert-dismissible fade show" role="alert">
+      	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      		<span aria-hidden="true">&times;</span>
+      	</button>
+      	<%=flash[:danger]%>
+      </div>
+      <% end %>
+
     <%# end %>
 
     <%= yield %>

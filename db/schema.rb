@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115193034) do
+ActiveRecord::Schema.define(version: 20180130003355) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "custom_emails", force: :cascade do |t|
+    t.string "to_recipients"
+    t.text "email_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -28,6 +36,17 @@ ActiveRecord::Schema.define(version: 20180115193034) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "email_templates", id: :serial, force: :cascade do |t|
+    t.string "subject"
+    t.string "from"
+    t.string "bcc"
+    t.string "cc"
+    t.string "slug", null: false
+    t.text "body", null: false
+    t.text "template", null: false
+    t.index ["slug"], name: "index_email_templates_on_slug"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -59,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180115193034) do
     t.integer "show_up_outcome"
     t.integer "signature_outcome"
     t.integer "canvas_captain_id"
+    t.integer "shift_manager_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_category_id"], name: "index_events_on_event_category_id"
     t.index ["lead_id"], name: "index_events_on_lead_id"
@@ -117,6 +137,23 @@ ActiveRecord::Schema.define(version: 20180115193034) do
     t.text "additional_info"
     t.boolean "previous_volunteer", default: false
     t.boolean "contacted", default: false
+    t.string "reset_digest"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_category_id"], name: "index_users_on_user_category_id"
   end
 

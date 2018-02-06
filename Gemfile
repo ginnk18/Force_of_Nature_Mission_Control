@@ -44,8 +44,10 @@ gem 'cancancan', '~> 2.0'
 gem 'bootstrap'
 gem 'bootstrap-datepicker-rails' # for date-picker
 gem 'social-share-button'
+gem 'kaminari'
 
 # gem for Google Calendar
+gem 'trix'
 gem 'google-api-client', '~> 0.9.1'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
