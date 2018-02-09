@@ -58,6 +58,8 @@
 		<p> <%= @event.creator&.full_name %></p>
 
 
+<% if current_user %>
+
 		<h3>Attendees </h3>
 		<ul class="list-group">
 			<% @event.guests.each do |guest| %>
@@ -83,6 +85,8 @@
 			</li>
 	<% end %>
 		</ul>
+
+		<% end %>
 </div>
 
 
