@@ -1,6 +1,6 @@
   <h6 class="mt-2"><%= link_to 'Back to Teams', teams_path, class: 'nav-link', style: 'color: white' %></h6>
 <% current_user&.team_memberships.each do |team| %>
-	<% if team.id == @team.id %>
+	<% if team.id == @team.id  || current_user.user_category.name == 'Admin' %>
 
 	<div class="container" style="margin-top:1rem">
 		<!-- <p>dashboard/teams</p> -->
@@ -12,7 +12,6 @@
 			<div class="col-md-6">
 				<div class="card item">
 					<h5>Team Leads </h5>
-					<p> Team lead and team edit to be added </p>
 					<table class="table table-responsive">
 						<thead>
 							<tr>
@@ -22,11 +21,9 @@
 							</tr>
 						</thead>
 						<tr>
-							<% if false %>
-							<td> <%= @team.&team_lead.full_name if present? %></td>
-						  <td> <%= @team.&team_lead.email if present? %></td>
-						 <td> <%= @team.&team_lead.phone_number if present? %></td>
-						 <% end %>
+							<td> <%= @team.team_lead.first_name %><%= @team.team_lead.last_name %></td>
+						  <td> <%= @team.team_lead.email %></td>
+						 <td> <%= @team.team_lead.phone_number %></td>
 						</tr>
 					</table>
 				</div>
@@ -47,6 +44,9 @@
 						</tr>
 						<% end %>
 					</table>
+        <% if current_user.user_category.name == 'Admin' %>
+          <%= link_to 'edit team',  edit_team_path(@team), class: "btn btn-warning" %>
+        <% end %>
 				</div>
 			</div>
 			<div class="col-md-6 team-lead-show-item">

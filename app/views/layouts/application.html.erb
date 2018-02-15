@@ -51,9 +51,6 @@
             <% end %>
             <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
               <li class="nav-item">
-              <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
-            </li>
-              <li class="nav-item">
               <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white' %>
             </li>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
