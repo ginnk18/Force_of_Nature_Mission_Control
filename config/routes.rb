@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root 'events#new'
   resources :welcome, only: [:index]
   resource :session, only:[:new, :create, :destroy]
-  resources :users, only: [:new, :create, :update, :edit]
+  resources :users, only: [:new, :create, :update, :edit, :destroy]
 
   get('users/dashboard', to:'users#dashboard', as: :user_dashboard_index)
 
