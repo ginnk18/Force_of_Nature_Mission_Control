@@ -51,15 +51,9 @@
             <% end %>
             <% if current_user.user_category.name === 'Team Lead' || current_user.user_category.name === 'Admin' %>
               <li class="nav-item">
-              <%= link_to 'Create an Event', new_event_path, class: 'nav-link', style: 'color: white' %>
-            </li>
-              <li class="nav-item">
               <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white' %>
             </li>
             <% elsif current_user.user_category.name === 'General Volunteer' %>
-              <% if current_user.teams.first && current_user.teams.first.exists? %>
-              <li class="nav-item"><%= link_to 'Team Page', team_path(current_user.teams.first), class: 'nav-link', style: 'color: white' %> </li>
-              <% end %>
               <li class="nav-item"> <%= link_to "Settings", edit_user_path(current_user), class: 'nav-link', style: 'color: white'  %> </li>
             <% end %>
             <li class="nav-item"> <%= link_to('Sign Out', session_path, method: :delete, class: 'nav-link btn btn-primary') %> </li>

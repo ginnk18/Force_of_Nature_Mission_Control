@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
-  before_action :find_user, only: [:edit, :update, :changestatus, :contacted]
+  before_action :find_user, only: [:edit, :update, :changestatus, :contacted, :destroy]
   before_action :authorize_user!, except: [:new, :create, :dashboard]
 
   def new
@@ -20,6 +20,16 @@ class UsersController < ApplicationController
 
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @user.destroy
+       redirect_back(fallback_location: root_path)
+      flash[:notice] = "User has been deleted"
+    else
+       redirect_back(fallback_location: root_path)
+      flash[:notice] = "Oops. Something went wrong."
     end
   end
 

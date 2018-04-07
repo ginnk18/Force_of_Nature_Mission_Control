@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :get_categories, only: [:new, :create]
+	before_action :get_categories, only: [:new, :create, :edit]
 	before_action :get_users
 	before_action :authorize_user!, except: [:index, :show]
 
@@ -30,6 +30,20 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = Team.find_by_id params[:id]
+	end
+
+	def edit
+		@team = Team.find_by_id params[:id]
+		 @users=User.all
+	end
+
+	def update
+			@team = Team.find_by_id params[:id]
+			if @team.update team_params
+				redirect_to team_path(@team)
+			else
+				render :edit
+			end
 	end
 
 

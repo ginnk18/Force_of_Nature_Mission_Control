@@ -11,6 +11,15 @@
       <h3> Location: <%= @event.location %> </h3>
       <h3> Additional Info <%= @event.additional_info %> </h3>
 
-    <h3>We look forward to seeing you there!</h3>
+  <p>If you are no longer able to attend, or if you have any questions, please contact your shift manager <%= @event.shift_manager.first_name %> <%= @event.shift_manager.last_name %>at <%= @event.shift_manager.email %> or  <%= @event.shift_manager.phone_number %> </p>
+
+<p> Please make sure you have your Captain’s number in case you are not able to find the team. Your Captain is <%= @event.canvas_captain.first_name  %> <%= @event.canvas_captain.last_name %>  at <%= @event.canvas_captain.phone_number %> or <%= @event.canvas_captain.email %>  </p>
+
+
+  <p> Force of Nature takes the safety of our volunteers very seriously. We encourage you to get in touch with Morag at 778 998 6793 if you have any concerns, are made to feel uncomfortable in any way, or experience any kind of harassment or other incident that you would like us to address. If you are uncomfortable addressing your concerns with staff, Force of Nature also has a volunteer ombudsperson, Amy Lubik, who you can contact at 604 767 0914. If there are any barriers to you joining us (ex: cost of transit, health concerns, childcare), please discuss them with your point person as we do our utmost to make our spaces and shifts accessible to all. We would love to work with you to resolve those concerns. </p>
+
+    <p>We look forward to seeing you there!</p>
+
+
   </body>
 </html>

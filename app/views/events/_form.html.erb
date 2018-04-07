@@ -20,10 +20,10 @@
   <%= f.input :location, label: 'Location (Address)'%>
   <%= f.input :additional_info, label: 'Additional Information'%>
   <%= f.input :attachment_url, label: 'Attachment URL'%>
-  <%= f.label :lead_id %><p>
-  <%= f.select :lead_id, @lead_users.map { |leader| [leader.full_name, leader.id] } %>
-  <%= f.label :shift_manager_id %><p>
-  <%= f.select :shift_manager_id, @shift_manager_users.map { |manager| [manager.full_name, manager.id] } %>
+  <%= f.label :lead_id %>
+  <%= f.select :lead_id, @lead_users.map { |leader| [leader.full_name, leader.id] }, { include_blank: true }, { class: 'chosen-select chosen-short' } %> <br>
+  <%= f.label :shift_manager_id %>
+  <%= f.select :shift_manager_id, @shift_manager_users.map { |manager| [manager.full_name, manager.id] } , { include_blank: true }, { class: 'chosen-select chosen-short' } %>
 </div>
 <div class="col-6">
   <h4 class="head">Targets</h4>
@@ -41,14 +41,14 @@
       <!-- Selecting an canvas captain -->
 
       <div class="col-3">
-        <%= f.label :canvas_captain_id %><p>
-        <%= f.select :canvas_captain_id, @canvas_captain_users.map { |canvas_captain| [canvas_captain.full_name, canvas_captain.id] } %>
+        <%= f.label "Captian"  %><p>
+        <%= f.select :canvas_captain_id, @canvas_captain_users.map { |canvas_captain| [canvas_captain.full_name, canvas_captain.id] }, { include_blank: true }, { class: 'chosen-select chosen-short' }  %>
       </div>
 
       <!-- Selecting an data captain -->
       <div class="col-3">
         <%= f.label :data_captain_id %><p>
-          <%= f.select :data_captain_id, @data_captain_users.map { |data_captain| [data_captain.full_name, data_captain.id] } %>
+          <%= f.select :data_captain_id, @data_captain_users.map { |data_captain| [data_captain.full_name, data_captain.id] }, { include_blank: true }, { class: 'chosen-select chosen-short' } %>
         </div>
 
       <!-- Selecting the type of event -->
@@ -61,10 +61,11 @@
         <!-- Selecting a team that this event belongs to  -->
         <div class="col-3">
           <%= f.label :team_id %><p>
-            <%= f.select :team_id, @teams.map { |team| [team.name, team.id] } %>
+            <%= f.select :team_id, @teams.map { |team| [team.name, team.id] }, { include_blank: true }, { class: 'chosen-select chosen-short' } %>
         </div>
 
   </div>
 
         <%= f.submit class:"btn btn-primary"%>
+        <%= link_to 'Cancel', events_path, class: "btn btn-danger", style: "float: right" %>
         <% end %>

@@ -1,4 +1,5 @@
 
+
 <div class="container">
 	<div class="row">
 
@@ -11,7 +12,7 @@
 		<%= link_to(team.name, team_path(team), class: "list-group-item list-group-item-action team", style:"color: blue") %>
 	<% end %>
 
-<% if current_user.user_category.name === 'Admin' || current_user.user_category.name === 'Team Lead' %>
+<% if current_user.user_category.name === 'Admin' %>
 	<div class="add-team-button">
 		<%= link_to 'Add a team', new_team_path, style: 'color: black' %>
 	</div>
@@ -23,7 +24,7 @@
 		<h3 class="head">Operational Teams</h3>
 	<div class="list-group ">
 		<% @operational_teams.each do |team| %>
-			<div class="list-group-item team"> <%= team.name %> </div>
+			<div class="list-group-item team"> <%= link_to team.name, team_path(team)  %> </div>
 		<% end %>
 	</div>
 </div>
@@ -32,7 +33,7 @@
 		<h2 class="head">Regional Teams</h2>
    <div class="list-group">
 		<% @regional_teams.each do |team| %>
-			<div class="list-group-item team"> <%= team.name %> </div>
+     <div class="list-group-item team"> <%= link_to team.name, team_path(team)  %> </div>
 		<% end %>
 	</div>
 	</div>

@@ -22,6 +22,7 @@
                    </thead>
                    <tbody>
                        <% @guest_users.each do |volunteer| %>
+                       <% if volunteer.contacted === false %>
                            <% first_event = volunteer.attended_events.first %>
                            <tr>
                                <td><%= volunteer.full_name %> <br>
@@ -34,6 +35,12 @@
                                  <button class="btn btn-success">Contacted <%= fa_icon('check') %></button>
                                  <% end %>
                                </div>
+                                  <%= link_to('Delete User',
+                                     user_path(volunteer),
+                                     data: {confirm: 'Are you sure?'},
+                                     method: :delete,
+                                     style:"color:red;"
+                                   ) %>
                                </td>
                                <td><%= volunteer.email %></td>
                                <td><%= volunteer.phone_number %></td>
@@ -46,7 +53,7 @@
                                  <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
                         <div class="field">
 
-                            <%= label(:user_category, "change user category to") %>
+                                change user category <br>
                             <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
                             <%= submit_tag "Submit", class:"btn btn-primary"%>
                         </div>
@@ -54,6 +61,50 @@
                          </td>
                            </tr>
                        <% end %>
+                       <% end %>
                    </tbody>
+                    <tbody>
+                        <% @guest_users.each do |volunteer| %>
+                        <% if volunteer.contacted === true %>
+                            <% first_event = volunteer.attended_events.first %>
+                            <tr>
+                                <td><%= volunteer.full_name %> <br>
+                                  <div class="vol-contact">
+                                  <% if volunteer.contacted === false %>
+                                  <%= form_tag("contacted/#{volunteer.id}", method: :patch) do %>
+                                  <%= submit_tag "Not Contacted", class: 'btn btn-danger' %>
+                                  <% end %>
+                                  <% else %>
+                                  <button class="btn btn-success">Contacted <%= fa_icon('check') %></button>
+                                  <% end %>
+                                </div>
+                                        <%= link_to('Delete User',
+                                           user_path(volunteer),
+                                           data: {confirm: 'Are you sure?'},
+                                           method: :delete,
+                                           style:"color:red;"
+                                         ) %>
+                                </td>
+                                <td><%= volunteer.email %></td>
+                                <td><%= volunteer.phone_number %></td>
+                                <td><%= volunteer.additional_info %></td>
+                                <td><%= volunteer.previous_volunteer %></td>
+                                <td><%= volunteer.created_at.strftime('%B %d %Y') %></td>
+                                <td><% if first_event %><%= first_event.name %><% end %></td>
+                                <td>
+                                  User Category:  <span class="user-category"> <%=volunteer.user_category.name %> </span>
+                                  <%= form_tag("upcat/#{volunteer.id}", method: :patch) do %>
+                         <div class="field">
+
+                          change user category <br>
+                             <%= select_tag "user_category", "<option>General Volunteer</option><option>Team Lead</option>".html_safe, class:"btn btn-success dropdown-toggle" %>
+                             <%= submit_tag "Submit", class:"btn btn-primary"%>
+                         </div>
+                              <% end %>
+                          </td>
+                            </tr>
+                        <% end %>
+                        <% end %>
+                    </tbody>
                </table>
    </div>

@@ -2,12 +2,19 @@
 <% provide(:title, "Edit user") %>
 <div class="row d-flex justify-content-center">
   <div class="col-md-6 col-md-offset-3">
-    <h1 class="head">Update your profile</h1>
+    <h1 class="head">Update profile</h1>
 
     <%= simple_form_for(@user) do |f| %>
       <%= f.input :first_name, class: 'form-control' %>
       <%= f.input :last_name, class: 'form-control' %>
       <%= f.input :email, class: 'form-control' %>
+      <%= f.input :phone_number, class: 'form-control' %>
+        <%= f.input :address, class: 'form-control' %>
+    <%= f.input :additional_info, class: 'form-control' %>
+      <%= f.association :team_memberships, multiple:true,  input_html:  { class: 'chosen-select'}%>
+      <% if @user.id != current_user.id %>
+        <div class="alert alert-danger"> <p> Admin, be aware that the password change below is for another user! </p> </div>
+        <% end %>
       <%= f.input :password, class: 'form-control', placeholder:"Leave password field blank if you don't want to change it!" %>
       <%= f.input :password_confirmation, class: 'form-control', placeholder:"Leave password field blank if you don't want to change it!" %>
       <br>
